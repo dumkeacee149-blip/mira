@@ -4,6 +4,8 @@ This directory contains the recommended five-agent split for the Mira monorepo.
 
 Use one primary agent per task. Add a support agent only when the change crosses a hard code ownership boundary.
 
+Start every non-trivial task with `.agents/agents/task-dispatch-template.md`. If the task is opened through GitHub issues, use `.github/ISSUE_TEMPLATE/sub_agent_dispatch.yaml`.
+
 ## Agent Map
 
 ### 1. Mira Stage Experience
@@ -98,3 +100,11 @@ Use one primary agent per task. Add a support agent only when the change crosses
 - List touched ownership boundaries before editing.
 - After implementation, run the smallest verification command that proves the boundary still works.
 - If a support agent changed files in the primary agent's area, hand the task back for final review before merging.
+
+## Dispatch Workflow
+
+1. Find the entrypoint file or package.
+2. Assign the primary agent from the ownership map above.
+3. Add support agents only for concrete cross-boundary changes.
+4. Fill in the dispatch template before coding.
+5. Keep final review with the primary owner unless the task is formally reassigned.

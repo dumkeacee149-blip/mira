@@ -1,0 +1,109 @@
+name: Mira sub-agent task dispatch
+description: Route a task to the right Mira owner before implementation starts
+title: '[Dispatch]: '
+type: Task
+labels: [pending triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to route work to the right Mira sub-agent before implementation.
+
+        Pick the primary agent from the entrypoint file or package, then add support agents only if the task crosses a real ownership boundary.
+  - type: textarea
+    id: request-summary
+    attributes:
+      label: Request summary
+      description: Describe the task in one clear paragraph.
+      placeholder: Add a shared settings flow for a new provider across desktop and web.
+    validations:
+      required: true
+  - type: dropdown
+    id: primary-agent
+    attributes:
+      label: Primary agent
+      description: Choose the single owner for this task.
+      options:
+        - Mira Stage Experience
+        - Mira Platform Shells
+        - Mira Runtime and Integrations
+        - Mira Docs and Localization
+        - Mira Build, Quality, and Release
+    validations:
+      required: true
+  - type: checkboxes
+    id: support-agents
+    attributes:
+      label: Support agents
+      description: Select only the agents that must support this task.
+      options:
+        - label: Mira Stage Experience
+        - label: Mira Platform Shells
+        - label: Mira Runtime and Integrations
+        - label: Mira Docs and Localization
+        - label: Mira Build, Quality, and Release
+  - type: input
+    id: entrypoint-path
+    attributes:
+      label: Entrypoint path
+      description: The first file or package where implementation should begin.
+      placeholder: packages/stage-ui/src/components/scenarios/
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Ownership boundaries touched
+      description: List the packages, apps, or services this task will cross.
+      placeholder: packages/stage-ui, packages/i18n, packages/server-runtime
+    validations:
+      required: true
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: Desired outcome
+      description: What should be true when this task is done?
+      placeholder: Users can configure the new provider from shared UI without breaking existing flows.
+    validations:
+      required: true
+  - type: textarea
+    id: non-goals
+    attributes:
+      label: Non-goals
+      description: What should this task explicitly avoid changing?
+      placeholder: No unrelated onboarding refactor. No copy rewrite outside new keys.
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: List the concrete outputs expected from this task.
+      placeholder: Shared UI changes, runtime contract update, locale keys, verification notes.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification commands
+      description: Add the smallest commands that prove the touched boundary still works.
+      placeholder: pnpm typecheck
+      render: Shell
+    validations:
+      required: true
+  - type: textarea
+    id: handoff
+    attributes:
+      label: Handoff notes
+      description: Describe which support agent needs to review which boundary.
+      placeholder: Runtime agent reviews contract changes. Final review returns to Stage Experience.
+  - type: checkboxes
+    id: validations
+    attributes:
+      label: Validations
+      description: Confirm the routing before submitting.
+      options:
+        - label: I picked the primary agent from the entrypoint path, not from the broad feature label.
+          required: true
+        - label: I added support agents only where the task crosses a real ownership boundary.
+          required: true
+        - label: I included verification commands for the touched boundary.
+          required: true

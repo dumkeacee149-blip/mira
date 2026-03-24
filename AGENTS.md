@@ -106,6 +106,38 @@ Project Mira is large enough that work should be routed through five stable sub-
 
 See `.agents/agents/README.md` and the five agent definitions in `.agents/agents/*.yaml` for the concrete routing map.
 
+## Task Dispatch Template
+
+Use the Mira task dispatch template for any feature, refactor, bugfix, or cleanup that is bigger than a single isolated file tweak.
+
+- Copy from `.agents/agents/task-dispatch-template.md`.
+- If the work is opened on GitHub first, use `.github/ISSUE_TEMPLATE/sub_agent_dispatch.yaml`.
+- Always pick the primary agent from the entrypoint file, not from the broad feature label.
+- Add support agents only when the change crosses an ownership boundary.
+
+### Dispatch Flow
+
+1. Find the first file or package where the change must begin.
+2. Match that entrypoint to one of the five ownership maps above.
+3. Mark that owner as the primary agent.
+4. Add support agents only for explicit cross-boundary work.
+5. Write the smallest verification commands that prove the touched boundary still works.
+6. If support agents modify the primary owner's area, route the final review back to the primary agent.
+
+### Required Dispatch Fields
+
+- Request summary
+- Primary agent
+- Support agents
+- Entrypoint path
+- Ownership boundaries touched
+- Desired outcome
+- Non-goals
+- Deliverables
+- Verification commands
+- Handoff notes
+- Done criteria
+
 ## Commands (pnpm with filters)
 
 > Use pnpm workspace filters to scope tasks. Examples below are generic; replace the filter with the target workspace name (e.g. `@proj-mira/stage-tamagotchi`, `@proj-mira/stage-web`, `@proj-mira/stage-ui`, etc.).
