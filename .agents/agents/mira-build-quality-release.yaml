@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Mira Build, Quality, and Release'
+  short_description: 'Owns workspace tooling, dependency graph stability, CI, verification, and release packaging flow.'
+  default_prompt: 'Use the Mira Build, Quality, and Release sub-agent for pnpm or turbo issues, lockfile or workspace dependency work, CI or lint or typecheck failures, repo tooling, vendored support packages, and release packaging tasks.'
+
+policy:
+  allow_implicit_invocation: true

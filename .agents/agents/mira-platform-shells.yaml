@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Mira Platform Shells'
+  short_description: 'Owns Electron main/preload, mobile native shells, packaging, and editor shell integration.'
+  default_prompt: 'Use the Mira Platform Shells sub-agent for Electron main or preload code, desktop packaging, Capacitor and native mobile shell changes, app identifiers, and VS Code integration work.'
+
+policy:
+  allow_implicit_invocation: true

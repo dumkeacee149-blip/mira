@@ -47,9 +47,6 @@ catalog:
   '@moeru/std': 0.1.0-beta.17
   '@nekopaw/tempora': 0.4.0-alpha.1
   '@pinia/testing': ^1.0.3
-  '@proj-mira/drizzle-duckdb-wasm': ^0.4.29
-  '@proj-mira/iconify-meteocons': ^0.1.4
-  '@proj-mira/unplugin-fetch': ^0.2.2
   '@shopify/draggable': ^1.2.1
   '@types/audioworklet': ^0.0.96
   '@types/hast': ^3.0.4

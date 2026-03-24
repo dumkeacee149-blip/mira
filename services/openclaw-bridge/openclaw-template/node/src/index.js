@@ -1,5 +1,7 @@
-import express from 'express'
+import process from 'node:process'
+
 import bodyParser from 'body-parser'
+import express from 'express'
 
 const app = express()
 const PORT = Number(process.env.PORT || 8000)
@@ -95,7 +97,7 @@ function buildFallbackReply(payload) {
   const reply = `已接收 ${source} 事件（eventId=${eventId || 'n/a'}）。${content || '空内容'}${contextText ? ` | 上下文片段：${contextText.slice(0, 180)}` : ''}`
 
   const commands = []
-  if (/\b(remind|reminder|提醒|schedule|计划)\b/i.test(content)) {
+  if (/\b(?:remind|reminder|提醒|schedule|计划)\b/i.test(content)) {
     commands.push({
       destinations: ['character'],
       intent: 'action',
@@ -127,7 +129,7 @@ function buildFallbackReply(payload) {
         lane: 'memory.short_term',
         strategy: 'append-self',
         text: `session=${sessionId}: latest_input=${content.slice(0, 120) || 'empty'}`,
-        content: content,
+        content,
         destinations: ['character'],
         metadata: {
           memoryType: 'short_term',
@@ -136,14 +138,14 @@ function buildFallbackReply(payload) {
       })
     }
 
-    if (/\b(用户画像|偏好|长期|规则|关系)\b/.test(content)) {
+    if (/\b(?:用户画像|偏好|长期|规则|关系)\b/.test(content)) {
       updates.push({
         id: `lt-${Date.now()}`,
         contextId: `ctx-${Date.now()}`,
         lane: 'memory.long_term',
         strategy: 'append-self',
         text: `session=${sessionId}: 长期偏好片段 ${content.slice(0, 120)}`,
-        content: content,
+        content,
         destinations: ['character'],
         metadata: {
           memoryType: 'long_term',
@@ -246,10 +248,10 @@ app.get('/health', (_req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`[openclaw-template-node] listening on :${PORT}`)
-  console.log(`[openclaw-template-node] endpoint: POST /v1/mira/invoke`)
+  console.info(`[openclaw-template-node] listening on :${PORT}`)
+  console.info(`[openclaw-template-node] endpoint: POST /v1/mira/invoke`)
   if (UPSTREAM_URL)
-    console.log(`[openclaw-template-node] upstream -> ${new URL(UPSTREAM_PATH, UPSTREAM_URL).toString()}`)
+    console.info(`[openclaw-template-node] upstream -> ${new URL(UPSTREAM_PATH, UPSTREAM_URL).toString()}`)
   else
-    console.log('[openclaw-template-node] fallback demo mode enabled, set OPENCLAW_UPSTREAM_URL to use real OpenClaw')
+    console.info('[openclaw-template-node] fallback demo mode enabled, set OPENCLAW_UPSTREAM_URL to use real OpenClaw')
 })

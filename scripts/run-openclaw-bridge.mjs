@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import process from 'node:process'
+
 import { spawn } from 'node:child_process'
-import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -15,8 +16,10 @@ const command = process.env.NODE
 
 const args = [
   '/Users/dalao/.openclaw/workspace/mira/node_modules/.bin/tsx',
-  '--env-file', `${bridgeDir}/.env`,
-  '--env-file-if-exists', `${bridgeDir}/.env.local`,
+  '--env-file',
+  `${bridgeDir}/.env`,
+  '--env-file-if-exists',
+  `${bridgeDir}/.env.local`,
   `${bridgeDir}/src/index.ts`,
 ]
 
@@ -30,7 +33,7 @@ const child = spawn(command, args, {
 })
 
 if (child.pid)
-  console.log(`[openclaw-bridge-bootstrap] started pid=${child.pid}`)
+  console.info(`[openclaw-bridge-bootstrap] started pid=${child.pid}`)
 
 child.on('exit', (code, signal) => {
   console.error(`[openclaw-bridge-bootstrap] exited code=${code} signal=${signal}`)

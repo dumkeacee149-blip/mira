@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Mira Stage Experience'
+  short_description: 'Owns renderer UX, stage flows, shared stage UI, and user-facing interaction surfaces.'
+  default_prompt: 'Use the Mira Stage Experience sub-agent for renderer pages, shared UI, stage stores, stage routes, settings screens, and cross-app user interaction work in stage-web, stage-pocket, stage-tamagotchi renderer, stage-pages, stage-ui, and ui packages.'
+
+policy:
+  allow_implicit_invocation: true

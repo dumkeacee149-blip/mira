@@ -62,6 +62,50 @@ Concise but detailed reference for contributors working across the `dumkeacee149
 - Tailwind/UnoCSS: prefer UnoCSS; if standardizing styles, add shortcuts/rules/plugins in `uno.config.ts`.
 - Bundling pattern: `packages/vite-plugin-warpdrive` (tsdown example).
 
+## Recommended 5-Agent Split
+
+Project Mira is large enough that work should be routed through five stable sub-agents with clear ownership. Keep one primary owner for every task. Pull in a second agent only when the change crosses a hard boundary.
+
+- **1. Stage Experience Agent**
+  - Owns renderer UX and shared user-facing stage behavior.
+  - Primary scope: `apps/stage-web/src/**`, `apps/stage-pocket/src/**`, `apps/stage-tamagotchi/src/renderer/**`, `packages/stage-pages/**`, `packages/stage-ui/**`, `packages/stage-ui-live2d/**`, `packages/stage-ui-three/**`, `packages/stage-shared/**`, `packages/ui/**`.
+  - Typical tasks: routes, settings screens, chat flows, stage widgets, visual interaction, shared composables/stores, component cleanup.
+- **2. Platform Shells Agent**
+  - Owns platform-specific shells, native wrappers, and app packaging surfaces.
+  - Primary scope: `apps/stage-tamagotchi/src/main/**`, `apps/stage-tamagotchi/src/preload/**`, `apps/stage-tamagotchi/electron*`, `apps/stage-pocket/android/**`, `apps/stage-pocket/ios/**`, `apps/stage-pocket/capacitor.config.ts`, `integrations/vscode/**`.
+  - Typical tasks: Electron window lifecycle, preload APIs, desktop packaging, mobile shell wiring, Android/iOS identifiers, VS Code extension surfaces.
+- **3. Runtime and Integrations Agent**
+  - Owns backend/runtime contracts, provider plumbing, services, plugins, and cross-process orchestration.
+  - Primary scope: `apps/server/**`, `packages/server-runtime/**`, `packages/server-sdk/**`, `packages/server-shared/**`, `packages/plugin-*`, `packages/tauri-plugin-mcp/**`, `services/**`, `plugins/**`, Eventa contracts in `apps/stage-tamagotchi/src/shared/**`.
+  - Typical tasks: provider adapters, Eventa contracts, service orchestration, MCP/plugin runtime, bot integrations, server-side data flow.
+- **4. Docs and Localization Agent**
+  - Owns docs, translation content, branding copy, blog/media metadata, and contributor-facing documentation.
+  - Primary scope: `docs/**`, `packages/i18n/**`, root/app/package/service `README.md`, `bucket/**`.
+  - Typical tasks: docs IA, release notes, locale coverage, terminology consistency, migration docs, user-facing copy.
+- **5. Build, Quality, and Release Agent**
+  - Owns workspace health, dependency graph, CI, linting, test gates, release automation, and repo-wide tooling.
+  - Primary scope: root `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `turbo.json`, `eslint.config.js`, `.github/workflows/**`, `patches/**`, repo-wide vendored packages under `packages/**` that exist to satisfy workspace dependency flow.
+  - Typical tasks: install/build failures, workspace package registration, lockfile churn, lint/typecheck/test pipelines, release packaging, monorepo tooling.
+
+### Handoff Rules
+
+- UI behavior in renderer pages/components belongs to Agent 1, even when the text changes. If new translation keys are needed, Agent 4 supports.
+- Electron main/preload changes belong to Agent 2. If they require new Eventa contracts or service APIs, Agent 3 supports.
+- Provider wiring, server contracts, service adapters, and plugins belong to Agent 3, even when a UI screen also needs updates.
+- Docs-only, locale-only, and README-only work belongs to Agent 4.
+- Any task blocked by workspace config, dependency resolution, CI failures, or release packaging belongs to Agent 5.
+- When a task spans multiple areas, assign the agent that owns the entrypoint file as primary and document the support agent in the task note.
+
+### Shared Done Criteria
+
+- Agent 1: user-facing flows remain consistent across desktop/web/mobile where shared code is involved.
+- Agent 2: platform boot, IPC surface, and packaging identifiers stay coherent.
+- Agent 3: contracts stay typed end-to-end and runtime boundaries remain explicit.
+- Agent 4: terminology stays consistent across docs and locales.
+- Agent 5: `pnpm install`, `pnpm typecheck`, and repo quality gates remain green or any known exceptions are documented.
+
+See `.agents/agents/README.md` and the five agent definitions in `.agents/agents/*.yaml` for the concrete routing map.
+
 ## Commands (pnpm with filters)
 
 > Use pnpm workspace filters to scope tasks. Examples below are generic; replace the filter with the target workspace name (e.g. `@proj-mira/stage-tamagotchi`, `@proj-mira/stage-web`, `@proj-mira/stage-ui`, etc.).

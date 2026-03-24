@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Mira Runtime and Integrations'
+  short_description: 'Owns server/runtime contracts, provider wiring, plugins, services, bots, and Eventa integration boundaries.'
+  default_prompt: 'Use the Mira Runtime and Integrations sub-agent for server packages, provider adapters, Eventa contracts, services, plugins, bots, MCP surfaces, and backend-facing orchestration.'
+
+policy:
+  allow_implicit_invocation: true

@@ -79,7 +79,7 @@ const adapter = createOpenClawAdapter({
 adapter.initialize()
 
 miraClient.connect().then(() => {
-  console.log('[openclaw-bridge] connected to MIRA ws')
+  console.info('[openclaw-bridge] connected to MIRA ws')
 }).catch((error) => {
   console.error('[openclaw-bridge] failed to connect:', error)
 })
@@ -98,7 +98,7 @@ process.on('SIGTERM', () => {
   process.exit(0)
 })
 
-console.log('[openclaw-bridge] starting with config:', {
+console.info('[openclaw-bridge] starting with config:', {
   wsUrl: config.wsUrl,
   openclawBaseUrl: config.openclawBaseUrl,
   openclawInvokePath: config.openclawInvokePath,

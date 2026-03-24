@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Mira Docs and Localization'
+  short_description: 'Owns docs, locale content, terminology consistency, README coverage, and branded user-facing copy.'
+  default_prompt: 'Use the Mira Docs and Localization sub-agent for docs, blog content, README updates, translation files, terminology cleanup, and bucket or metadata content that shapes user-facing documentation.'
+
+policy:
+  allow_implicit_invocation: true
