@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MiRa
+Exec=mira-assistant %U
+Terminal=false
+Type=Application
+Icon=mira-assistant
+StartupWMClass=MiRa
+Comment=MiRa is an AI VTuber assistant with Live2D/VRM avatars, featuring human-like interactions and modular stage-based rendering.
+Categories=Utility;
+

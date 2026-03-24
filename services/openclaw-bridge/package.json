@@ -1,0 +1,26 @@
+{
+  "name": "@proj-airi/openclaw-bridge",
+  "type": "module",
+  "private": true,
+  "description": "OpenClaw bridge adapter for AIRI module ports",
+  "author": {
+    "name": "Moeru AI Project AIRI Team",
+    "email": "airi@moeru.ai",
+    "url": "https://github.com/moeru-ai"
+  },
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/moeru-ai/airi.git",
+    "directory": "services/openclaw-bridge"
+  },
+  "scripts": {
+    "start": "tsx --env-file=.env --env-file-if-exists=.env.local src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@proj-airi/server-sdk": "workspace:^",
+    "@proj-airi/server-shared": "workspace:^",
+    "@xsai/shared-chat": "catalog:",
+    "tsx": "^4.21.0"
+  }
+}

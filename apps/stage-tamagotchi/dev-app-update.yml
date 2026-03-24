@@ -1,0 +1,6 @@
+provider: github
+owner: mira-assistant
+repo: mira-assistant
+updaterCacheDirName: electron-app-updater
+allowPrerelease: true
+channel: nightly
