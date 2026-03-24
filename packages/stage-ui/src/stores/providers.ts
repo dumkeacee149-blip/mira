@@ -20,7 +20,7 @@ import type {
 
 import type { AliyunRealtimeSpeechExtraOptions } from './providers/aliyun/stream-transcription'
 
-import { isStageTamagotchi, isUrl } from '@proj-airi/stage-shared'
+import { isStageTamagotchi, isUrl } from '@proj-mira/stage-shared'
 import { computedAsync, useIntervalFn, useLocalStorage } from '@vueuse/core'
 import {
   createOpenAI,
@@ -105,7 +105,7 @@ export interface ProviderMetadata {
   /**
    * Iconify JSON icon name for the provider.
    *
-   * Icons are available for most of the AI provides under @proj-airi/lobe-icons.
+   * Icons are available for most of the AI provides under @proj-mira/lobe-icons.
    */
   icon?: string
   iconColor?: string
@@ -294,7 +294,7 @@ export const useProvidersStore = defineStore('providers', () => {
           if (!config.baseUrl) {
             return {
               errors: [new Error('Base URL is required.')],
-              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/moeru-ai/airi/issues.',
+              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/dumkeacee149-blip/mira/issues.',
               valid: false,
             }
           }
@@ -324,7 +324,7 @@ export const useProvidersStore = defineStore('providers', () => {
           if (!config.baseUrl) {
             return {
               errors: [new Error('Base URL is required.')],
-              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/moeru-ai/airi/issues.',
+              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/dumkeacee149-blip/mira/issues.',
               valid: false,
             }
           }
@@ -354,7 +354,7 @@ export const useProvidersStore = defineStore('providers', () => {
           if (!config.baseUrl) {
             return {
               errors: [new Error('Base URL is required.')],
-              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/moeru-ai/airi/issues.',
+              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/dumkeacee149-blip/mira/issues.',
               valid: false,
             }
           }
@@ -384,7 +384,7 @@ export const useProvidersStore = defineStore('providers', () => {
           if (!config.baseUrl) {
             return {
               errors: [new Error('Base URL is required.')],
-              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/moeru-ai/airi/issues.',
+              reason: 'Base URL is required. This is likely a bug, report to developers on https://github.com/dumkeacee149-blip/mira/issues.',
               valid: false,
             }
           }
@@ -1405,7 +1405,7 @@ export const useProvidersStore = defineStore('providers', () => {
       defaultOptions: () => ({
         baseUrl: 'http://localhost:4315/v1/',
       }),
-      createProvider: async config => createPlayer2((config.baseUrl as string).trim(), 'airi'),
+      createProvider: async config => createPlayer2((config.baseUrl as string).trim(), 'mira'),
       capabilities: {
         listModels: async () => {
           return [
@@ -1489,7 +1489,7 @@ export const useProvidersStore = defineStore('providers', () => {
             const response = await fetch(`${config.baseUrl as string}health`, {
               method: 'GET',
               headers: {
-                'player2-game-key': 'airi',
+                'player2-game-key': 'mira',
               },
               signal: controller.signal,
             })

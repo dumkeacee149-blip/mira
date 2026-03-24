@@ -62,7 +62,7 @@ export type MetadataEventSource = ModuleIdentity
  *
  * Example:
  *  {
- *    id: "airi.config.stage-ui",
+ *    id: "mira.config.stage-ui",
  *    version: 2,
  *    schema: { type: "object", properties: { model: { type: "string" } }, required: ["model"] },
  *  }
@@ -370,9 +370,9 @@ export enum MessageHeartbeat {
 }
 
 export enum WebSocketEventSource {
-  Server = 'proj-airi:server-runtime',
-  StageWeb = 'proj-airi:stage-web',
-  StageTamagotchi = 'proj-airi:stage-tamagotchi',
+  Server = 'proj-mira:server-runtime',
+  StageWeb = 'proj-mira:stage-web',
+  StageTamagotchi = 'proj-mira:stage-tamagotchi',
 }
 
 interface InputSource {

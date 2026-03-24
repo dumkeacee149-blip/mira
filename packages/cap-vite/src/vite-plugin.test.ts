@@ -124,14 +124,14 @@ describe('capVitePlugin', () => {
     const server = createMockServer()
 
     configurePluginServer(capVitePlugin({
-      capArgs: ['ios', '--scheme', 'AIRI'],
+      capArgs: ['ios', '--scheme', 'MIRA'],
     }), server)
 
     server.httpServer.emit('listening')
 
     expect(emitKeypressEvents).toHaveBeenCalledWith(stdin)
     expect(stdin.setRawMode).toHaveBeenCalledWith(true)
-    expect(x).toHaveBeenNthCalledWith(1, 'cap', ['run', 'ios', '--scheme', 'AIRI'], {
+    expect(x).toHaveBeenNthCalledWith(1, 'cap', ['run', 'ios', '--scheme', 'MIRA'], {
       nodeOptions: {
         cwd: '/repo/app',
         env: {
@@ -147,7 +147,7 @@ describe('capVitePlugin', () => {
     await vi.waitFor(() => {
       expect(firstRun.kill).toHaveBeenCalledWith('SIGINT')
       expect(server.config.logger.info).toHaveBeenCalledWith('[cap-vite] manual restart requested. Re-running cap run ios.')
-      expect(x).toHaveBeenNthCalledWith(2, 'cap', ['run', 'ios', '--scheme', 'AIRI'], {
+      expect(x).toHaveBeenNthCalledWith(2, 'cap', ['run', 'ios', '--scheme', 'MIRA'], {
         nodeOptions: {
           cwd: '/repo/app',
           env: {

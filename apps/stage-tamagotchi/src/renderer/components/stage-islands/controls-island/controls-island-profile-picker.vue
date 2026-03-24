@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { useElectronEventaInvoke } from '@proj-airi/electron-vueuse'
-import { ProfileSwitcherPopover } from '@proj-airi/stage-ui/components'
+import { useElectronEventaInvoke } from '@proj-mira/electron-vueuse'
+import { ProfileSwitcherPopover } from '@proj-mira/stage-ui/components'
 
 import { electronOpenSettings } from '../../../../shared/eventa'
 
 const openSettings = useElectronEventaInvoke(electronOpenSettings)
 
 function handleNavigation() {
-  openSettings({ route: '/settings/airi-card' })
+  openSettings({ route: '/settings/mira-card' })
 }
 </script>
 

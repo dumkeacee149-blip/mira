@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ProfileSwitcherPopover } from '@proj-airi/stage-ui/components'
+import { ProfileSwitcherPopover } from '@proj-mira/stage-ui/components'
 import { useRouter } from 'vue-router'
 
 import HeaderAvatar from './HeaderAvatar.vue'
@@ -9,7 +9,7 @@ import ActionAbout from './InteractiveArea/Actions/About.vue'
 const router = useRouter()
 
 function handleNavigation() {
-  router.push('/settings/airi-card')
+  router.push('/settings/mira-card')
 }
 </script>
 

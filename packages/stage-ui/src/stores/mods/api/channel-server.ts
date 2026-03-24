@@ -1,7 +1,7 @@
-import type { ContextUpdate, WebSocketBaseEvent, WebSocketEvent, WebSocketEventOptionalSource, WebSocketEvents } from '@proj-airi/server-sdk'
+import type { ContextUpdate, WebSocketBaseEvent, WebSocketEvent, WebSocketEventOptionalSource, WebSocketEvents } from '@proj-mira/server-sdk'
 
-import { Client, WebSocketEventSource } from '@proj-airi/server-sdk'
-import { isStageTamagotchi, isStageWeb } from '@proj-airi/stage-shared'
+import { Client, WebSocketEventSource } from '@proj-mira/server-sdk'
+import { isStageTamagotchi, isStageWeb } from '@proj-mira/stage-shared'
 import { useLocalStorage } from '@vueuse/core'
 import { nanoid } from 'nanoid'
 import { defineStore } from 'pinia'
@@ -9,7 +9,7 @@ import { ref, watch } from 'vue'
 
 import { useWebSocketInspectorStore } from '../../devtools/websocket-inspector'
 
-export const useModsServerChannelStore = defineStore('mods:channels:proj-airi:server', () => {
+export const useModsServerChannelStore = defineStore('mods:channels:proj-mira:server', () => {
   const connected = ref(false)
   const client = ref<Client>()
   const initializing = ref<Promise<void> | null>(null)
@@ -17,7 +17,7 @@ export const useModsServerChannelStore = defineStore('mods:channels:proj-airi:se
   const listenersInitialized = ref(false)
   const listenerDisposers = ref<Array<() => void>>([])
 
-  const defaultWebSocketUrl = import.meta.env.VITE_AIRI_WS_URL || 'ws://localhost:6121/ws'
+  const defaultWebSocketUrl = import.meta.env.VITE_MIRA_WS_URL || 'ws://localhost:6121/ws'
   const websocketUrl = useLocalStorage('settings/connection/websocket-url', defaultWebSocketUrl)
 
   const basePossibleEvents: Array<keyof WebSocketEvents> = [

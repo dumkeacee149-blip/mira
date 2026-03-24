@@ -1,4 +1,4 @@
-import type { Client } from '@proj-airi/server-sdk'
+import type { Client } from '@proj-mira/server-sdk'
 
 import type { Mineflayer } from '../../libs/mineflayer'
 import type { ReflexManager } from '../reflex/reflex-manager'
@@ -8,14 +8,14 @@ export interface MineflayerWithAgents extends Mineflayer {
 }
 
 export interface CognitiveEngineOptions {
-  airiClient: Client
+  miraClient: Client
 }
 
 // TODO: currently stimulus is just chat events, consider renaming to 'input' or 'user_interaction'
 export type EventCategory = 'perception' | 'feedback' | 'system_alert'
 
 export interface BotEventSource {
-  type: 'minecraft' | 'airi' | 'system'
+  type: 'minecraft' | 'mira' | 'system'
   id: string // Agent/Source identifier
   reply?: (message: string) => void
 }

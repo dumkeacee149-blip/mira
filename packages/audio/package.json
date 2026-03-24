@@ -1,17 +1,17 @@
 {
-  "name": "@proj-airi/audio",
+  "name": "@proj-mira/audio",
   "type": "module",
   "private": true,
-  "description": "Audio processing utilities for Project AIRI",
+  "description": "Audio processing utilities for Project Mira",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "packages/audio"
   },
   "exports": {

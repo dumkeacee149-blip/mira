@@ -242,7 +242,7 @@ export const debugEventCategorySchema = z.enum([
 ])
 
 export const debugEventSourceSchema = z.object({
-  type: z.enum(['minecraft', 'airi', 'system']),
+  type: z.enum(['minecraft', 'mira', 'system']),
   id: nonEmptyStringSchema,
 }).strict()
 

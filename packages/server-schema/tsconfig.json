@@ -7,7 +7,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "types": [
-      "@proj-airi/unplugin-drizzle-orm-migrations/types"
+      "@proj-mira/unplugin-drizzle-orm-migrations/types"
     ],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

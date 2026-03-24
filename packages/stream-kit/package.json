@@ -1,18 +1,18 @@
 {
-  "name": "@proj-airi/stream-kit",
+  "name": "@proj-mira/stream-kit",
   "type": "module",
   "version": "0.9.0-alpha.18",
   "private": true,
-  "description": "Stream utilities for AIRI (queues, streams)",
+  "description": "Stream utilities for MIRA (queues, streams)",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "packages/stream-kit"
   },
   "exports": {

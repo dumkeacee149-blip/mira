@@ -3,7 +3,7 @@
 此目录放置打包时一并携带的本地运行时文件。
 
 当前打包行为：
-- 安装版默认自动启用 `AIRI_RUNTIME_MANAGED=true`
+- 安装版默认自动启用 `MIRA_RUNTIME_MANAGED=true`
 - 自动查找并启动 `embedded-runtime/openclaw-bridge/openclaw-bridge.js`
 - 自动查找并启动 `embedded-runtime/openclaw-runtime/openclaw-runtime.js`
 
@@ -23,7 +23,7 @@
 
 默认 `openclaw-bridge` 会把能力请求打到内置 runtime：
 - `OPENCLAW_BASE_URL=http://127.0.0.1:8123`
-- `OPENCLAW_INVOKE_PATH=/v1/airi/invoke`
+- `OPENCLAW_INVOKE_PATH=/v1/mira/invoke`
 
 如果用户配置了外部 OpenClaw 地址，可通过
 - `OPENCLAW_UPSTREAM_URL`

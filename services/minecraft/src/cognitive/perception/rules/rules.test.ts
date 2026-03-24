@@ -92,7 +92,7 @@ function createRuleEngineForTest(ruleYaml: string): {
   logger: ReturnType<typeof createMockLogger>
   signals: TracedEvent[]
 } {
-  const rulesDir = fs.mkdtempSync(path.join(os.tmpdir(), 'airi-rule-engine-test-'))
+  const rulesDir = fs.mkdtempSync(path.join(os.tmpdir(), 'mira-rule-engine-test-'))
   fs.writeFileSync(path.join(rulesDir, 'test-rule.yaml'), ruleYaml, 'utf-8')
 
   const eventBus = createEventBus()

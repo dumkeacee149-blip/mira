@@ -1,18 +1,18 @@
 {
-  "name": "@proj-airi/electron-vueuse",
+  "name": "@proj-mira/electron-vueuse",
   "type": "module",
   "version": "0.9.0-alpha.18",
   "private": true,
   "description": "VueUse-like composables and helpers for Electron apps",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "packages/electron-vueuse"
   },
   "exports": {
@@ -43,6 +43,6 @@
     "std-env": "catalog:"
   },
   "devDependencies": {
-    "@proj-airi/electron-eventa": "workspace:^"
+    "@proj-mira/electron-eventa": "workspace:^"
   }
 }

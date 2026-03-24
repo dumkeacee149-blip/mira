@@ -13,8 +13,8 @@ export function CognitiveEngine(options: CognitiveEngineOptions): MineflayerPlug
   let mcpReplServer: McpReplServer | null = null
   let started = false
 
-  // Keep airiClient reference for future use
-  void options.airiClient
+  // Keep miraClient reference for future use
+  void options.miraClient
 
   return {
     async created(bot) {

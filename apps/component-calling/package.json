@@ -1,17 +1,17 @@
 {
-  "name": "@proj-airi/component-calling",
+  "name": "@proj-mira/component-calling",
   "type": "module",
   "private": true,
   "description": "Realtime audio",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "apps/component-calling"
   },
   "scripts": {
@@ -21,7 +21,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@proj-airi/ui": "workspace:^",
+    "@proj-mira/ui": "workspace:^",
     "@vueuse/core": "^14.2.1",
     "@xsai/generate-text": "catalog:",
     "@xsai/shared-chat": "catalog:",

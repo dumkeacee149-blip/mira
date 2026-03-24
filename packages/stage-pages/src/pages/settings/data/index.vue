@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { isStageTamagotchi } from '@proj-airi/stage-shared'
-import { useDataMaintenance } from '@proj-airi/stage-ui/composables/use-data-maintenance'
-import { Button, DoubleCheckButton } from '@proj-airi/ui'
+import { isStageTamagotchi } from '@proj-mira/stage-shared'
+import { useDataMaintenance } from '@proj-mira/stage-ui/composables/use-data-maintenance'
+import { Button, DoubleCheckButton } from '@proj-mira/ui'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -45,7 +45,7 @@ async function triggerExport() {
     const url = URL.createObjectURL(blob)
     const anchor = document.createElement('a')
     anchor.href = url
-    anchor.download = `airi-chat-sessions-${new Date().toISOString()}.json`
+    anchor.download = `mira-chat-sessions-${new Date().toISOString()}.json`
     anchor.click()
     URL.revokeObjectURL(url)
     setStatus(t('settings.pages.data.status.exported'))

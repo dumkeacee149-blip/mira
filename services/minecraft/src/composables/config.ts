@@ -60,9 +60,9 @@ export const configSchema = z.object({
     password: z.string().optional(),
     version: z.string().trim().min(1, 'BOT_VERSION cannot be empty').optional(),
   }),
-  airi: z.object({
-    wsBaseUrl: wsUrlString('AIRI_WS_BASEURL'),
-    clientName: requiredString('AIRI_CLIENT_NAME'),
+  mira: z.object({
+    wsBaseUrl: wsUrlString('MIRA_WS_BASEURL'),
+    clientName: requiredString('MIRA_CLIENT_NAME'),
   }),
 })
 
@@ -80,14 +80,14 @@ function formatConfigValidationErrors(error: z.ZodError): string {
 // Default configurations
 const defaultConfig: Omit<Config, 'openai'> = {
   bot: {
-    username: 'airi-bot',
+    username: 'mira-bot',
     host: 'localhost',
     port: 25565,
     auth: undefined,
     password: '',
     version: '1.20',
   },
-  airi: {
+  mira: {
     wsBaseUrl: 'ws://localhost:6121/ws',
     clientName: 'minecraft-bot',
   },
@@ -126,9 +126,9 @@ export function initEnv(): void {
       password: defaultConfig.bot.password,
       version: env.BOT_VERSION || defaultConfig.bot.version,
     },
-    airi: {
-      wsBaseUrl: env.AIRI_WS_BASEURL ?? defaultConfig.airi.wsBaseUrl,
-      clientName: env.AIRI_CLIENT_NAME ?? defaultConfig.airi.clientName,
+    mira: {
+      wsBaseUrl: env.MIRA_WS_BASEURL ?? defaultConfig.mira.wsBaseUrl,
+      clientName: env.MIRA_CLIENT_NAME ?? defaultConfig.mira.clientName,
     },
   })
 
@@ -141,7 +141,7 @@ export function initEnv(): void {
 
   config.openai = parsedConfig.data.openai
   config.bot = parsedConfig.data.bot
-  config.airi = parsedConfig.data.airi
+  config.mira = parsedConfig.data.mira
   config.debug = parsedConfig.data.debug
 
   logger.withFields({ config }).log('Environment variables initialized')

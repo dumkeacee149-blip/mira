@@ -1,14 +1,14 @@
 import localforage from 'localforage'
 
-import { loadLive2DModelPreview as generateLive2DPreview } from '@proj-airi/stage-ui-live2d/utils/live2d-preview'
-import { loadVrmModelPreview as generateVrmPreview } from '@proj-airi/stage-ui-three/utils/vrm-preview'
+import { loadLive2DModelPreview as generateLive2DPreview } from '@proj-mira/stage-ui-live2d/utils/live2d-preview'
+import { loadVrmModelPreview as generateVrmPreview } from '@proj-mira/stage-ui-three/utils/vrm-preview'
 import { until } from '@vueuse/core'
 import { nanoid } from 'nanoid'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import '@proj-airi/stage-ui-live2d/utils/live2d-zip-loader'
-import '@proj-airi/stage-ui-live2d/utils/live2d-opfs-registration'
+import '@proj-mira/stage-ui-live2d/utils/live2d-zip-loader'
+import '@proj-mira/stage-ui-live2d/utils/live2d-opfs-registration'
 
 export enum DisplayModelFormat {
   Live2dZip = 'live2d-zip',
@@ -54,10 +54,10 @@ export interface DisplayModelURL {
 }
 
 const displayModelsPresets: DisplayModel[] = [
-  { id: 'preset-live2d-1', format: DisplayModelFormat.Live2dZip, type: 'url', url: presetLive2dProUrl, name: 'MiRa Character - Nightfall', previewImage: presetLive2dPreview, importedAt: 1733113886840 },
-  { id: 'preset-live2d-2', format: DisplayModelFormat.Live2dZip, type: 'url', url: presetLive2dFreeUrl, name: 'MiRa Character - Dawnlight', previewImage: presetLive2dPreview, importedAt: 1733113886840 },
-  { id: 'preset-vrm-1', format: DisplayModelFormat.VRM, type: 'url', url: presetVrmAvatarAUrl, name: 'MiRa 3D Avatar A', previewImage: presetVrmAvatarAPreview, importedAt: 1733113886840 },
-  { id: 'preset-vrm-2', format: DisplayModelFormat.VRM, type: 'url', url: presetVrmAvatarBUrl, name: 'MiRa 3D Avatar B', previewImage: presetVrmAvatarBPreview, importedAt: 1733113886840 },
+  { id: 'preset-live2d-1', format: DisplayModelFormat.Live2dZip, type: 'url', url: presetLive2dProUrl, name: 'Mira Character - Nightfall', previewImage: presetLive2dPreview, importedAt: 1733113886840 },
+  { id: 'preset-live2d-2', format: DisplayModelFormat.Live2dZip, type: 'url', url: presetLive2dFreeUrl, name: 'Mira Character - Dawnlight', previewImage: presetLive2dPreview, importedAt: 1733113886840 },
+  { id: 'preset-vrm-1', format: DisplayModelFormat.VRM, type: 'url', url: presetVrmAvatarAUrl, name: 'Mira 3D Avatar A', previewImage: presetVrmAvatarAPreview, importedAt: 1733113886840 },
+  { id: 'preset-vrm-2', format: DisplayModelFormat.VRM, type: 'url', url: presetVrmAvatarBUrl, name: 'Mira 3D Avatar B', previewImage: presetVrmAvatarBPreview, importedAt: 1733113886840 },
 ]
 
 export const useDisplayModelsStore = defineStore('display-models', () => {

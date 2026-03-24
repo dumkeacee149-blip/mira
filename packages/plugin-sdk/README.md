@@ -1,3 +1,3 @@
-# @proj-airi/plugin-sdk
+# @proj-mira/plugin-sdk
 
-Runtime-agnostic SDK for AIRI plugins.
+Runtime-agnostic SDK for MIRA plugins.

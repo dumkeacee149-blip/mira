@@ -12,8 +12,8 @@ import VitePluginVueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts'
 import VueMacros from 'vue-macros/vite'
 
-import { Download } from '@proj-airi/unplugin-fetch'
-import { DownloadLive2DSDK } from '@proj-airi/unplugin-live2d-sdk'
+import { Download } from '@proj-mira/unplugin-fetch'
+import { DownloadLive2DSDK } from '@proj-mira/unplugin-live2d-sdk'
 import { defineConfig } from 'electron-vite'
 
 const stageUIAssetsRoot = resolve(join(import.meta.dirname, '..', '..', 'packages', 'stage-ui', 'src', 'assets'))
@@ -68,7 +68,7 @@ export default defineConfig({
 
     resolve: {
       alias: {
-        '@proj-airi/i18n': resolve(join(import.meta.dirname, '..', '..', 'packages', 'i18n', 'src')),
+        '@proj-mira/i18n': resolve(join(import.meta.dirname, '..', '..', 'packages', 'i18n', 'src')),
       },
     },
   },
@@ -103,10 +103,10 @@ export default defineConfig({
     optimizeDeps: {
       exclude: [
         // Internal Packages
-        '@proj-airi/stage-ui/*',
-        '@proj-airi/drizzle-duckdb-wasm',
-        '@proj-airi/drizzle-duckdb-wasm/*',
-        '@proj-airi/electron-screen-capture',
+        '@proj-mira/stage-ui/*',
+        '@proj-mira/drizzle-duckdb-wasm',
+        '@proj-mira/drizzle-duckdb-wasm/*',
+        '@proj-mira/electron-screen-capture',
 
         // Static Assets: Models, Images, etc.
         'src/renderer/public/assets/*',
@@ -131,11 +131,11 @@ export default defineConfig({
 
     resolve: {
       alias: {
-        '@proj-airi/server-sdk': resolve(join(import.meta.dirname, '..', '..', 'packages', 'server-sdk', 'src')),
-        '@proj-airi/i18n': resolve(join(import.meta.dirname, '..', '..', 'packages', 'i18n', 'src')),
-        '@proj-airi/stage-ui': resolve(join(import.meta.dirname, '..', '..', 'packages', 'stage-ui', 'src')),
-        '@proj-airi/stage-pages': resolve(join(import.meta.dirname, '..', '..', 'packages', 'stage-pages', 'src')),
-        '@proj-airi/stage-shared': resolve(join(import.meta.dirname, '..', '..', 'packages', 'stage-shared', 'src')),
+        '@proj-mira/server-sdk': resolve(join(import.meta.dirname, '..', '..', 'packages', 'server-sdk', 'src')),
+        '@proj-mira/i18n': resolve(join(import.meta.dirname, '..', '..', 'packages', 'i18n', 'src')),
+        '@proj-mira/stage-ui': resolve(join(import.meta.dirname, '..', '..', 'packages', 'stage-ui', 'src')),
+        '@proj-mira/stage-pages': resolve(join(import.meta.dirname, '..', '..', 'packages', 'stage-pages', 'src')),
+        '@proj-mira/stage-shared': resolve(join(import.meta.dirname, '..', '..', 'packages', 'stage-shared', 'src')),
       },
     },
 
@@ -168,7 +168,7 @@ export default defineConfig({
       Info(),
 
       {
-        name: 'proj-airi:defines',
+        name: 'proj-mira:defines',
         config(ctx) {
           const define: Record<string, any> = {
             'import.meta.env.RUNTIME_ENVIRONMENT': '\'electron\'',

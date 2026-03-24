@@ -1,13 +1,13 @@
 import process from 'node:process'
 
-import { Client } from '@proj-airi/server-sdk'
-import { MessageHeartbeat } from '@proj-airi/server-shared/types'
+import { Client } from '@proj-mira/server-sdk'
+import { MessageHeartbeat } from '@proj-mira/server-shared/types'
 
 import { createOpenClawAdapter } from './adapter'
 
 interface RawEnv {
-  OPENCLAW_AIRI_WS_URL?: string
-  OPENCLAW_AIRI_TOKEN?: string
+  OPENCLAW_MIRA_WS_URL?: string
+  OPENCLAW_MIRA_TOKEN?: string
   OPENCLAW_BASE_URL?: string
   OPENCLAW_INVOKE_PATH?: string
   OPENCLAW_API_KEY?: string
@@ -39,17 +39,17 @@ function envNumber(raw: string | undefined, fallback: number): number {
 
 const env = process.env as RawEnv
 const config = {
-  wsUrl: env.OPENCLAW_AIRI_WS_URL || 'ws://localhost:6121/ws',
-  token: env.OPENCLAW_AIRI_TOKEN,
+  wsUrl: env.OPENCLAW_MIRA_WS_URL || 'ws://localhost:6121/ws',
+  token: env.OPENCLAW_MIRA_TOKEN,
   openclawBaseUrl: env.OPENCLAW_BASE_URL || 'http://localhost:8000',
-  openclawInvokePath: env.OPENCLAW_INVOKE_PATH || '/v1/airi/invoke',
+  openclawInvokePath: env.OPENCLAW_INVOKE_PATH || '/v1/mira/invoke',
   apiKey: env.OPENCLAW_API_KEY,
   enableMemory: envBool(env.OPENCLAW_ENABLE_MEMORY, true),
   enableAgent: envBool(env.OPENCLAW_ENABLE_AGENT, true),
   contextTopK: envNumber(env.OPENCLAW_CONTEXT_TOP_K, 8),
 }
 
-const airiClient = new Client({
+const miraClient = new Client({
   name: 'openclaw-bridge',
   url: config.wsUrl,
   token: config.token,
@@ -72,14 +72,14 @@ const airiClient = new Client({
 })
 
 const adapter = createOpenClawAdapter({
-  client: airiClient,
+  client: miraClient,
   config,
 })
 
 adapter.initialize()
 
-airiClient.connect().then(() => {
-  console.log('[openclaw-bridge] connected to AIRI ws')
+miraClient.connect().then(() => {
+  console.log('[openclaw-bridge] connected to MIRA ws')
 }).catch((error) => {
   console.error('[openclaw-bridge] failed to connect:', error)
 })
@@ -89,12 +89,12 @@ process.on('unhandledRejection', (error) => {
 })
 
 process.on('SIGINT', () => {
-  airiClient.close()
+  miraClient.close()
   process.exit(0)
 })
 
 process.on('SIGTERM', () => {
-  airiClient.close()
+  miraClient.close()
   process.exit(0)
 })
 

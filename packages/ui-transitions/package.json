@@ -1,17 +1,17 @@
 {
-  "name": "@proj-airi/ui-transitions",
+  "name": "@proj-mira/ui-transitions",
   "type": "module",
   "private": true,
-  "description": "A collection of transition animations that used by Project AIRI",
+  "description": "A collection of transition animations that used by Project Mira",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "packages/ui-transitions"
   },
   "exports": {

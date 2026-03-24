@@ -1,13 +1,13 @@
 import type { ChatSessionsExport } from '../types/chat-session'
 
-import { isStageTamagotchi } from '@proj-airi/stage-shared'
-import { useLive2d } from '@proj-airi/stage-ui-live2d'
+import { isStageTamagotchi } from '@proj-mira/stage-shared'
+import { useLive2d } from '@proj-mira/stage-ui-live2d'
 
 import { useChatOrchestratorStore } from '../stores/chat'
 import { useChatSessionStore } from '../stores/chat/session-store'
 import { useDisplayModelsStore } from '../stores/display-models'
 import { useMcpStore } from '../stores/mcp'
-import { useAiriCardStore } from '../stores/modules/airi-card'
+import { useMiraCardStore } from '../stores/modules/mira-card'
 import { useConsciousnessStore } from '../stores/modules/consciousness'
 import { useDiscordStore } from '../stores/modules/discord'
 import { useFactorioStore } from '../stores/modules/gaming-factorio'
@@ -36,7 +36,7 @@ export function useDataMaintenance() {
   const minecraftStore = useMinecraftStore()
   const mcpStore = useMcpStore()
   const onboardingStore = useOnboardingStore()
-  const airiCardStore = useAiriCardStore()
+  const miraCardStore = useMiraCardStore()
 
   async function deleteAllModels() {
     await displayModelsStore.resetDisplayModels()
@@ -86,7 +86,7 @@ export function useDataMaintenance() {
     live2dStore.resetState()
     mcpStore.resetState()
     onboardingStore.resetSetupState()
-    airiCardStore.resetState()
+    miraCardStore.resetState()
   }
 
   async function deleteAllData() {

@@ -2,12 +2,12 @@ import type { BrowserWindow } from 'electron'
 
 import type { RequestWindowPayload } from '../../../shared/eventa'
 import type { I18n } from '../../libs/i18n'
-import type { ServerChannel } from '../../services/airi/channel-server'
+import type { ServerChannel } from '../../services/mira/channel-server'
 
 import { join, resolve } from 'node:path'
 
 import { defineInvokeHandler } from '@moeru/eventa'
-import { safeClose } from '@proj-airi/electron-vueuse/main'
+import { safeClose } from '@proj-mira/electron-vueuse/main'
 import { BrowserWindow as ElectronBrowserWindow, shell } from 'electron'
 
 import icon from '../../../../resources/icon.png?asset'

@@ -1,18 +1,18 @@
 {
-  "name": "@proj-airi/core-character",
+  "name": "@proj-mira/core-character",
   "type": "module",
   "version": "0.9.0-alpha.18",
   "private": true,
-  "description": "Core character pipeline orchestration for AIRI (segmentation, emotion, delay, optional TTS)",
+  "description": "Core character pipeline orchestration for MIRA (segmentation, emotion, delay, optional TTS)",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "packages/core-character"
   },
   "exports": {
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@moeru/std": "catalog:",
-    "@proj-airi/stream-kit": "workspace:^",
+    "@proj-mira/stream-kit": "workspace:^",
     "clustr": "^1.0.2"
   },
   "devDependencies": {}

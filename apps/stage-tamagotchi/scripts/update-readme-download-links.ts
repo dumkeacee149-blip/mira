@@ -9,12 +9,12 @@ const ROOT_DIR = resolve(import.meta.dirname, '..', '..', '..')
 const DOCS_DIR = resolve(ROOT_DIR, 'docs')
 
 // GitHub releases download URLs
-const GITHUB_WINDOWS_RE = /https:\/\/github\.com\/mira-assistant\/mira-assistant\/releases\/download\/v[^/]+\/MiRa-[^")\s]+-windows-x64-setup\.exe/g
-const GITHUB_MACOS_RE = /https:\/\/github\.com\/mira-assistant\/mira-assistant\/releases\/download\/v[^/]+\/MiRa-[^")\s]+-darwin-arm64\.dmg/g
+const GITHUB_WINDOWS_RE = /https:\/\/github\.com\/mira-assistant\/mira-assistant\/releases\/download\/v[^/]+\/Mira-[^")\s]+-windows-x64-setup\.exe/g
+const GITHUB_MACOS_RE = /https:\/\/github\.com\/mira-assistant\/mira-assistant\/releases\/download\/v[^/]+\/Mira-[^")\s]+-darwin-arm64\.dmg/g
 
 // Aliyun OSS mirror download URLs (used by zh-CN README)
-const OSS_WINDOWS_RE = /https:\/\/static-cn-proj-airi\.oss-cn-shanghai\.aliyuncs\.com\/artifacts\/apps\/desktop\/versions\/v[^/]+\/MiRa-[^")\s]+-windows-x64-setup\.exe/g
-const OSS_MACOS_RE = /https:\/\/static-cn-proj-airi\.oss-cn-shanghai\.aliyuncs\.com\/artifacts\/apps\/desktop\/versions\/v[^/]+\/MiRa-[^")\s]+-darwin-arm64\.dmg/g
+const OSS_WINDOWS_RE = /https:\/\/static-cn-proj-mira\.oss-cn-shanghai\.aliyuncs\.com\/artifacts\/apps\/desktop\/versions\/v[^/]+\/Mira-[^")\s]+-windows-x64-setup\.exe/g
+const OSS_MACOS_RE = /https:\/\/static-cn-proj-mira\.oss-cn-shanghai\.aliyuncs\.com\/artifacts\/apps\/desktop\/versions\/v[^/]+\/Mira-[^")\s]+-darwin-arm64\.dmg/g
 
 async function main() {
   const version = process.argv[2]
@@ -53,11 +53,11 @@ async function main() {
       )
       .replace(
         OSS_WINDOWS_RE,
-        `https://static-cn-proj-airi.oss-cn-shanghai.aliyuncs.com/artifacts/apps/desktop/versions/v${cleanVersion}/${windowsExe}`,
+        `https://static-cn-proj-mira.oss-cn-shanghai.aliyuncs.com/artifacts/apps/desktop/versions/v${cleanVersion}/${windowsExe}`,
       )
       .replace(
         OSS_MACOS_RE,
-        `https://static-cn-proj-airi.oss-cn-shanghai.aliyuncs.com/artifacts/apps/desktop/versions/v${cleanVersion}/${macosDmg}`,
+        `https://static-cn-proj-mira.oss-cn-shanghai.aliyuncs.com/artifacts/apps/desktop/versions/v${cleanVersion}/${macosDmg}`,
       )
   }
 

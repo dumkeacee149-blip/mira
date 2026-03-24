@@ -1,6 +1,6 @@
 ---
 title: Desktop
-description: Contribute to Project AIRI
+description: Contribute to Project Mira
 ---
 
 ### Stage Tamagotchi (Desktop version)

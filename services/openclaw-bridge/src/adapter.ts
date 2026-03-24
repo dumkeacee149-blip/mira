@@ -7,10 +7,10 @@ import type {
   ContextUpdateStrategy,
   WebSocketEventOf,
   WebSocketEvents,
-} from '@proj-airi/server-shared/types'
-import type { Client } from '@proj-airi/server-sdk'
+} from '@proj-mira/server-shared/types'
+import type { Client } from '@proj-mira/server-sdk'
 
-import { ContextUpdateStrategy as SharedContextUpdateStrategy } from '@proj-airi/server-shared/types'
+import { ContextUpdateStrategy as SharedContextUpdateStrategy } from '@proj-mira/server-shared/types'
 
 interface OpenClawBridgeConfig {
   openclawBaseUrl: string

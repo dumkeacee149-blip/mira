@@ -1,0 +1,57 @@
+{
+  "name": "@proj-mira/unocss-preset-chromatic",
+  "type": "module",
+  "version": "1.0.2",
+  "description": "Readability enhanced, clean, nice looking colors palette we used across our Project Mira https://github.com/dumkeacee149-blip/mira projects!",
+  "author": {
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
+  },
+  "contributors": [
+    {
+      "name": "Makito",
+      "email": "i@maki.to",
+      "url": "https://github.com/sumimakito"
+    },
+    {
+      "name": "Lemon Neko",
+      "email": "chheese048@gmail.com",
+      "url": "https://github.com/LemonNekoGH"
+    },
+    {
+      "name": "junkwarrior87",
+      "email": "115852752+junkwarrior87@users.noreply.github.com",
+      "url": "https://github.com/junkwarrior87"
+    },
+    {
+      "name": "Neko",
+      "email": "neko@ayaka.moe",
+      "url": "https://github.com/nekomeowww"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
+    "directory": "packages/unocss-preset-chromatic"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "node": "./dist/index.node.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "devDependencies": {
+    "@unocss/core": "^66.5.3"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "echo \"Vendored package; no typecheck step required\""
+  }
+}

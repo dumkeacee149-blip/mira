@@ -14,7 +14,7 @@ import {
   stageThreeTraceVrmLoadErrorEvent,
   stageThreeTraceVrmLoadStartEvent,
   stageThreeTraceVrmUpdateFrameEvent,
-} from '@proj-airi/stage-ui-three/trace'
+} from '@proj-mira/stage-ui-three/trace'
 
 import {
   stageThreeRuntimeTraceForwardedEvent,
@@ -22,7 +22,7 @@ import {
   stageThreeRuntimeTraceRemoteEnableEvent,
 } from '../../shared/eventa'
 
-const STAGE_THREE_RUNTIME_TRACE_CHANNEL = 'airi::stage-three-runtime-trace'
+const STAGE_THREE_RUNTIME_TRACE_CHANNEL = 'mira::stage-three-runtime-trace'
 const relayTraceLeaseToken = 'stage-three-runtime-trace:broadcast-relay'
 const localTraceContext = getStageThreeRuntimeTraceContext()
 const instanceId = Math.random().toString(36).slice(2, 10)

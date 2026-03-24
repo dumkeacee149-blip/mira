@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { OnboardingDialog, ToasterRoot } from '@proj-airi/stage-ui/components'
-import { useSharedAnalyticsStore } from '@proj-airi/stage-ui/stores/analytics'
-import { useCharacterOrchestratorStore } from '@proj-airi/stage-ui/stores/character'
-import { useDisplayModelsStore } from '@proj-airi/stage-ui/stores/display-models'
-import { useModsServerChannelStore } from '@proj-airi/stage-ui/stores/mods/api/channel-server'
-import { useContextBridgeStore } from '@proj-airi/stage-ui/stores/mods/api/context-bridge'
-import { useAiriCardStore } from '@proj-airi/stage-ui/stores/modules/airi-card'
-import { useOnboardingStore } from '@proj-airi/stage-ui/stores/onboarding'
-import { useSettings } from '@proj-airi/stage-ui/stores/settings'
-import { useTheme } from '@proj-airi/ui'
-import { StageTransitionGroup } from '@proj-airi/ui-transitions'
+import { OnboardingDialog, ToasterRoot } from '@proj-mira/stage-ui/components'
+import { useSharedAnalyticsStore } from '@proj-mira/stage-ui/stores/analytics'
+import { useCharacterOrchestratorStore } from '@proj-mira/stage-ui/stores/character'
+import { useDisplayModelsStore } from '@proj-mira/stage-ui/stores/display-models'
+import { useModsServerChannelStore } from '@proj-mira/stage-ui/stores/mods/api/channel-server'
+import { useContextBridgeStore } from '@proj-mira/stage-ui/stores/mods/api/context-bridge'
+import { useMiraCardStore } from '@proj-mira/stage-ui/stores/modules/mira-card'
+import { useOnboardingStore } from '@proj-mira/stage-ui/stores/onboarding'
+import { useSettings } from '@proj-mira/stage-ui/stores/settings'
+import { useTheme } from '@proj-mira/ui'
+import { StageTransitionGroup } from '@proj-mira/ui-transitions'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -28,7 +28,7 @@ const serverChannelStore = useModsServerChannelStore()
 const characterOrchestratorStore = useCharacterOrchestratorStore()
 const { showingSetup } = storeToRefs(onboardingStore)
 const { isDark } = useTheme()
-const cardStore = useAiriCardStore()
+const cardStore = useMiraCardStore()
 const analyticsStore = useSharedAnalyticsStore()
 
 const primaryColor = computed(() => {

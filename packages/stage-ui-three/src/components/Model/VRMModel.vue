@@ -190,7 +190,7 @@ const vrmLipSync = useVRMLipSync(currentAudioSource)
 // For sky box update
 const nprProgramVersion = ref(0)
 // For MToon IBL
-let airiIblProbe: ReturnType<typeof createIblProbeController> | null = null
+let miraIblProbe: ReturnType<typeof createIblProbeController> | null = null
 const stageThreeRuntimeTraceContext = getStageThreeRuntimeTraceContext()
 
 function measureFrameStep(enabled: boolean, fn: () => void) {
@@ -413,7 +413,7 @@ function componentCleanUp(
   const shouldDestroyResources = shouldDestroyVrmResources(reason)
   const hasCleanupWork = !!disposeBeforeRenderLoop
     || !!activeInstance
-    || !!airiIblProbe
+    || !!miraIblProbe
 
   if (hasCleanupWork && isStageThreeRuntimeTraceEnabled()) {
     stageThreeRuntimeTraceContext.emit(stageThreeTraceVrmDisposeStartEvent, {
@@ -442,8 +442,8 @@ function componentCleanUp(
     destroyManagedVrmInstance(activeInstance)
   }
 
-  airiIblProbe?.dispose()
-  airiIblProbe = null
+  miraIblProbe?.dispose()
+  miraIblProbe = null
   clearActiveManagedVrmRefs()
   modelLoaded.value = false
 
@@ -607,8 +607,8 @@ async function loadModel() {
           return
         }
 
-        if (!airiIblProbe && scene.value)
-          airiIblProbe = createIblProbeController(scene.value as unknown as Scene)
+        if (!miraIblProbe && scene.value)
+          miraIblProbe = createIblProbeController(scene.value as unknown as Scene)
 
         if (loadReason === 'model-switch') {
           componentCleanUp('model-switch', { invalidate: false })
@@ -696,8 +696,8 @@ async function loadModel() {
     const isShaderMat = (m: any): m is ShaderMaterial => !!m?.isShaderMaterial
 
     // MToon material sky box lightProbe setting
-    if (!airiIblProbe && scene.value)
-      airiIblProbe = createIblProbeController(scene.value as unknown as Scene)
+    if (!miraIblProbe && scene.value)
+      miraIblProbe = createIblProbeController(scene.value as unknown as Scene)
 
     // Material traverse setting
     _vrm.scene.traverse((child: Object3D) => {
@@ -859,7 +859,7 @@ onMounted(async () => {
       intensity: skyBoxIntensity.value,
       sh: nprIrrSH.value ?? null,
     })
-    airiIblProbe?.update(mode, skyBoxIntensity.value, nprIrrSH.value ?? null)
+    miraIblProbe?.update(mode, skyBoxIntensity.value, nprIrrSH.value ?? null)
   }, { immediate: true })
   // update eye tracking mode
   watch(trackingMode, (newMode) => {

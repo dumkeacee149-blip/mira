@@ -3,7 +3,7 @@ import type { InferOutput } from 'valibot'
 
 import type { WidgetsAddPayload, WidgetSnapshot } from '../../../shared/eventa'
 import type { I18n } from '../../libs/i18n'
-import type { ServerChannel } from '../../services/airi/channel-server'
+import type { ServerChannel } from '../../services/mira/channel-server'
 
 import { join, resolve } from 'node:path'
 

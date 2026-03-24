@@ -1,4 +1,4 @@
-# MiRa 一键安装运行时方案（阶段实现）
+# Mira 一键安装运行时方案（阶段实现）
 
 目标：用户安装 `.exe` 后，不需要手工启动 OpenClaw / Bridge，即可体验基础聊天。
 
@@ -21,7 +21,7 @@
 ### 打包产物约定（已补齐）
 
 - 打包会额外携带 `apps/stage-tamagotchi/embedded-runtime/**` 到安装产物为 `resources/embedded-runtime`。
-- `MiRa` 启动后默认从安装目录自动尝试读取以下优先级命令：
+- `Mira` 启动后默认从安装目录自动尝试读取以下优先级命令：
   - 首先读取 `OPENCLAW_*` 环境变量
   - 再读取 `resources/embedded-runtime/openclaw-bridge` 与 `resources/embedded-runtime/openclaw-runtime`
 
@@ -32,7 +32,7 @@
 
 ### 环境变量约定
 
-- `MiRa_RUNTIME_MANAGED`
+- `Mira_RUNTIME_MANAGED`
   - `true`（默认）为开启；`false` 关闭
 - `OPENCLAW_BRIDGE_COMMAND`
   - 例如：`node /path/to/openclaw-bridge/dist/index.js`

@@ -1,1 +1,1 @@
-console.warn('import @proj-airi/server-shared/types instead')
+console.warn('import @proj-mira/server-shared/types instead')

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { defineInvoke } from '@moeru/eventa'
-import { useElectronEventaContext, useElectronEventaInvoke, useElectronMouseInElement } from '@proj-airi/electron-vueuse'
-import { useSettings, useSettingsAudioDevice } from '@proj-airi/stage-ui/stores/settings'
-import { useTheme } from '@proj-airi/ui'
+import { useElectronEventaContext, useElectronEventaInvoke, useElectronMouseInElement } from '@proj-mira/electron-vueuse'
+import { useSettings, useSettingsAudioDevice } from '@proj-mira/stage-ui/stores/settings'
+import { useTheme } from '@proj-mira/ui'
 import { refDebounced, useIntervalFn } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'

@@ -1,6 +1,6 @@
 import type { I18n } from '../../libs/i18n'
-import type { ServerChannel } from '../../services/airi/channel-server'
-import type { McpStdioManager } from '../../services/airi/mcp-servers'
+import type { ServerChannel } from '../../services/mira/channel-server'
+import type { McpStdioManager } from '../../services/mira/mcp-servers'
 import type { WidgetsWindowManager } from '../widgets'
 
 import { join, resolve } from 'node:path'

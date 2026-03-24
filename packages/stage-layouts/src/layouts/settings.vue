@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { isStageTamagotchi } from '@proj-airi/stage-shared'
-import { PageHeader } from '@proj-airi/stage-ui/components'
-import { useProvidersStore } from '@proj-airi/stage-ui/stores/providers'
-import { useTheme } from '@proj-airi/ui'
+import { isStageTamagotchi } from '@proj-mira/stage-shared'
+import { PageHeader } from '@proj-mira/stage-ui/components'
+import { useProvidersStore } from '@proj-mira/stage-ui/stores/providers'
+import { useTheme } from '@proj-mira/ui'
 import { computed, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterView, useRoute } from 'vue-router'

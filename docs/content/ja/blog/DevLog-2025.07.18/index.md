@@ -3,17 +3,17 @@ title: DevLog @ 2025.07.18
 category: DevLog
 date: 2025-07-18
 excerpt: |
-  Factorio 強化学習環境に関する論文を読んだ後、Factorio エージェントプロジェクト `airi-factorio` をどのように改善するか共有したいと思います。
+  Factorio 強化学習環境に関する論文を読んだ後、Factorio エージェントプロジェクト `mira-factorio` をどのように改善するか共有したいと思います。
 preview-cover:
   light: "@assets('/en/blog/DevLog-2025.07.18/assets/factorio-belt.gif')"
   dark: "@assets('/en/blog/DevLog-2025.07.18/assets/factorio-belt.gif')"
 ---
 
-こんにちは、AIRI メンテナーの一人、[@LemonNeko](https://github.com/LemonNekoGH) です。
+こんにちは、MIRA メンテナーの一人、[@LemonNeko](https://github.com/LemonNekoGH) です。
 
 ## 振り返り
 
-半年前、私は有名な自動化生産シミュレーションゲーム [Factorio](https://www.factorio.com/) をプレイできる AI エージェント [`airi-factorio`](https://github.com/moeru-ai/airi-factorio) を書く最初の試みを行いました。その中で以下の実践を行いました：
+半年前、私は有名な自動化生産シミュレーションゲーム [Factorio](https://www.factorio.com/) をプレイできる AI エージェント [`mira-factorio`](https://github.com/dumkeacee149-blip/mira-factorio) を書く最初の試みを行いました。その中で以下の実践を行いました：
 
 - TypeScript で Factorio Mod を記述：[tstl](https://github.com/TypeScriptToLua/TypeScriptToLua) を使用して TypeScript コードを Lua コードにコンパイル。
 - RCON を使用して Factorio Mod と対話：[factorio-rcon-api](https://github.com/nekomeowww/factorio-rcon-api) を使用して Factorio と通信し、`/c` コマンドを呼び出して Mod が登録した関数を実行。[@nekomeowww](https://github.com/nekomeowww) に感謝します。
@@ -44,7 +44,7 @@ FLE には 2 つのモードがあります：
 
 彼らは Claude 3.5 Sonnet、GPT-4o、Deepseek-v3、Gemini-2 などの主要な LLM を評価しましたが、Lab-play では当時最強だった Claude 3.5 でさえ 7 つのレベルしか完了しませんでした。
 
-ここまで読んで、彼らの評価がこれほど複雑であるなら、技術的な実装においてどのように保守性を保証しているのか興味を持ち始めました。読み進めると、彼らの実装方法は `airi-factorio` と非常に似ていますが、`airi-factorio` に比べて多くの利点があることがわかりました：
+ここまで読んで、彼らの評価がこれほど複雑であるなら、技術的な実装においてどのように保守性を保証しているのか興味を持ち始めました。読み進めると、彼らの実装方法は `mira-factorio` と非常に似ていますが、`mira-factorio` に比べて多くの利点があることがわかりました：
 
 - Python で記述されており、LLM は Python コードを生成し、Python REPL で直接実行して、標準出力で結果を読み取ることができます。Python のデータセットは Lua よりもはるかに多いため、生成の精度が高く、より複雑なコードも生成できます。
 - Lua mod には操作を実行するためのプリミティブ（例：place_entity でエンティティを配置）のみが含まれ、より複雑なロジックは Python で記述されるため、Lua mod のバグの可能性が減り、ゲームを頻繁に再起動する必要がなくなります。
@@ -54,9 +54,9 @@ LLM の能力をより適切に評価するために、彼らは必要なすべ�
 
 また、彼らが使用した [システムプロンプト](https://arxiv.org/html/2503.09617v1#A8.SS4) も公開しており、環境構造、応答形式、ベストプラクティス、ゲーム出力の理解方法などを規定しています。
 
-## `airi-factorio` に戻る
+## `mira-factorio` に戻る
 
-FLE と比較すると、私たちの実装はかなり未熟に見えます。では、どのように `airi-factorio` を改善すればよいでしょうか？
+FLE と比較すると、私たちの実装はかなり未熟に見えます。では、どのように `mira-factorio` を改善すればよいでしょうか？
 
 私は Python を書きたくありません。TypeScript と Golang にしか詳しくありません。偶然にも、最近私たちは [mcp-launcher](https://github.com/moeru-ai/mcp-launcher) を作成しました。これは、あらゆる可能な MCP サーバー用のビルダーです。これと組み合わせて Golang で MCP サーバーを実装し、LLM にそれを呼び出させることができます。
 
@@ -78,7 +78,7 @@ FLE と比較すると、私たちの実装はかなり未熟に見えます。�
 
 ## 終わりに
 
-読んでいただきありがとうございます。興味があれば、FLE の論文と [コード](https://github.com/JackHopkins/factorio-learning-environment) をご覧ください。私の理解が間違っているかもしれませんので、ご指摘いただければ幸いです！今回の読み込みは十分ではないかもしれませんが、今後私の考えに従って `airi-factorio` を改善する際には、繰り返し読む必要があり、進展があれば更新します。
+読んでいただきありがとうございます。興味があれば、FLE の論文と [コード](https://github.com/JackHopkins/factorio-learning-environment) をご覧ください。私の理解が間違っているかもしれませんので、ご指摘いただければ幸いです！今回の読み込みは十分ではないかもしれませんが、今後私の考えに従って `mira-factorio` を改善する際には、繰り返し読む必要があり、進展があれば更新します。
 
 この DevLog はここまでです。良い週末を！
 

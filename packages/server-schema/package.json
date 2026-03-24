@@ -1,18 +1,18 @@
 {
-  "name": "@proj-airi/server-schema",
+  "name": "@proj-mira/server-schema",
   "type": "module",
   "version": "0.9.0-alpha.18",
   "private": true,
-  "description": "Server schema for AIRI",
+  "description": "Server schema for MIRA",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "packages/server-schema"
   },
   "exports": {
@@ -32,6 +32,6 @@
     "build": "tsdown"
   },
   "devDependencies": {
-    "@proj-airi/unplugin-drizzle-orm-migrations": "^0.1.4"
+    "@proj-mira/unplugin-drizzle-orm-migrations": "workspace:^"
   }
 }

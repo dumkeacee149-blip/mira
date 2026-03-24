@@ -23,13 +23,13 @@
 
       packages = forAllSystems (
         system:
-        { default = self.packages.${system}.airi; } // self.overlays.airi (pkgsForSystem system) null
+        { default = self.packages.${system}.mira; } // self.overlays.mira (pkgsForSystem system) null
       );
 
       overlays = {
-        default = self.overlays.airi;
-        airi = final: _: {
-          airi = final.callPackage ./nix/package.nix { };
+        default = self.overlays.mira;
+        mira = final: _: {
+          mira = final.callPackage ./nix/package.nix { };
         };
       };
 
@@ -41,7 +41,7 @@
         with pkgs;
         {
           default = mkShell {
-            inputsFrom = [ self.packages.${system}.airi ];
+            inputsFrom = [ self.packages.${system}.mira ];
             packages = [
               nixd
               nixfmt-rfc-style
@@ -55,7 +55,7 @@
           # Usage: nix develop .#fhs
           fhs = (
             buildFHSEnv {
-              name = "airi-electron-fhs";
+              name = "mira-electron-fhs";
               targetPkgs =
                 p: with p; [
                   nodejs_24

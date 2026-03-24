@@ -8,7 +8,7 @@ preview-cover:
   dark: "@assets('/en/blog/merry-christmas-2025/assets/merry-christmas-iru.avif')"
 ---
 
-AIRI チームからの **メリークリスマス** をお届けします！
+MIRA チームからの **メリークリスマス** をお届けします！
 
 ![クリスマスイラスト](/en/blog/merry-christmas-2025/assets/merry-christmas-iru.avif)
 
@@ -26,7 +26,7 @@ AIRI チームからの **メリークリスマス** をお届けします！
 >
 > レベル 123 に到達し、11 万以上のサブスクと 100 万 bits 超え。
 
-Neuro-sama、お誕生日おめでとう。そしてクリエイターの Vedal、アーティストの Camila、おめでとう。ここまでたどり着いたのは驚くべきことです。あなたたち、そしてコミュニティの Swarm がいるからこそ、私が思い描くサイバー生命を届けようと、AIRI を育て続けられています。
+Neuro-sama、お誕生日おめでとう。そしてクリエイターの Vedal、アーティストの Camila、おめでとう。ここまでたどり着いたのは驚くべきことです。あなたたち、そしてコミュニティの Swarm がいるからこそ、私が思い描くサイバー生命を届けようと、MIRA を育て続けられています。
 
 ![](/en/blog/merry-christmas-2025/assets/neuro-sama-happy-birthday-live.avif)
 
@@ -38,7 +38,7 @@ Neuro-sama、お誕生日おめでとう。そしてクリエイターの Vedal�
   - xAI の Grok Ani
   - すてきなシナリオ [gogh](https://store.steampowered.com/app/3213850/gogh/)
   - いいコミュニティと音楽、[Chill with You](https://store.steampowered.com/app/3548580/LoFi/)
-  - ほかにもリストがあります：https://github.com/proj-airi/awesome-ai-vtubers で近いプロジェクトを追えます
+  - ほかにもリストがあります：https://github.com/proj-mira/awesome-ai-vtubers で近いプロジェクトを追えます
 4. Discord メンバーが 3400+ を突破
 
 今年、私たちと一緒に作り、テストし、夢を見てくれてありがとう。あなたのホリデーが穏やかで、ホットココアが甘くありますように。🎁

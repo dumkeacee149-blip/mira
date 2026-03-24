@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAuthStore } from '@proj-airi/stage-ui/stores/auth'
-import { useCharacterStore } from '@proj-airi/stage-ui/stores/characters'
-import { Button } from '@proj-airi/ui'
+import { useAuthStore } from '@proj-mira/stage-ui/stores/auth'
+import { useCharacterStore } from '@proj-mira/stage-ui/stores/characters'
+import { Button } from '@proj-mira/ui'
 import { computed, onMounted } from 'vue'
 
 const characterStore = useCharacterStore()

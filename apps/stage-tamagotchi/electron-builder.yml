@@ -1,5 +1,5 @@
 appId: com.mira.assistant.desktop
-productName: MiRa
+productName: Mira
 
 directories:
   output: dist
@@ -46,8 +46,8 @@ nsis:
 mac:
   entitlementsInherit: build/entitlements.mac.plist
   extendInfo:
-    - NSMicrophoneUsageDescription: 'MiRa requires microphone access for voice interaction'
-    - NSCameraUsageDescription: 'MiRa requires camera access for vision understanding'
+    - NSMicrophoneUsageDescription: 'Mira requires microphone access for voice interaction'
+    - NSCameraUsageDescription: 'Mira requires camera access for vision understanding'
   # If still fails, check:
   # https://github.com/electron-userland/electron-builder/issues/3989#issuecomment-557013674
   notarize: false
@@ -64,7 +64,7 @@ linux:
     - rpm
   category: Utility
   synopsis: 'Desktop AI assistant with avatar, voice, and workflow automation capabilities.'
-  description: 'MiRa is an AI desktop assistant with avatar, voice, and workflow automation capabilities.'
+  description: 'Mira is an AI desktop assistant with avatar, voice, and workflow automation capabilities.'
   executableName: mira-assistant
   artifactName: ${productName}-${version}-linux-${arch}.${ext}
   icon: build/icons/icon.png

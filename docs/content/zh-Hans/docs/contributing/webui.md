@@ -1,9 +1,9 @@
 ---
 title: 网页端
-description: 参与并贡献 Project AIRI
+description: 参与并贡献 Project Mira
 ---
 
-### 网页端 ([airi.moeru.ai](https://airi.moeru.ai))
+### 网页端 ([mira.moeru.ai](https://mira.local))
 
 ```shell
 pnpm dev

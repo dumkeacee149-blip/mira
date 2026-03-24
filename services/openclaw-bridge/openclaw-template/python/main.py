@@ -11,10 +11,10 @@ except Exception:
 
 import os
 
-app = FastAPI(title="openclaw-airi-template-python", version="1.1.0")
+app = FastAPI(title="openclaw-mira-template-python", version="1.1.0")
 
 UPSTREAM_URL = os.getenv("OPENCLAW_UPSTREAM_URL", "").strip()
-UPSTREAM_PATH = os.getenv("OPENCLAW_UPSTREAM_PATH", "/v1/airi/invoke")
+UPSTREAM_PATH = os.getenv("OPENCLAW_UPSTREAM_PATH", "/v1/mira/invoke")
 UPSTREAM_API_KEY = os.getenv("OPENCLAW_UPSTREAM_API_KEY", "").strip()
 TOP_K = int(os.getenv("OPENCLAW_CONTEXT_TOP_K", "8"))
 
@@ -210,10 +210,10 @@ async def call_upstream(payload: OpenClawRequest):
 
 @app.get("/health")
 def health() -> Dict[str, Any]:
-    return {"ok": True, "service": "openclaw-airi-template-python", "upstream": bool(UPSTREAM_URL)}
+    return {"ok": True, "service": "openclaw-mira-template-python", "upstream": bool(UPSTREAM_URL)}
 
 
-@app.post("/v1/airi/invoke")
+@app.post("/v1/mira/invoke")
 async def invoke(payload: OpenClawRequest):
     try:
         if UPSTREAM_URL:

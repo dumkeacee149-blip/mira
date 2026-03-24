@@ -2,7 +2,7 @@ import process, { exit } from 'node:process'
 
 import MineflayerArmorManager from 'mineflayer-armor-manager'
 
-import { Client } from '@proj-airi/server-sdk'
+import { Client } from '@proj-mira/server-sdk'
 import { loader as MineflayerAutoEat } from 'mineflayer-auto-eat'
 import { plugin as MineflayerCollectBlock } from 'mineflayer-collectblock'
 import { pathfinder as MineflayerPathfinder } from 'mineflayer-pathfinder'
@@ -64,14 +64,14 @@ async function main() {
     setupMineflayerViewer(bot, { port: 3007, firstPerson: true })
   }
 
-  // Connect airi server
-  const airiClient = new Client({
-    name: config.airi.clientName,
-    url: config.airi.wsBaseUrl,
+  // Connect mira server
+  const miraClient = new Client({
+    name: config.mira.clientName,
+    url: config.mira.wsBaseUrl,
   })
 
   // Load CognitiveEngine (LLM config is read from config internally)
-  await bot.loadPlugin(CognitiveEngine({ airiClient }))
+  await bot.loadPlugin(CognitiveEngine({ miraClient }))
 
   // Setup Tool Executor for Debug Dashboard
   const { setupToolExecutor } = await import('./debug/tool-executor')

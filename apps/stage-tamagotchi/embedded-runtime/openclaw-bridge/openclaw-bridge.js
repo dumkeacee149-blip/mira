@@ -1,7 +1,7 @@
 import process from 'node:process'
 
-import { Client } from '@proj-airi/server-sdk'
-import { MessageHeartbeat } from '@proj-airi/server-shared/types'
+import { Client } from '@proj-mira/server-sdk'
+import { MessageHeartbeat } from '@proj-mira/server-shared/types'
 
 import { createOpenClawAdapter } from './openclaw-adapter.js'
 
@@ -26,17 +26,17 @@ function numFromEnv(raw, fallback) {
 }
 
 const config = {
-  wsUrl: process.env.OPENCLAW_AIRI_WS_URL || 'ws://127.0.0.1:6121/ws',
-  token: process.env.OPENCLAW_AIRI_TOKEN,
+  wsUrl: process.env.OPENCLAW_MIRA_WS_URL || 'ws://127.0.0.1:6121/ws',
+  token: process.env.OPENCLAW_MIRA_TOKEN,
   openclawBaseUrl: process.env.OPENCLAW_BASE_URL || 'http://127.0.0.1:8123',
-  openclawInvokePath: process.env.OPENCLAW_INVOKE_PATH || '/v1/airi/invoke',
+  openclawInvokePath: process.env.OPENCLAW_INVOKE_PATH || '/v1/mira/invoke',
   apiKey: process.env.OPENCLAW_API_KEY,
   enableMemory: boolFromEnv(process.env.OPENCLAW_ENABLE_MEMORY, true),
   enableAgent: boolFromEnv(process.env.OPENCLAW_ENABLE_AGENT, true),
   contextTopK: numFromEnv(process.env.OPENCLAW_CONTEXT_TOP_K, 8),
 }
 
-const airiClient = new Client({
+const miraClient = new Client({
   name: 'openclaw-bridge',
   url: config.wsUrl,
   token: config.token,
@@ -59,14 +59,14 @@ const airiClient = new Client({
 })
 
 const adapter = createOpenClawAdapter({
-  client: airiClient,
+  client: miraClient,
   config,
 })
 
 adapter.initialize()
 
-airiClient.connect().then(() => {
-  console.info('[openclaw-bridge] connected to MiRa ws')
+miraClient.connect().then(() => {
+  console.info('[openclaw-bridge] connected to Mira ws')
 }).catch((error) => {
   console.error('[openclaw-bridge] failed to connect:', error)
 })
@@ -76,12 +76,12 @@ process.on('unhandledRejection', (error) => {
 })
 
 process.on('SIGINT', () => {
-  airiClient.close()
+  miraClient.close()
   process.exit(0)
 })
 
 process.on('SIGTERM', () => {
-  airiClient.close()
+  miraClient.close()
   process.exit(0)
 })
 

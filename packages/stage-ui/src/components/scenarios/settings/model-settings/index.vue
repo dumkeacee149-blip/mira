@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { DisplayModel } from '../../../../stores/display-models'
 
-import { Live2DScene, useLive2d } from '@proj-airi/stage-ui-live2d'
-import { ThreeScene } from '@proj-airi/stage-ui-three'
-import { Button, Callout } from '@proj-airi/ui'
+import { Live2DScene, useLive2d } from '@proj-mira/stage-ui-live2d'
+import { ThreeScene } from '@proj-mira/stage-ui-three'
+import { Button, Callout } from '@proj-mira/ui'
 import { useMouse } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'

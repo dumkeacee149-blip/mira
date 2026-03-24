@@ -1,5 +1,5 @@
 {
-  "name": "@proj-airi/server",
+  "name": "@proj-mira/server",
   "type": "module",
   "version": "0.9.0-alpha.18",
   "private": true,
@@ -31,8 +31,8 @@
     "@opentelemetry/sdk-node": "^0.213.0",
     "@opentelemetry/sdk-trace-node": "^2.6.0",
     "@opentelemetry/semantic-conventions": "^1.40.0",
-    "@proj-airi/drizzle-orm-browser-migrator": "^0.1.6",
-    "@proj-airi/server-schema": "workspace:*",
+    "@proj-mira/drizzle-orm-browser-migrator": "workspace:^",
+    "@proj-mira/server-schema": "workspace:*",
     "better-auth": "^1.4.19",
     "drizzle-orm": "^0.45.1",
     "drizzle-valibot": "catalog:",

@@ -12,19 +12,19 @@
   <img width="250" src="./content/public/banner-light-1280x640.avif" />
 </picture>
 
-<h1 align="center">Dự án AIRI</h1>
+<h1 align="center">Dự án MIRA</h1>
 
 <p align="center">Lấy ý tưởng từ Neuro-sama và chúng tôi đã tạo ra một AI waifu / nhân vật ảo để mang họ đến với thế giới của chúng ta.</p>
 
 <p align="center">
-  [<a href="https://discord.gg/TgQ3Cu2F7A">Tham gia máy chủ Discord</a>] [<a href="https://airi.moeru.ai">Dùng thử</a>] [<a href="https://github.com/moeru-ai/airi/blob/main/README.md">English</a>] [<a href="https://github.com/moeru-ai/airi/blob/main/docs/README.zh-CN.md">简体中文</a>] [<a href="https://github.com/moeru-ai/airi/blob/main/docs/README.ja-JP.md">日本語</a>] [<a href="https://github.com/moeru-ai/airi/blob/main/docs/README.ru-RU.md">Русский</a>] [<a href="https://github.com/moeru-ai/airi/blob/main/docs/README.fr.md">Français</a>] [<a href="https://github.com/moeru-ai/airi/blob/main/docs/README.ko-KR.md">한국어</a>]
+  [<a href="https://discord.gg/TgQ3Cu2F7A">Tham gia máy chủ Discord</a>] [<a href="https://mira.local">Dùng thử</a>] [<a href="https://github.com/dumkeacee149-blip/mira/blob/main/README.md">English</a>] [<a href="https://github.com/dumkeacee149-blip/mira/blob/main/docs/README.zh-CN.md">简体中文</a>] [<a href="https://github.com/dumkeacee149-blip/mira/blob/main/docs/README.ja-JP.md">日本語</a>] [<a href="https://github.com/dumkeacee149-blip/mira/blob/main/docs/README.ru-RU.md">Русский</a>] [<a href="https://github.com/dumkeacee149-blip/mira/blob/main/docs/README.fr.md">Français</a>] [<a href="https://github.com/dumkeacee149-blip/mira/blob/main/docs/README.ko-KR.md">한국어</a>]
 </p>
 
 <p align="center">
-  <a href="https://deepwiki.com/moeru-ai/airi"><img src="https://deepwiki.com/badge.svg"></a>
-  <a href="https://github.com/moeru-ai/airi/blob/main/LICENSE"><img src="https://img.shields.io/github/license/moeru-ai/airi.svg?style=flat&colorA=080f12&colorB=1fa669"></a>
+  <a href="https://deepwiki.com/dumkeacee149-blip/mira"><img src="https://deepwiki.com/badge.svg"></a>
+  <a href="https://github.com/dumkeacee149-blip/mira/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dumkeacee149-blip/mira.svg?style=flat&colorA=080f12&colorB=1fa669"></a>
   <a href="https://discord.gg/TgQ3Cu2F7A"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Finvites%2FTgQ3Cu2F7A%3Fwith_counts%3Dtrue&query=%24.approximate_member_count&suffix=%20thành viên&logo=discord&logoColor=white&label=%20&color=7389D8&labelColor=6A7EC2"></a>
-  <a href="https://x.com/proj_airi"><img src="https://img.shields.io/badge/%40proj__airi-black?style=flat&logo=x&labelColor=%23101419&color=%232d2e30"></a>
+  <a href="https://x.com/proj_mira"><img src="https://img.shields.io/badge/%40proj__mira-black?style=flat&logo=x&labelColor=%23101419&color=%232d2e30"></a>
   <a href="https://t.me/+7M_ZKO3zUHFlOThh"><img src="https://img.shields.io/badge/Telegram-%235AA9E6?logo=telegram&labelColor=FFFFFF"></a>
   <a href="./wechat.md"><img src="https://img.shields.io/badge/WeChat-%2307C160?logo=wechat&logoColor=%2307C160&labelColor=FFFFFF"></a>
   <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=9g00d%2BZS7nORzcJugNNddJ7rCghZTIR7fhXabGwch2S%2BG%2BKGIKwlN1N2nIqkh2jg&busi_data=eyJncm91cENvZGUiOiIxMDU4MTU2Njk3IiwidG9rZW4iOiJmcnkra1hWNFIxNytEcG0zcHRUdVJIaldlRDFxN0dzK080QWtvTEdOQjJkNEY2eUFta1g1clNpbkxSMS9FQWFYIiwidWluIjoiMTI2MDkwNzMzNSJ9&data=b1eJrwn3GVOUh7YIxZ7l9vHQo99HPmRxKPpMKlDCmfzx8Y57IXb2EZCMaOC9rVTd2U558qpNjwUYUWlPHxVHvg&svctype=4&tempid=h5_group_info"><img src="https://img.shields.io/badge/QQ-%2312B7F5?logo=qq&labelColor=FFFFFF"></a>
@@ -32,7 +32,7 @@
 
 <p float="left" align="center">
   <!-- readme-section:release-binary-windows -->
-  <a href="https://github.com/moeru-ai/airi/releases/download/v0.9.0-alpha.16/AIRI-0.9.0-alpha.16-windows-x64-setup.exe">
+  <a href="https://github.com/dumkeacee149-blip/mira/releases/download/v0.9.0-alpha.16/MIRA-0.9.0-alpha.16-windows-x64-setup.exe">
     <picture>
       <source
         width="33%"
@@ -48,7 +48,7 @@
     </picture>
   </a>
   <!-- readme-section:release-binary-macos -->
-  <a href="https://github.com/moeru-ai/airi/releases/download/v0.9.0-alpha.16/AIRI-0.9.0-alpha.16-darwin-arm64.dmg">
+  <a href="https://github.com/dumkeacee149-blip/mira/releases/download/v0.9.0-alpha.16/MIRA-0.9.0-alpha.16-darwin-arm64.dmg">
     <picture>
       <source
         width="33%"
@@ -63,7 +63,7 @@
       <img width="33%" src="./content/public/assets/download-buttons/download-buttons.macos.light.en-US.avif" />
     </picture>
   </a>
-  <a href="https://github.com/moeru-ai/airi/releases/latest">
+  <a href="https://github.com/dumkeacee149-blip/mira/releases/latest">
     <picture>
       <source
         width="33%"
@@ -80,7 +80,7 @@
   </a>
 </p>
 <p float="left" align="center">
-  <a href="https://airi.moeru.ai">
+  <a href="https://mira.local">
     <picture>
       <source
         width="33%"
@@ -95,7 +95,7 @@
       <img width="33%" src="./content/public/assets/QR%20code%20button/section.cards.qrcode.light.en-US.png" />
     </picture>
   </a>
-  <a href="https://airi.moeru.ai">
+  <a href="https://mira.local">
     <picture>
       <source
         width="33%"
@@ -110,7 +110,7 @@
       <img width="33%" src="./content/public/assets/download-buttons/download-buttons.mobile.light.en-US.avif" />
     </picture>
   </a>
-  <a href="https://airi.moeru.ai">
+  <a href="https://mira.local">
     <picture>
       <source
         width="33%"
@@ -128,8 +128,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.producthunt.com/products/airi?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-airi" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=993524&theme=neutral&t=1752696535380" alt="AIRI - Một bình chứa linh hồn số, tái tạo Neuro-sama | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-  <a href="https://trendshift.io/repositories/14636" target="_blank"><img src="https://trendshift.io/api/badge/repositories/14636" alt="moeru-ai%2Fairi | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+  <a href="https://www.producthunt.com/products/mira?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-mira" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=993524&theme=neutral&t=1752696535380" alt="MIRA - Một bình chứa linh hồn số, tái tạo Neuro-sama | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+  <a href="https://trendshift.io/repositories/14636" target="_blank"><img src="https://trendshift.io/api/badge/repositories/14636" alt="moeru-ai%2Fmira | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
 > Lấy cảm hứng mạnh mẽ từ [Neuro-sama](https://www.youtube.com/@Neurosama)
@@ -138,12 +138,12 @@
 > **Chú ý:** Chúng tôi **không** phát hành bất kỳ loại tiền điện tử hay token chính thức nào liên quan đến dự án này. Hãy kiểm tra kỹ thông tin trước khi tham gia.
 
 > [!NOTE]
-> Chúng tôi có cả một tổ chức riêng [@proj-airi](https://github.com/proj-airi) cho các dự án con xuất phát từ AIRI. Hãy xem qua nhé!
+> Chúng tôi có cả một tổ chức riêng [@proj-mira](https://github.com/proj-mira) cho các dự án con xuất phát từ MIRA. Hãy xem qua nhé!
 > Bao gồm: RAG, hệ thống bộ nhớ, cơ sở dữ liệu nhúng, icon, tiện ích Live2D, và nhiều hơn nữa.
 
 > [!TIP]
-> Chúng tôi có dự án dịch trên [Crowdin](https://crowdin.com/project/proj-airi). Nếu bạn thấy bản dịch chưa chính xác, hãy giúp dịch hoặc chỉnh sửa trên Crowdin.
-> <a href="https://crowdin.com/project/proj-airi" target="_blank" rel="nofollow"><img style="width: 140px; height: 40px;" src="https://badges.crowdin.net/badge/light/crowdin-on-dark.png" srcset="https://badges.crowdin.net/badge/light/crowdin-on-dark.png 1x, https://badges.crowdin.net/badge/light/crowdin-on-dark@2x.png 2x" alt="Crowdin | Agile localization for tech companies" width="140" height="40" /></a>
+> Chúng tôi có dự án dịch trên [Crowdin](https://crowdin.com/project/proj-mira). Nếu bạn thấy bản dịch chưa chính xác, hãy giúp dịch hoặc chỉnh sửa trên Crowdin.
+> <a href="https://crowdin.com/project/proj-mira" target="_blank" rel="nofollow"><img style="width: 140px; height: 40px;" src="https://badges.crowdin.net/badge/light/crowdin-on-dark.png" srcset="https://badges.crowdin.net/badge/light/crowdin-on-dark.png 1x, https://badges.crowdin.net/badge/light/crowdin-on-dark@2x.png 2x" alt="Crowdin | Agile localization for tech companies" width="140" height="40" /></a>
 
 Bạn đã từng mơ về một thực thể số sống động (cyber-waifu, thú cưng ảo) hay một bạn đồng hành kỹ thuật số có thể chơi cùng và trò chuyện với bạn chưa?
 
@@ -153,37 +153,37 @@ Với sức mạnh của các mô hình LLM (ngôn ngữ lớn) hiện nay như 
 
 Có lẽ bạn đã biết [Neuro-sama](https://www.youtube.com/@Neurosama). Cô ấy là VTuber ảo xuất sắc nhất hiện nay, có thể vừa chơi game, vừa trò chuyện và tương tác với bạn cũng như khán giả. Một số người còn gọi đây là “con người số” (digital human). **Đáng tiếc, vì không mã nguồn mở, bạn không thể tương tác với cô ấy khi buổi livestream kết thúc.**
 
-Do đó, dự án AIRI mang đến một lựa chọn khác: **cho phép bạn sở hữu thực thể số của riêng mình, dễ dàng, mọi lúc, mọi nơi.**
+Do đó, dự án MIRA mang đến một lựa chọn khác: **cho phép bạn sở hữu thực thể số của riêng mình, dễ dàng, mọi lúc, mọi nơi.**
 
 ---
 
 ## DevLogs Đã Đăng & Cập Nhật Gần Đây
 
-- [DevLog @ 2026.01.01](https://airi.moeru.ai/docs/en/blog/DevLog-2026.01.01/) ngày 1 tháng 1, 2026
-- [DevLog @ 2025.10.20](https://airi.moeru.ai/docs/en/blog/DevLog-2025.10.20/) ngày 20 tháng 10, 2025
-- [DevLog @ 2025.08.05](https://airi.moeru.ai/docs/en/blog/DevLog-2025.08.05/) ngày 5 tháng 8, 2025
-- [DevLog @ 2025.08.01](https://airi.moeru.ai/docs/en/blog/DevLog-2025.08.01/) ngày 1 tháng 8, 2025
-- [DevLog @ 2025.07.18](https://airi.moeru.ai/docs/en/blog/DevLog-2025.07.18/) ngày 18 tháng 7, 2025
-- [DreamLog 0x1](https://airi.moeru.ai/docs/en/blog/dreamlog-0x1/) ngày 16 tháng 6, 2025
-- ...xem thêm tại [docs page](https://airi.moeru.ai/docs)
+- [DevLog @ 2026.01.01](https://mira.local/docs/en/blog/DevLog-2026.01.01/) ngày 1 tháng 1, 2026
+- [DevLog @ 2025.10.20](https://mira.local/docs/en/blog/DevLog-2025.10.20/) ngày 20 tháng 10, 2025
+- [DevLog @ 2025.08.05](https://mira.local/docs/en/blog/DevLog-2025.08.05/) ngày 5 tháng 8, 2025
+- [DevLog @ 2025.08.01](https://mira.local/docs/en/blog/DevLog-2025.08.01/) ngày 1 tháng 8, 2025
+- [DevLog @ 2025.07.18](https://mira.local/docs/en/blog/DevLog-2025.07.18/) ngày 18 tháng 7, 2025
+- [DreamLog 0x1](https://mira.local/docs/en/blog/dreamlog-0x1/) ngày 16 tháng 6, 2025
+- ...xem thêm tại [docs page](https://mira.local/docs)
 
 ## Dự Án Này Có Gì Đặc Biệt?
 
-Khác với các dự án VTuber AI mã nguồn mở khác, **アイリ** được xây dựng ngay từ đầu với sự hỗ trợ của nhiều công nghệ Web như [WebGPU](https://www.w3.org/TR/webgpu/), [WebAudio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), [WebAssembly](https://webassembly.org/), [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket), v.v.
+Khác với các dự án VTuber AI mã nguồn mở khác, **Mira** được xây dựng ngay từ đầu với sự hỗ trợ của nhiều công nghệ Web như [WebGPU](https://www.w3.org/TR/webgpu/), [WebAudio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), [WebAssembly](https://webassembly.org/), [WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket), v.v.
 
 > [!TIP]
 > Bạn lo lắng về hiệu năng khi chúng tôi dùng công nghệ Web?
 >
-> Đừng lo, phiên bản chạy trên trình duyệt chỉ nhằm minh hoạ khả năng có thể đạt được trong browser và webview. Phiên bản desktop của AIRI mặc định có thể dùng [NVIDIA CUDA](https://developer.nvidia.com/cuda-toolkit) và [Apple Metal](https://developer.apple.com/metal/) (nhờ HuggingFace & dự án [candle](https://github.com/huggingface/candle)), mà không cần quản lý phụ thuộc phức tạp. Đồ hoạ, bố cục, animation, và hệ thống plugin (WIP) vẫn tận dụng công nghệ Web để mở rộng dễ dàng.
+> Đừng lo, phiên bản chạy trên trình duyệt chỉ nhằm minh hoạ khả năng có thể đạt được trong browser và webview. Phiên bản desktop của MIRA mặc định có thể dùng [NVIDIA CUDA](https://developer.nvidia.com/cuda-toolkit) và [Apple Metal](https://developer.apple.com/metal/) (nhờ HuggingFace & dự án [candle](https://github.com/huggingface/candle)), mà không cần quản lý phụ thuộc phức tạp. Đồ hoạ, bố cục, animation, và hệ thống plugin (WIP) vẫn tận dụng công nghệ Web để mở rộng dễ dàng.
 
-Điều này có nghĩa là **アイリ có thể chạy trên các trình duyệt và thiết bị hiện đại**, kể cả thiết bị di động (đã hỗ trợ PWA). Điều này mở ra nhiều khả năng để chúng tôi (nhà phát triển) nâng VTuber アイリ lên tầm cao mới, đồng thời vẫn để người dùng linh hoạt bật các tính năng cần TCP hoặc công nghệ ngoài Web như kết nối kênh thoại Discord hay chơi Minecraft, Factorio với bạn bè.
+Điều này có nghĩa là **Mira có thể chạy trên các trình duyệt và thiết bị hiện đại**, kể cả thiết bị di động (đã hỗ trợ PWA). Điều này mở ra nhiều khả năng để chúng tôi (nhà phát triển) nâng VTuber Mira lên tầm cao mới, đồng thời vẫn để người dùng linh hoạt bật các tính năng cần TCP hoặc công nghệ ngoài Web như kết nối kênh thoại Discord hay chơi Minecraft, Factorio với bạn bè.
 
 > [!NOTE]
-> Chúng tôi vẫn đang ở giai đoạn đầu phát triển và tìm kiếm nhà phát triển tài năng để cùng hiện thực hoá アイリ.
+> Chúng tôi vẫn đang ở giai đoạn đầu phát triển và tìm kiếm nhà phát triển tài năng để cùng hiện thực hoá Mira.
 >
 > Không sao nếu bạn chưa quen Vue.js, TypeScript, hay devtools của dự án này, bạn vẫn có thể tham gia với vai trò hoạ sĩ, nhà thiết kế, hoặc giúp chúng tôi tổ chức buổi livestream đầu tiên.
 >
-> Kể cả bạn là fan của React, Svelte hay Solid, chúng tôi vẫn chào đón. Bạn có thể mở thư mục phụ để thêm tính năng mà bạn muốn thử nghiệm cho アイリ.
+> Kể cả bạn là fan của React, Svelte hay Solid, chúng tôi vẫn chào đón. Bạn có thể mở thư mục phụ để thêm tính năng mà bạn muốn thử nghiệm cho Mira.
 >
 > Các mảng (và dự án liên quan) chúng tôi cần:
 > - Live2D modeller
@@ -200,7 +200,7 @@ Khác với các dự án VTuber AI mã nguồn mở khác, **アイリ** đư�
 > - Three.js
 > - WebXR ([xem thêm dự án khác](https://github.com/moeru-ai/chat) của tổ chức @moeru-ai)
 >
-> **Nếu bạn hứng thú, hãy giới thiệu bản thân ở đây: [Muốn tham gia cùng chúng tôi xây dựng AIRI?](https://github.com/moeru-ai/airi/discussions/33)**
+> **Nếu bạn hứng thú, hãy giới thiệu bản thân ở đây: [Muốn tham gia cùng chúng tôi xây dựng MIRA?](https://github.com/dumkeacee149-blip/mira/discussions/33)**
 
 ## Tiến Độ Hiện Tại
 
@@ -208,7 +208,7 @@ Khả năng:
 
 - [x] Bộ não
   - [x] Chơi game: [Minecraft](https://www.minecraft.net)
-  - [x] Chơi game: [Factorio](https://www.factorio.com) (WIP, [PoC và demo có sẵn](https://github.com/moeru-ai/airi-factorio))
+  - [x] Chơi game: [Factorio](https://www.factorio.com) (WIP, [PoC và demo có sẵn](https://github.com/dumkeacee149-blip/mira-factorio))
   - [x] Trò chuyện trên [Telegram](https://telegram.org)
   - [x] Trò chuyện trên [Discord](https://discord.com)
   - [ ] Bộ nhớ
@@ -249,7 +249,7 @@ pnpm i
 pnpm dev
 ```
 
-### Stage Web (Bản web tại [airi.moeru.ai](https://airi.moeru.ai))
+### Stage Web (Bản web tại [mira.moeru.ai](https://mira.local))
 
 ```shell
 pnpm dev
@@ -261,10 +261,10 @@ pnpm dev
 pnpm dev:tamagotchi
 ```
 
-Gói Nix dành cho Tamagotchi được bao gồm. Để chạy airi với Nix, trước tiên hãy đảm bảo bạn đã bật flakes, sau đó chạy:
+Gói Nix dành cho Tamagotchi được bao gồm. Để chạy mira với Nix, trước tiên hãy đảm bảo bạn đã bật flakes, sau đó chạy:
 
 ```shell
-nix run github:moeru-ai/airi
+nix run github:dumkeacee149-blip/mira
 ```
 
 ### Trang tài liệu
@@ -316,18 +316,18 @@ npx bumpp --no-commit --no-tag
 
 ## Các dự án phụ khác
 
-- [Awesome AI VTuber](https://github.com/proj-airi/awesome-ai-vtuber): Danh sách tuyển chọn các AI VTuber và những dự án liên quan
+- [Awesome AI VTuber](https://github.com/proj-mira/awesome-ai-vtuber): Danh sách tuyển chọn các AI VTuber và những dự án liên quan
 - [`unspeech`](https://github.com/moeru-ai/unspeech): Máy chủ proxy endpoint chung cho `/audio/transcriptions` và `/audio/speech`, giống LiteLLM nhưng dành cho bất kỳ ASR và TTS nào
 - [`hfup`](https://github.com/moeru-ai/hfup): Các công cụ hỗ trợ triển khai, đóng gói lên HuggingFace Spaces
 - [`xsai-transformers`](https://github.com/moeru-ai/xsai-transformers): Nhà cung cấp thử nghiệm [🤗 Transformers.js](https://github.com/huggingface/transformers.js) cho [xsAI](https://github.com/moeru-ai/xsai).
-- [WebAI: Realtime Voice Chat](https://github.com/proj-airi/webai-realtime-voice-chat): Ví dụ đầy đủ về việc triển khai voice realtime của ChatGPT từ đầu với VAD + STT + LLM + TTS.
-- [`@proj-airi/drizzle-duckdb-wasm`](https://github.com/moeru-ai/airi/tree/main/packages/drizzle-duckdb-wasm/README.md): Trình điều khiển Drizzle ORM cho DuckDB WASM
-- [`@proj-airi/duckdb-wasm`](https://github.com/moeru-ai/airi/tree/main/packages/duckdb-wasm/README.md): Wrapper dễ sử dụng cho `@duckdb/duckdb-wasm`
-- [`tauri-plugin-mcp`](https://github.com/moeru-ai/airi/blob/main/crates/tauri-plugin-mcp/README.md): Plugin Tauri để tương tác với máy chủ MCP.
-- [AIRI Factorio](https://github.com/moeru-ai/airi-factorio): Cho phép AIRI chơi Factorio
+- [WebAI: Realtime Voice Chat](https://github.com/proj-mira/webai-realtime-voice-chat): Ví dụ đầy đủ về việc triển khai voice realtime của ChatGPT từ đầu với VAD + STT + LLM + TTS.
+- [`@proj-mira/drizzle-duckdb-wasm`](https://github.com/dumkeacee149-blip/mira/tree/main/packages/drizzle-duckdb-wasm/README.md): Trình điều khiển Drizzle ORM cho DuckDB WASM
+- [`@proj-mira/duckdb-wasm`](https://github.com/dumkeacee149-blip/mira/tree/main/packages/duckdb-wasm/README.md): Wrapper dễ sử dụng cho `@duckdb/duckdb-wasm`
+- [`tauri-plugin-mcp`](https://github.com/dumkeacee149-blip/mira/blob/main/crates/tauri-plugin-mcp/README.md): Plugin Tauri để tương tác với máy chủ MCP.
+- [MIRA Factorio](https://github.com/dumkeacee149-blip/mira-factorio): Cho phép MIRA chơi Factorio
 - [Factorio RCON API](https://github.com/nekomeowww/factorio-rcon-api): RESTful API wrapper cho console máy chủ headless Factorio
-- [`autorio`](https://github.com/moeru-ai/airi-factorio/tree/main/packages/autorio): Thư viện tự động hóa Factorio
-- [`tstl-plugin-reload-factorio-mod`](https://github.com/moeru-ai/airi-factorio/tree/main/packages/tstl-plugin-reload-factorio-mod): Tự động tải tạo lại mod Factorio khi đang phát triển
+- [`autorio`](https://github.com/dumkeacee149-blip/mira-factorio/tree/main/packages/autorio): Thư viện tự động hóa Factorio
+- [`tstl-plugin-reload-factorio-mod`](https://github.com/dumkeacee149-blip/mira-factorio/tree/main/packages/tstl-plugin-reload-factorio-mod): Tự động tải tạo lại mod Factorio khi đang phát triển
 - [Velin](https://github.com/luoling8192/velin): Sử dụng Vue SFC và Markdown để viết prompt trạng thái dễ quản lý cho LLM
 - [`demodel`](https://github.com/moeru-ai/demodel): Dễ dàng tăng tốc độ tải model và dataset từ nhiều runtime suy luận khác nhau
 - [`inventory`](https://github.com/moeru-ai/inventory): Dịch vụ backend lưu trữ tập trung catalog model và cấu hình nhà cung cấp mặc định
@@ -340,17 +340,17 @@ npx bumpp --no-commit --no-tag
 flowchart TD
   Core("Core")
   Unspeech("unspeech")
-  DBDriver("@proj-airi/drizzle-duckdb-wasm")
+  DBDriver("@proj-mira/drizzle-duckdb-wasm")
   MemoryDriver("[WIP] Memory Alaya")
-  DB1("@proj-airi/duckdb-wasm")
-  SVRT("@proj-airi/server-runtime")
+  DB1("@proj-mira/duckdb-wasm")
+  SVRT("@proj-mira/server-runtime")
   Memory("Memory")
   STT("STT")
   Stage("Stage")
-  StageUI("@proj-airi/stage-ui")
-  UI("@proj-airi/ui")
+  StageUI("@proj-mira/stage-ui")
+  UI("@proj-mira/ui")
 
-  subgraph AIRI
+  subgraph MIRA
     DB1 --> DBDriver --> MemoryDriver --> Memory --> Core
     UI --> StageUI --> Stage --> Core
     Core --> STT
@@ -359,22 +359,22 @@ flowchart TD
 
   subgraph UI_Components
     UI --> StageUI
-    UITransitions("@proj-airi/ui-transitions") --> StageUI
-    UILoadingScreens("@proj-airi/ui-loading-screens") --> StageUI
-    FontCJK("@proj-airi/font-cjkfonts-allseto") --> StageUI
-    FontXiaolai("@proj-airi/font-xiaolai") --> StageUI
+    UITransitions("@proj-mira/ui-transitions") --> StageUI
+    UILoadingScreens("@proj-mira/ui-loading-screens") --> StageUI
+    FontCJK("@proj-mira/font-cjkfonts-allseto") --> StageUI
+    FontXiaolai("@proj-mira/font-xiaolai") --> StageUI
   end
 
   subgraph Apps
-    Stage --> StageWeb("@proj-airi/stage-web")
-    Stage --> StageTamagotchi("@proj-airi/stage-tamagotchi")
-    Core --> RealtimeAudio("@proj-airi/realtime-audio")
-    Core --> PromptEngineering("@proj-airi/playground-prompt-engineering")
+    Stage --> StageWeb("@proj-mira/stage-web")
+    Stage --> StageTamagotchi("@proj-mira/stage-tamagotchi")
+    Core --> RealtimeAudio("@proj-mira/realtime-audio")
+    Core --> PromptEngineering("@proj-mira/playground-prompt-engineering")
   end
 
   subgraph Server_Components
-    Core --> ServerSDK("@proj-airi/server-sdk")
-    ServerShared("@proj-airi/server-shared") --> SVRT
+    Core --> ServerSDK("@proj-mira/server-sdk")
+    ServerShared("@proj-mira/server-shared") --> SVRT
     ServerShared --> ServerSDK
   end
 
@@ -404,11 +404,11 @@ flowchart TD
   XSAI --> F_AGENT
   XSAI --> MC_AGENT
 
-  Core --> TauriMCP("@proj-airi/tauri-plugin-mcp")
-  Memory_PGVector("@proj-airi/memory-pgvector") --> Memory
+  Core --> TauriMCP("@proj-mira/tauri-plugin-mcp")
+  Memory_PGVector("@proj-mira/memory-pgvector") --> Memory
 
   style Core fill:#f9d4d4,stroke:#333,stroke-width:1px
-  style AIRI fill:#fcf7f7,stroke:#333,stroke-width:1px
+  style MIRA fill:#fcf7f7,stroke:#333,stroke-width:1px
   style UI fill:#d4f9d4,stroke:#333,stroke-width:1px
   style Stage fill:#d4f9d4,stroke:#333,stroke-width:1px
   style UI_Components fill:#d4f9d4,stroke:#333,stroke-width:1px
@@ -460,27 +460,27 @@ flowchart TD
 ## Nhà tài trợ
 
 <p align="center">
-  <strong>Cảm ơn bạn đã hỗ trợ Project AIRI qua OpenCollective, Patreon và Ko-fi.</strong>
+  <strong>Cảm ơn bạn đã hỗ trợ Project Mira qua OpenCollective, Patreon và Ko-fi.</strong>
 </p>
 
 <p align="center">
-  <img src="./content/public/assets/sponsors/sponsors.svg" alt="Project AIRI supporters" />
+  <img src="./content/public/assets/sponsors/sponsors.svg" alt="Project Mira supporters" />
 </p>
 
 ## Lời cảm ơn đặc biệt
 
-Đặc biệt cảm ơn tất cả những người đóng góp vì những đóng góp của họ cho Project AIRI ❤️
+Đặc biệt cảm ơn tất cả những người đóng góp vì những đóng góp của họ cho Project Mira ❤️
 
-<a href="https://github.com/moeru-ai/airi/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=moeru-ai/airi" />
+<a href="https://github.com/dumkeacee149-blip/mira/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dumkeacee149-blip/mira" />
 </a>
 
 ## Lịch sử sao nhận được
 
-<a href="https://star-history.com/#moeru-ai/airi&Date">
+<a href="https://star-history.com/#dumkeacee149-blip/mira&Date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=moeru-ai/airi&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=moeru-ai/airi&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=moeru-ai/airi&type=Date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=dumkeacee149-blip/mira&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=dumkeacee149-blip/mira&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=dumkeacee149-blip/mira&type=Date" />
   </picture>
 </a>

@@ -39,7 +39,7 @@ else {
 
 export default {
   appId: 'com.mira.assistant.desktop',
-  productName: 'MiRa',
+  productName: 'Mira',
   directories: {
     output: 'dist',
     buildResources: 'build',
@@ -119,10 +119,10 @@ export default {
     entitlementsInherit: 'build/entitlements.mac.plist',
     extendInfo: [
       {
-        NSMicrophoneUsageDescription: 'MiRa requires microphone access for voice interaction',
+        NSMicrophoneUsageDescription: 'Mira requires microphone access for voice interaction',
       },
       {
-        NSCameraUsageDescription: 'MiRa requires camera access for vision understanding',
+        NSCameraUsageDescription: 'Mira requires camera access for vision understanding',
       },
     ],
     // For self-publishing, testing, and distribution after modified the code without access to
@@ -145,7 +145,7 @@ export default {
     ],
     category: 'Utility',
     synopsis: 'Desktop AI assistant with avatar, voice, and workflow automation capabilities.',
-    description: 'MiRa is an AI desktop assistant with avatar and modular runtime tools for chat, voice, and workflows.',
+    description: 'Mira is an AI desktop assistant with avatar and modular runtime tools for chat, voice, and workflows.',
     executableName: 'mira-assistant',
     artifactName: '${productName}-${version}-linux-${arch}.${ext}',
     icon: 'build/icons/icon.png',

@@ -1,6 +1,6 @@
 ---
 title: コントリビューション
-description: Project AIRI への貢献
+description: Project Mira への貢献
 ---
 
 こんにちは！このプロジェクトへの貢献に興味を持っていただきありがとうございます。このガイドは、あなたが始めるのに役立ちます。
@@ -117,13 +117,13 @@ git rebase main
 
 ## このプロジェクトをフォークする
 
-[moeru-ai/airi](https://github.com/moeru-ai/airi) ページの右上にある **Fork** ボタンをクリックしてください。
+[dumkeacee149-blip/mira](https://github.com/dumkeacee149-blip/mira) ページの右上にある **Fork** ボタンをクリックしてください。
 
 ## クローン
 
 ```shell
-git clone https://github.com/<your-github-username>/airi.git
-cd airi
+git clone https://github.com/<your-github-username>/mira.git
+cd mira
 ```
 
 ## 作業用ブランチを作成する
@@ -206,14 +206,14 @@ git push origin <your-branch-name> -u
 このプロジェクトへの貢献が初めての場合は、アップストリームリポジトリも追加する必要があります：
 
 ```shell
-git remote add upstream https://github.com/moeru-ai/airi.git
+git remote add upstream https://github.com/dumkeacee149-blip/mira.git
 ```
 
 :::
 
 ## プルリクエストの作成
 
-[moeru-ai/airi](https://github.com/moeru-ai/airi) ページに移動し、**Pull requests** タブをクリックし、**New pull request** ボタンをクリックします。**Compare across forks** リンクをクリックし、あなたのフォークリポジトリを選択します。
+[dumkeacee149-blip/mira](https://github.com/dumkeacee149-blip/mira) ページに移動し、**Pull requests** タブをクリックし、**New pull request** ボタンをクリックします。**Compare across forks** リンクをクリックし、あなたのフォークリポジトリを選択します。
 
 変更を確認し、**Create pull request** ボタンをクリックします。
 

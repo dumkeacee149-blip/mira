@@ -160,7 +160,7 @@ export class LocalRuntimeCoordinator {
 
   shouldRunEmbedded() {
     const mode = app.isPackaged ? 'packaged' : 'dev'
-    const enabled = process.env.AIRI_RUNTIME_MANAGED || (mode === 'packaged' ? 'true' : 'false')
+    const enabled = process.env.MIRA_RUNTIME_MANAGED || (mode === 'packaged' ? 'true' : 'false')
     return enabled === '1' || String(enabled).toLowerCase() === 'true'
   }
 
@@ -195,7 +195,7 @@ export class LocalRuntimeCoordinator {
       stdio: ['pipe', 'pipe', 'pipe'],
       env: {
         ...process.env,
-        AIRI_RUNTIME_MODE: 'embedded',
+        MIRA_RUNTIME_MODE: 'embedded',
       },
     })
 
@@ -287,24 +287,24 @@ export function parseRuntimeCommandsFromEnv(): StartRuntimeOptions {
   const defaultHealthBase = app.isPackaged ? 'http://127.0.0.1:8123' : 'http://127.0.0.1:8000'
   const bridgeHealth = process.env.OPENCLAW_BRIDGE_HEALTH_URL || `${defaultHealthBase}/health`
   const runtimeHealth = process.env.OPENCLAW_RUNTIME_HEALTH_URL || `${defaultHealthBase}/health`
-  const runtimeManaged = process.env.AIRI_RUNTIME_MANAGED
+  const runtimeManaged = process.env.MIRA_RUNTIME_MANAGED
   const defaultBridgeBaseUrl = app.isPackaged ? 'http://127.0.0.1:8123' : 'http://127.0.0.1:8000'
 
   if (app.isPackaged && !process.env.OPENCLAW_BASE_URL)
     process.env.OPENCLAW_BASE_URL = defaultBridgeBaseUrl
 
   if (app.isPackaged && !process.env.OPENCLAW_INVOKE_PATH)
-    process.env.OPENCLAW_INVOKE_PATH = '/v1/airi/invoke'
+    process.env.OPENCLAW_INVOKE_PATH = '/v1/mira/invoke'
 
-  if (app.isPackaged && !process.env.OPENCLAW_AIRI_WS_URL)
-    process.env.OPENCLAW_AIRI_WS_URL = 'ws://127.0.0.1:6121/ws'
+  if (app.isPackaged && !process.env.OPENCLAW_MIRA_WS_URL)
+    process.env.OPENCLAW_MIRA_WS_URL = 'ws://127.0.0.1:6121/ws'
 
   const commands: RuntimeCommandConfig[] = []
   const bridgeParsed = bridgeCmd ? parseCommand(bridgeCmd) : null
   const runtimeParsed = runtimeCmd ? parseCommand(runtimeCmd) : null
 
   if (runtimeManaged)
-    console.info(`[local-runtime] AIRI_RUNTIME_MANAGED=${runtimeManaged}`)
+    console.info(`[local-runtime] MIRA_RUNTIME_MANAGED=${runtimeManaged}`)
 
   if (bridgeParsed)
     commands.push({ ...bridgeParsed, name: 'openclaw-bridge' })

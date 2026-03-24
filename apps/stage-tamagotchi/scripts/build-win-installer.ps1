@@ -14,8 +14,8 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $appDir = Resolve-Path (Join-Path $scriptDir "..")
 $repoDir = Resolve-Path (Join-Path $appDir "..\..")
 
-Write-Host "[MiRa ASSISTANT] Repo: $repoDir"
-Write-Host "[MiRa ASSISTANT] App : $appDir"
+Write-Host "[Mira ASSISTANT] Repo: $repoDir"
+Write-Host "[Mira ASSISTANT] App : $appDir"
 
 Require-Cmd node
 Require-Cmd pnpm
@@ -62,7 +62,7 @@ try {
 
   $latestExe = $artifacts | Where-Object { $_.Extension -eq '.exe' } | Select-Object -First 1
   if ($latestExe) {
-    Write-Host "\n[MiRa ASSISTANT] Windows installer ready: $($latestExe.FullName)" -ForegroundColor Green
+    Write-Host "\n[Mira ASSISTANT] Windows installer ready: $($latestExe.FullName)" -ForegroundColor Green
   }
 }
 finally {

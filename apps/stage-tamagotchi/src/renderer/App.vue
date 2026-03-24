@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { defineInvokeHandler } from '@moeru/eventa'
-import { useElectronEventaContext, useElectronEventaInvoke } from '@proj-airi/electron-vueuse'
-import { themeColorFromValue, useThemeColor } from '@proj-airi/stage-layouts/composables/theme-color'
-import { ToasterRoot } from '@proj-airi/stage-ui/components'
-import { useSharedAnalyticsStore } from '@proj-airi/stage-ui/stores/analytics'
-import { useCharacterOrchestratorStore } from '@proj-airi/stage-ui/stores/character'
-import { useChatSessionStore } from '@proj-airi/stage-ui/stores/chat/session-store'
-import { usePluginHostInspectorStore } from '@proj-airi/stage-ui/stores/devtools/plugin-host-debug'
-import { useDisplayModelsStore } from '@proj-airi/stage-ui/stores/display-models'
-import { clearMcpToolBridge, setMcpToolBridge } from '@proj-airi/stage-ui/stores/mcp-tool-bridge'
-import { useModsServerChannelStore } from '@proj-airi/stage-ui/stores/mods/api/channel-server'
-import { useContextBridgeStore } from '@proj-airi/stage-ui/stores/mods/api/context-bridge'
-import { useAiriCardStore } from '@proj-airi/stage-ui/stores/modules/airi-card'
-import { usePerfTracerBridgeStore } from '@proj-airi/stage-ui/stores/perf-tracer-bridge'
-import { listProvidersForPluginHost, shouldPublishPluginHostCapabilities } from '@proj-airi/stage-ui/stores/plugin-host-capabilities'
-import { useSettings } from '@proj-airi/stage-ui/stores/settings'
-import { useTheme } from '@proj-airi/ui'
+import { useElectronEventaContext, useElectronEventaInvoke } from '@proj-mira/electron-vueuse'
+import { themeColorFromValue, useThemeColor } from '@proj-mira/stage-layouts/composables/theme-color'
+import { ToasterRoot } from '@proj-mira/stage-ui/components'
+import { useSharedAnalyticsStore } from '@proj-mira/stage-ui/stores/analytics'
+import { useCharacterOrchestratorStore } from '@proj-mira/stage-ui/stores/character'
+import { useChatSessionStore } from '@proj-mira/stage-ui/stores/chat/session-store'
+import { usePluginHostInspectorStore } from '@proj-mira/stage-ui/stores/devtools/plugin-host-debug'
+import { useDisplayModelsStore } from '@proj-mira/stage-ui/stores/display-models'
+import { clearMcpToolBridge, setMcpToolBridge } from '@proj-mira/stage-ui/stores/mcp-tool-bridge'
+import { useModsServerChannelStore } from '@proj-mira/stage-ui/stores/mods/api/channel-server'
+import { useContextBridgeStore } from '@proj-mira/stage-ui/stores/mods/api/context-bridge'
+import { useMiraCardStore } from '@proj-mira/stage-ui/stores/modules/mira-card'
+import { usePerfTracerBridgeStore } from '@proj-mira/stage-ui/stores/perf-tracer-bridge'
+import { listProvidersForPluginHost, shouldPublishPluginHostCapabilities } from '@proj-mira/stage-ui/stores/plugin-host-capabilities'
+import { useSettings } from '@proj-mira/stage-ui/stores/settings'
+import { useTheme } from '@proj-mira/ui'
 import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -54,7 +54,7 @@ const { language, themeColorsHue, themeColorsHueDynamic } = storeToRefs(settings
 const serverChannelSettingsStore = useServerChannelSettingsStore()
 const router = useRouter()
 const route = useRoute()
-const cardStore = useAiriCardStore()
+const cardStore = useMiraCardStore()
 const chatSessionStore = useChatSessionStore()
 const serverChannelStore = useModsServerChannelStore()
 const characterOrchestratorStore = useCharacterOrchestratorStore()

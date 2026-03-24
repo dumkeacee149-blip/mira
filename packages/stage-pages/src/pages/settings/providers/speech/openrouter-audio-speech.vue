@@ -4,10 +4,10 @@ import type { SpeechProvider } from '@xsai-ext/providers/utils'
 import {
   SpeechPlayground,
   SpeechProviderSettings,
-} from '@proj-airi/stage-ui/components'
-import { useSpeechStore } from '@proj-airi/stage-ui/stores/modules/speech'
-import { useProvidersStore } from '@proj-airi/stage-ui/stores/providers'
-import { FieldSelect } from '@proj-airi/ui'
+} from '@proj-mira/stage-ui/components'
+import { useSpeechStore } from '@proj-mira/stage-ui/stores/modules/speech'
+import { useProvidersStore } from '@proj-mira/stage-ui/stores/providers'
+import { FieldSelect } from '@proj-mira/ui'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted } from 'vue'
 

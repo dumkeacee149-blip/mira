@@ -1,15 +1,15 @@
 import type { createContext } from '@moeru/eventa/adapters/electron/main'
-import type { ResizeDirection } from '@proj-airi/electron-eventa'
+import type { ResizeDirection } from '@proj-mira/electron-eventa'
 import type { BrowserWindow, BrowserWindowConstructorOptions } from 'electron'
 
 import type { I18n } from '../../libs/i18n'
-import type { ServerChannel } from '../../services/airi/channel-server'
+import type { ServerChannel } from '../../services/mira/channel-server'
 
-import { isRendererUnavailable } from '@proj-airi/electron-vueuse/main'
+import { isRendererUnavailable } from '@proj-mira/electron-vueuse/main'
 import { isMacOS } from 'std-env'
 
-import { createServerChannelService } from '../../services/airi/channel-server'
-import { createI18nService } from '../../services/airi/i18n'
+import { createServerChannelService } from '../../services/mira/channel-server'
+import { createI18nService } from '../../services/mira/i18n'
 import { createAppService, createScreenService, createWindowService } from '../../services/electron'
 
 export function toggleWindowShow(window?: BrowserWindow | null): void {

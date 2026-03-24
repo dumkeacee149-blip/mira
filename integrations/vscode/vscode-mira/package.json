@@ -1,0 +1,81 @@
+{
+  "publisher": "proj-mira",
+  "name": "vscode-mira",
+  "displayName": "MIRA VSCode adapter",
+  "type": "module",
+  "version": "0.9.0-alpha.18",
+  "private": true,
+  "description": "Adapter that connects VSCode into Project Mira",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
+    "directory": "integrations/vscode/vscode-mira"
+  },
+  "categories": [
+    "Other"
+  ],
+  "preview": true,
+  "main": "./dist/extension.cjs",
+  "icon": "res/logo.jpg",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "mira-vscode.enable",
+        "title": "MIRA: Enable"
+      },
+      {
+        "command": "mira-vscode.disable",
+        "title": "MIRA: Disable"
+      },
+      {
+        "command": "mira-vscode.status",
+        "title": "MIRA: Show Status"
+      }
+    ],
+    "configuration": {
+      "title": "MIRA",
+      "properties": {
+        "mira-vscode.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the MIRA extension"
+        },
+        "mira-vscode.contextLines": {
+          "type": "number",
+          "default": 5,
+          "description": "Number of context lines to send (before and after current line)"
+        },
+        "mira-vscode.sendInterval": {
+          "type": "number",
+          "default": 3000,
+          "description": "Interval in milliseconds to send updates (0 for real-time)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "prepare": "pnpm run update",
+    "update": "tsx ./scripts/vscode-ext-gen.ts",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "publish": "tsx ./scripts/publish.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@guiiai/logg": "catalog:",
+    "@moeru/std": "catalog:",
+    "@proj-mira/server-sdk": "workspace:*",
+    "@types/vscode": "^1.109.0",
+    "es-toolkit": "catalog:",
+    "injeca": "catalog:",
+    "nanoid": "catalog:",
+    "tinyexec": "^1.0.2",
+    "vscode-ext-gen": "^1.6.0"
+  }
+}

@@ -51,7 +51,7 @@ The bot starts this server during normal runtime from:
 
 - `inject_event(type, payload, source)`
   - `type`: `perception | feedback | world_update | system_alert`
-  - `source.type`: `minecraft | airi | system`
+  - `source.type`: `minecraft | mira | system`
   - `source.id`: string
   - Use only with deliberate, test-specific payloads.
 

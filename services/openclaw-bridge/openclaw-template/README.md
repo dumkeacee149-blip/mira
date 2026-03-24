@@ -1,8 +1,8 @@
-# OpenClaw 能力模板（AIRI Bridge 对接）
+# OpenClaw 能力模板（MIRA Bridge 对接）
 
 该目录提供两套最小可用 API 服务模板（Node + Python），用于立即对接 `services/openclaw-bridge`。
 
-> 目标接口：`POST /v1/airi/invoke`
+> 目标接口：`POST /v1/mira/invoke`
 
 两套都按同一请求/返回约定：
 - 输入：
@@ -25,12 +25,12 @@ npm install
 npm start
 ```
 
-服务监听：`http://localhost:8000/v1/airi/invoke`
+服务监听：`http://localhost:8000/v1/mira/invoke`
 
 ### 真实 OpenClaw 直连（可选）
 设置环境变量：
 - `OPENCLAW_UPSTREAM_URL`（如 `http://127.0.0.1:3000`）
-- `OPENCLAW_UPSTREAM_PATH`（默认 `/v1/airi/invoke`）
+- `OPENCLAW_UPSTREAM_PATH`（默认 `/v1/mira/invoke`）
 - `OPENCLAW_UPSTREAM_API_KEY`（如有）
 
 若配置了 `OPENCLAW_UPSTREAM_URL`，模板将透传到真实 OpenClaw；失败时自动降级为演示逻辑。
@@ -55,9 +55,9 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 若配置了 `OPENCLAW_UPSTREAM_URL`，模板将透传到真实 OpenClaw；失败时自动降级为演示逻辑。
 
-服务监听：`http://localhost:8000/v1/airi/invoke`
+服务监听：`http://localhost:8000/v1/mira/invoke`
 
-## 与 AIRI Bridge 的最小匹配
+## 与 MIRA Bridge 的最小匹配
 - `services/openclaw-bridge/src/adapter.ts` 已支持以下 OpenClaw 响应字段兼容：
   - `message`, `reply`, `output.message`, `output.content`
   - `contextUpdates`, `context_updates`, `memory.*`

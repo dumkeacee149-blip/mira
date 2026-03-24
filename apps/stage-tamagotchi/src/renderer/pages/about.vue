@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useElectronAutoUpdater } from '@proj-airi/electron-vueuse'
-import { AboutContent, MarkdownRenderer } from '@proj-airi/stage-ui/components'
-import { useSharedAnalyticsStore } from '@proj-airi/stage-ui/stores/analytics/index'
-import { Button, DoubleCheckButton, Progress } from '@proj-airi/ui'
+import { useElectronAutoUpdater } from '@proj-mira/electron-vueuse'
+import { AboutContent, MarkdownRenderer } from '@proj-mira/stage-ui/components'
+import { useSharedAnalyticsStore } from '@proj-mira/stage-ui/stores/analytics/index'
+import { Button, DoubleCheckButton, Progress } from '@proj-mira/ui'
 import { useMediaQuery } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { DialogContent, DialogDescription, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
@@ -67,7 +67,7 @@ const releaseNotesContent = computed(() => {
     ]"
   >
     <div :class="['mx-auto max-w-[min(960px,calc(100%-2rem))]', 'px-6 py-20']">
-      <AboutContent title="Project" highlight="MiRa" subtitle="Desktop ver." />
+      <AboutContent title="Project" highlight="Mira" subtitle="Desktop ver." />
 
       <!-- Main Content Card -->
       <div :class="['mb-12', 'rounded-2xl', 'bg-white/50 dark:bg-black/20', 'p-6', 'backdrop-blur-sm']">

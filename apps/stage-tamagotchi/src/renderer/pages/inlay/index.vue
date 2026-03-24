@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { BackgroundMaterialType, VibrancyType } from '@proj-airi/electron-eventa'
+import type { BackgroundMaterialType, VibrancyType } from '@proj-mira/electron-eventa'
 
-import { electron } from '@proj-airi/electron-eventa'
-import { useElectronEventaInvoke } from '@proj-airi/electron-vueuse'
-import { FieldSelect } from '@proj-airi/ui'
+import { electron } from '@proj-mira/electron-eventa'
+import { useElectronEventaInvoke } from '@proj-mira/electron-vueuse'
+import { FieldSelect } from '@proj-mira/ui'
 import { ref, watch } from 'vue'
 
 const setVibrancy = useElectronEventaInvoke(electron.window.setVibrancy)

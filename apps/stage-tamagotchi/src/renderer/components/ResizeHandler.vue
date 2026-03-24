@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { electron } from '@proj-airi/electron-eventa'
-import { useElectronEventaInvoke, useElectronWindowResize } from '@proj-airi/electron-vueuse'
+import { electron } from '@proj-mira/electron-eventa'
+import { useElectronEventaInvoke, useElectronWindowResize } from '@proj-mira/electron-vueuse'
 import { useAsyncState } from '@vueuse/core'
 
 const isWindows = useElectronEventaInvoke(electron.app.isWindows)

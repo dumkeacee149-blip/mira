@@ -2,7 +2,7 @@ import type { LocaleDetector } from '@intlify/core'
 import type { BrowserWindow } from 'electron'
 
 import type { I18n } from '../libs/i18n'
-import type { ServerChannel } from '../services/airi/channel-server'
+import type { ServerChannel } from '../services/mira/channel-server'
 import type { setupBeatSync } from '../windows/beat-sync'
 import type { setupCaptionWindowManager } from '../windows/caption'
 import type { SettingsWindowManager } from '../windows/settings'
@@ -220,7 +220,7 @@ export function setupTray(params: {
       rebuildContextMenu()
     })
 
-    appTray.setToolTip('MiRa')
+    appTray.setToolTip('Mira')
     appTray.addListener('click', () => toggleWindowShow(params.mainWindow))
 
     // On macOS, there's a special double-click event

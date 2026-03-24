@@ -11,12 +11,12 @@ const props = withDefaults(defineProps<{
   links?: AboutLink[]
 }>(), {
   title: 'Project',
-  highlight: 'AIRI',
+  highlight: 'MIRA',
   subtitle: '',
   links: () => ([
-    { label: 'Home', href: 'https://airi.moeru.ai/docs/', icon: 'i-solar:home-smile-outline' },
-    { label: 'Documentations', href: 'https://airi.moeru.ai/docs/en/docs/overview/', icon: 'i-solar:document-add-outline' },
-    { label: 'GitHub', href: 'https://github.com/moeru-ai/airi', icon: 'i-simple-icons:github' },
+    { label: 'Home', href: 'https://mira.local/docs/', icon: 'i-solar:home-smile-outline' },
+    { label: 'Documentations', href: 'https://mira.local/docs/en/docs/overview/', icon: 'i-solar:document-add-outline' },
+    { label: 'GitHub', href: 'https://github.com/dumkeacee149-blip/mira', icon: 'i-simple-icons:github' },
   ]),
 })
 

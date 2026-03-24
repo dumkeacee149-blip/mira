@@ -1,4 +1,4 @@
-import { ContextUpdateStrategy as SharedContextUpdateStrategy } from '@proj-airi/server-shared/types'
+import { ContextUpdateStrategy as SharedContextUpdateStrategy } from '@proj-mira/server-shared/types'
 
 const GEN_AI_CHAT_KEY = 'gen-ai:chat'
 
@@ -350,7 +350,7 @@ export function createOpenClawAdapter({ client, config }) {
 export const openclawBridgeDefaults = {
   wsUrl: 'ws://localhost:6121/ws',
   openclawBaseUrl: 'http://127.0.0.1:8123',
-  openclawInvokePath: '/v1/airi/invoke',
+  openclawInvokePath: '/v1/mira/invoke',
   enableMemory: envBool(undefined, true),
   enableAgent: envBool(undefined, true),
   contextTopK: envNumber(undefined, 8),

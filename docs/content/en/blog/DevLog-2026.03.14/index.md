@@ -3,12 +3,12 @@ title: DevLog @ 2026.03.14
 category: DevLog
 date: 2026-03-14
 excerpt: |
-  A story about PR #1194: debugging AIRI's VRM 3D stage, redesigning its lifecycle, introducing a window-local cache, and laying the first foundation for ThreeScene observability.
+  A story about PR #1194: debugging MIRA's VRM 3D stage, redesigning its lifecycle, introducing a window-local cache, and laying the first foundation for ThreeScene observability.
 ---
 
 Hi, this is [@Lilia-Chen](https://github.com/Lilia-Chen).
 
-Lately I have been working on AIRI's VRM / Three.js runtime, the 3D stage shared across AIRI's web, desktop, and mobile apps. The DevLog for today is about [#1194](https://github.com/moeru-ai/airi/pull/1194), which I opened on March 8, 2026 and merged on March 12, 2026.
+Lately I have been working on MIRA's VRM / Three.js runtime, the 3D stage shared across MIRA's web, desktop, and mobile apps. The DevLog for today is about [#1194](https://github.com/dumkeacee149-blip/mira/pull/1194), which I opened on March 8, 2026 and merged on March 12, 2026.
 
 The story is simple: the VRM stage had reached the point where it was too easy for lifecycle mistakes to disguise themselves as rendering bugs, performance bugs, or random "loading forever" bugs.
 
@@ -285,7 +285,7 @@ One part of this PR that I especially wanted was tracing.
 
 The current tracing work is still fairly basic, but it is already much better than having to debug the VRM stage entirely from intuition and `console.log`.
 
-The trace layer now lives inside `@proj-airi/stage-ui-three`, with Eventa as its event contract. On the performance side, it records things like renderer info snapshots, hit-test readback timing, and per-frame VRM update breakdowns. On the lifecycle side, it traces load and dispose, cache `take` / `stash` / `clear`, scene phase changes, and transaction begin / end / reset. On desktop, those events are forwarded through Eventa into a simple diagnostics view.
+The trace layer now lives inside `@proj-mira/stage-ui-three`, with Eventa as its event contract. On the performance side, it records things like renderer info snapshots, hit-test readback timing, and per-frame VRM update breakdowns. On the lifecycle side, it traces load and dispose, cache `take` / `stash` / `clear`, scene phase changes, and transaction begin / end / reset. On desktop, those events are forwarded through Eventa into a simple diagnostics view.
 
 The future TODO here is to build a proper observability tool for `ThreeScene`:
 
@@ -310,4 +310,4 @@ Most importantly, it turned a pile of loosely coupled behaviors into something I
 
 There is still plenty left to improve, especially around tracing and the future O11y tooling for `ThreeScene`, but at least now the runtime feels like it has an owner again.
 
-If you want to read the code directly, start with [#1194](https://github.com/moeru-ai/airi/pull/1194). I am also continuing to track VRM-related issues in [#1173](https://github.com/moeru-ai/airi/issues/1173).
+If you want to read the code directly, start with [#1194](https://github.com/dumkeacee149-blip/mira/pull/1194). I am also continuing to track VRM-related issues in [#1173](https://github.com/dumkeacee149-blip/mira/issues/1173).

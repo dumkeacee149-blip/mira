@@ -1,16 +1,16 @@
 {
-  "name": "@proj-airi/openclaw-bridge",
+  "name": "@proj-mira/openclaw-bridge",
   "type": "module",
   "private": true,
-  "description": "OpenClaw bridge adapter for AIRI module ports",
+  "description": "OpenClaw bridge adapter for MIRA module ports",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "services/openclaw-bridge"
   },
   "scripts": {
@@ -18,8 +18,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@proj-airi/server-sdk": "workspace:^",
-    "@proj-airi/server-shared": "workspace:^",
+    "@proj-mira/server-sdk": "workspace:^",
+    "@proj-mira/server-shared": "workspace:^",
     "@xsai/shared-chat": "catalog:",
     "tsx": "^4.21.0"
   }

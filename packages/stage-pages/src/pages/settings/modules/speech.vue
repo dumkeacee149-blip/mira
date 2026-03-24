@@ -8,17 +8,17 @@ import {
   RadioCardSimple,
   TestDummyMarker,
   VoiceCardManySelect,
-} from '@proj-airi/stage-ui/components'
-import { useAnalytics } from '@proj-airi/stage-ui/composables'
-import { useSpeechStore } from '@proj-airi/stage-ui/stores/modules/speech'
-import { useProvidersStore } from '@proj-airi/stage-ui/stores/providers'
+} from '@proj-mira/stage-ui/components'
+import { useAnalytics } from '@proj-mira/stage-ui/composables'
+import { useSpeechStore } from '@proj-mira/stage-ui/stores/modules/speech'
+import { useProvidersStore } from '@proj-mira/stage-ui/stores/providers'
 import {
   FieldCheckbox,
   FieldInput,
   FieldRange,
   Skeleton,
   Textarea,
-} from '@proj-airi/ui'
+} from '@proj-mira/ui'
 import { generateSpeech } from '@xsai/generate-speech'
 import { storeToRefs } from 'pinia'
 import { onMounted, onUnmounted, ref, watch } from 'vue'

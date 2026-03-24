@@ -2,8 +2,8 @@ import type { Readable } from 'node:stream'
 
 import type { AudioPlayer, VoiceConnection, VoiceConnectionState } from '@discordjs/voice'
 import type { Logg } from '@guiiai/logg'
-import type { Client as AiriClient } from '@proj-airi/server-sdk'
-import type { Discord } from '@proj-airi/server-shared/types'
+import type { Client as MiraClient } from '@proj-mira/server-sdk'
+import type { Discord } from '@proj-mira/server-shared/types'
 import type {
   BaseGuildVoiceChannel,
   CacheType,
@@ -71,7 +71,7 @@ export class VoiceManager extends EventEmitter {
 
   private activeAudioPlayer: AudioPlayer | null = null
   private client: DiscordClient
-  private airiClient: AiriClient
+  private miraClient: MiraClient
   private streams: Map<string, Readable> = new Map()
   private connections: Map<string, VoiceConnection> = new Map()
   private activeMonitors: Map<
@@ -87,10 +87,10 @@ export class VoiceManager extends EventEmitter {
     speakingEnd: (userId: string) => void
   }> = new Map()
 
-  constructor(client: DiscordClient, airiClient: AiriClient) {
+  constructor(client: DiscordClient, miraClient: MiraClient) {
     super()
     this.client = client
-    this.airiClient = airiClient
+    this.miraClient = miraClient
   }
 
   handleVoiceConnectionStateChange(channel: BaseGuildVoiceChannel, connection: VoiceConnection): (oldState: VoiceConnectionState, newState: VoiceConnectionState) => Promise<void> {
@@ -477,12 +477,12 @@ export class VoiceManager extends EventEmitter {
           guildMember: member,
         } satisfies Discord
 
-        this.airiClient.send({
+        this.miraClient.send({
           type: 'input:text:voice',
           data: { transcription: transcriptionText, discord: discordContext },
         })
 
-        this.airiClient.send({
+        this.miraClient.send({
           type: 'input:text',
           data: { text: transcriptionText, discord: discordContext },
         })

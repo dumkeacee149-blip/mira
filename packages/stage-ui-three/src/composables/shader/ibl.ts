@@ -3,22 +3,22 @@ import * as THREE from 'three'
 
 // ===== head guard shader injection =====
 const VS_DECL = `
-#ifndef AIRI_DIFFUSE_VS_DECL
-#define AIRI_DIFFUSE_VS_DECL
+#ifndef MIRA_DIFFUSE_VS_DECL
+#define MIRA_DIFFUSE_VS_DECL
 varying vec3 vWorldNormal;
 #endif
 `
 
 const VS_APPLY = `
-#ifndef AIRI_DIFFUSE_VS_APPLY
-#define AIRI_DIFFUSE_VS_APPLY
+#ifndef MIRA_DIFFUSE_VS_APPLY
+#define MIRA_DIFFUSE_VS_APPLY
 vWorldNormal = normalize( mat3( modelMatrix ) * objectNormal );
 #endif
 `
 
 const FS_COMMON = `
-#ifndef AIRI_DIFFUSE_COMMON
-#define AIRI_DIFFUSE_COMMON
+#ifndef MIRA_DIFFUSE_COMMON
+#define MIRA_DIFFUSE_COMMON
 uniform int   uNprEnvMode;    // 0=off, 2=skybox
 uniform float uEnvIntensity;
 uniform vec3  uSHCoeffs[9];
@@ -31,7 +31,7 @@ const float C2=1.0925484306;
 const float C3=0.3153915653;
 const float C4=0.5462742153;
 
-vec3 AIRI_evalIrradianceSH(vec3 n){
+vec3 MIRA_evalIrradianceSH(vec3 n){
   n = normalize(n);
   vec3 r = uSHCoeffs[0]*C0;
   r += uSHCoeffs[1]*(-C1*n.y);
@@ -48,10 +48,10 @@ vec3 AIRI_evalIrradianceSH(vec3 n){
 `
 
 const FS_APPLY = `
-#ifndef AIRI_DIFFUSE_APPLY
-#define AIRI_DIFFUSE_APPLY
+#ifndef MIRA_DIFFUSE_APPLY
+#define MIRA_DIFFUSE_APPLY
 if (uNprEnvMode == 2) {
-  vec3 I = AIRI_evalIrradianceSH(normalize(vWorldNormal));
+  vec3 I = MIRA_evalIrradianceSH(normalize(vWorldNormal));
   gl_FragColor.rgb += (gl_FragColor.rgb / PI) * I * uEnvIntensity;
 }
 #endif
@@ -87,18 +87,18 @@ function assignSHUniform(u: any, sh: THREE.SphericalHarmonics3 | null | undefine
 // ===== Shader Material: IBL shader injection =====
 export function injectDiffuseIBL(mat: THREE.ShaderMaterial) {
   const baseKey = mat.customProgramCacheKey?.() ?? ''
-  mat.customProgramCacheKey = () => `${baseKey}|airi-diffuse-ibl`
+  mat.customProgramCacheKey = () => `${baseKey}|mira-diffuse-ibl`
 
   const prev = mat.onBeforeCompile
   mat.onBeforeCompile = (shader: any, renderer: any) => {
     prev?.(shader, renderer)
 
     // vertex shader declare & apply
-    if (!shader.vertexShader.includes('AIRI_DIFFUSE_VS_DECL')) {
+    if (!shader.vertexShader.includes('MIRA_DIFFUSE_VS_DECL')) {
       shader.vertexShader = `${VS_DECL}\n${shader.vertexShader}`
     }
     if (shader.vertexShader.includes('#include <defaultnormal_vertex>')
-      && !shader.vertexShader.includes('AIRI_DIFFUSE_VS_APPLY')) {
+      && !shader.vertexShader.includes('MIRA_DIFFUSE_VS_APPLY')) {
       shader.vertexShader = shader.vertexShader.replace(
         '#include <defaultnormal_vertex>',
         `#include <defaultnormal_vertex>\n${VS_APPLY}`,
@@ -106,7 +106,7 @@ export function injectDiffuseIBL(mat: THREE.ShaderMaterial) {
     }
 
     // fragement shader common
-    if (!shader.fragmentShader.includes('AIRI_DIFFUSE_COMMON')) {
+    if (!shader.fragmentShader.includes('MIRA_DIFFUSE_COMMON')) {
       shader.fragmentShader = shader.fragmentShader.replace(
         '#include <common>',
         `#include <common>\n${FS_COMMON}`,
@@ -114,7 +114,7 @@ export function injectDiffuseIBL(mat: THREE.ShaderMaterial) {
     }
 
     // fragement shader apply
-    if (!shader.fragmentShader.includes('AIRI_DIFFUSE_APPLY')) {
+    if (!shader.fragmentShader.includes('MIRA_DIFFUSE_APPLY')) {
       shader.fragmentShader = shader.fragmentShader.replace(
         '#include <dithering_fragment>',
         `${FS_APPLY}\n#include <dithering_fragment>`,
@@ -126,7 +126,7 @@ export function injectDiffuseIBL(mat: THREE.ShaderMaterial) {
     shader.uniforms.uNprEnvMode ||= { value: 0 }
     shader.uniforms.uEnvIntensity ||= { value: 0.0 }
     shader.uniforms.uSHCoeffs ||= { value: emptySH };
-    (mat.userData ||= {}).__airiIbl = shader.uniforms
+    (mat.userData ||= {}).__miraIbl = shader.uniforms
   }
 
   if ('toneMapped' in mat)
@@ -145,7 +145,7 @@ export function updateNprShaderSetting(
     const raw = (mesh as any).material
     const mats: any[] = raw ? (Array.isArray(raw) ? raw : [raw]) : []
     mats.forEach((m) => {
-      const u = m?.userData?.__airiIbl
+      const u = m?.userData?.__miraIbl
       if (!u)
         return
       u.uNprEnvMode.value = shaderMode
@@ -158,7 +158,7 @@ export function updateNprShaderSetting(
 // ===== MToon LightProbe IBL =====
 export function createIblProbeController(scene: THREE.Scene) {
   const probe = new THREE.LightProbe()
-  probe.name = 'AIRI_IBL_Probe'
+  probe.name = 'MIRA_IBL_Probe'
   scene.add(probe)
 
   function update(mode: EnvMode, intensity: number, sh?: THREE.SphericalHarmonics3 | null) {

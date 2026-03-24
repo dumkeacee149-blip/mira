@@ -1,6 +1,6 @@
 import type { Preset } from 'unocss'
 
-import { presetChromatic } from '@proj-airi/unocss-preset-chromatic'
+import { presetChromatic } from '@proj-mira/unocss-preset-chromatic'
 import {
   defineConfig,
 

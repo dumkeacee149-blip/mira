@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useSettings } from '@proj-airi/stage-ui/stores/settings'
-import { useTheme } from '@proj-airi/ui'
+import { useSettings } from '@proj-mira/stage-ui/stores/settings'
+import { useTheme } from '@proj-mira/ui'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
@@ -58,6 +58,10 @@ const isActive = computed(() => (path: string) => {
 function go(path: string) {
   if (route.path !== path)
     void router.push(path)
+}
+
+function reloadApp() {
+  window.location.reload()
 }
 </script>
 
@@ -122,7 +126,7 @@ function go(path: string) {
             </button>
             <button
               class="border border-neutral-700 rounded-lg px-2 py-1 transition-colors hover:bg-neutral-800"
-              @click="() => window.location.reload()"
+              @click="reloadApp"
             >
               <span class="i-solar:refresh-linear text-sm" />
             </button>
@@ -148,7 +152,7 @@ function go(path: string) {
               当前版本
             </p>
             <p class="text-sm text-neutral-100">
-              MiRa Desktop
+              Mira Desktop
             </p>
           </div>
           <div class="border border-neutral-700 rounded-xl bg-neutral-900/70 p-2">

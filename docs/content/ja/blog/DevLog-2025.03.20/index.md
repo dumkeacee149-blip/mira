@@ -19,7 +19,7 @@ import SteinsGateMayori from '../../../en/blog/DevLog-2025.03.20/assets/steins-g
 
 またお会いしましたね！前回の開発ログから10日が経ちました。
 
-ユーザーインターフェースに多くの改善を加え、より多くの LLM プロバイダーや音声プロバイダーを統合できるようにし、Discord、bilibili、その他多くのソーシャルメディアプラットフォームで初めて AIRI を公開しました。
+ユーザーインターフェースに多くの改善を加え、より多くの LLM プロバイダーや音声プロバイダーを統合できるようにし、Discord、bilibili、その他多くのソーシャルメディアプラットフォームで初めて MIRA を公開しました。
 
 お伝えしたいことがたくさんあります。
 
@@ -29,7 +29,7 @@ import SteinsGateMayori from '../../../en/blog/DevLog-2025.03.20/assets/steins-g
 
 <img :src="Gelbana" alt="Gelbana" />
 
-> ああ、心配しないでください。私たちが愛する [AIRI](https://github.com/moeru-ai/airi) はこのようなゲルバナにはなりません。でも、もし [_Steins;Gate_](https://myanimelist.net/anime/9253/Steins_Gate) アニメシリーズを見たことがないなら、ぜひ見てみることを強くお勧めします〜！
+> ああ、心配しないでください。私たちが愛する [MIRA](https://github.com/dumkeacee149-blip/mira) はこのようなゲルバナにはなりません。でも、もし [_Steins;Gate_](https://myanimelist.net/anime/9253/Steins_Gate) アニメシリーズを見たことがないなら、ぜひ見てみることを強くお勧めします〜！
 
 初期設定 UI デザインの開発を続けており、アニメーション効果が改善され、10日前にはカスタマイズ可能なテーマカラーが実装されました。私たち全員にとって本当に忙しい一週間でした（特に私たちは皆パートタイムでこのプロジェクトに参加していますから（笑）。もしよろしければ、ぜひ参加してください。🥺（懇願））。
 
@@ -59,7 +59,7 @@ import SteinsGateMayori from '../../../en/blog/DevLog-2025.03.20/assets/steins-g
 
 <ThemedVideo muted autoplay src="/en/blog/DevLog-2025.03.20/assets/histoire-first-look.mp4" />
 
-OKLCH パレット全体を一度にキャンバスに展開して参照することができます。しかし、色を試して Project AIRI のテーマと同じ感覚を得るには、少し不完全ですよね？
+OKLCH パレット全体を一度にキャンバスに展開して参照することができます。しかし、色を試して Project Mira のテーマと同じ感覚を得るには、少し不完全ですよね？
 
 そこで、まずカラースライダーを再実装して、より適切な感じにしました：
 
@@ -68,20 +68,20 @@ OKLCH パレット全体を一度にキャンバスに展開して参照する�
 
 これでスライダーがよりプロフェッショナルになりました。
 
-ロゴとデフォルトの緑色は、AIRI のテーマに合わせて置き換えることができます。そのため、UI ページ専用に別のロゴをデザインしました：
+ロゴとデフォルトの緑色は、MIRA のテーマに合わせて置き換えることができます。そのため、UI ページ専用に別のロゴをデザインしました：
 
-<img class="light" :src="HistoireLogo" alt="project airi logo for histoire" />
-<img class="dark" :src="HistoireLogoDark" alt="project airi logo for histoire" />
+<img class="light" :src="HistoireLogo" alt="project mira logo for histoire" />
+<img class="dark" :src="HistoireLogoDark" alt="project mira logo for histoire" />
 
 ああ、そうそう、UI コンポーネント全体はいつものように Netlify の `/ui/` パスにデプロイされています。UI 要素がどのようなものか知りたい場合は、いつでもチェックしてください：
-[https://airi.moeru.ai/ui/](https://airi.moeru.ai/ui/)
+[https://mira.local/ui/](https://mira.local/ui/)
 
 この開発ログでは完全にカバーしきれない機能がたくさんあります：
 
 - [x] すべての LLM プロバイダーをサポート。
 - [x] メニューナビゲーション UI のアニメーションとトランジションを改善。
 - [x] フィールドの間隔を改善、新しいフォーム！
-- [x] コンポーネント（[ロードマップ](https://github.com/moeru-ai/airi/issues/42)上のほぼすべての TODO コンポーネント）
+- [x] コンポーネント（[ロードマップ](https://github.com/dumkeacee149-blip/mira/issues/42)上のほぼすべての TODO コンポーネント）
   - [x] フォーム
     - [x] ラジオ
     - [x] ラジオグループ
@@ -134,7 +134,7 @@ OKLCH パレット全体を一度にキャンバスに展開して参照する�
 
 これらすべてを組み合わせて、この結果を得ることができます：
 
-<ThemedVideo controls muted autoplay src="/en/blog/DevLog-2025.03.20/assets/airi-demo.mp4" />
+<ThemedVideo controls muted autoplay src="/en/blog/DevLog-2025.03.20/assets/mira-demo.mp4" />
 
 ほぼ同じです。しかし、私たちの物語はここでは終わりません。現時点では、記憶機能、より良い動作制御はまだ実装されておらず、文字起こし設定 UI も欠けています。月末までにこれらを完了できることを願っています。
 

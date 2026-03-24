@@ -1,9 +1,9 @@
 ---
 title: Web UI
-description: Contribute to Project AIRI
+description: Contribute to Project Mira
 ---
 
-### Stage Web (Browser version for [airi.moeru.ai](https://airi.moeru.ai))
+### Stage Web (Browser version for [mira.moeru.ai](https://mira.local))
 
 ```shell
 pnpm dev

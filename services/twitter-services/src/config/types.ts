@@ -31,7 +31,7 @@ export interface Config {
 
   // Adapter configuration
   adapters: {
-    airi?: {
+    mira?: {
       url?: string
       token?: string
       enabled: boolean
@@ -86,10 +86,10 @@ export function getDefaultConfig(): Config {
       },
     },
     adapters: {
-      airi: {
-        url: process.env.AIRI_URL || 'http://localhost:3000',
-        token: process.env.AIRI_TOKEN || '',
-        enabled: process.env.ENABLE_AIRI === 'true',
+      mira: {
+        url: process.env.MIRA_URL || 'http://localhost:3000',
+        token: process.env.MIRA_TOKEN || '',
+        enabled: process.env.ENABLE_MIRA === 'true',
       },
       mcp: {
         port: Number(process.env.MCP_PORT || 8080),

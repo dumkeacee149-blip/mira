@@ -1,6 +1,6 @@
 ---
 title: Guide to Desktop version
-description: How to use Tamagotchi version of Project AIRI
+description: How to use Tamagotchi version of Project Mira
 ---
 
 ## I want to chat, now!
@@ -49,7 +49,7 @@ But first...
 Thank you for downloading and trying it!
 :::
 
-After downloaded, start AIRI from anywhere. You will see the user interface consists of two parts:
+After downloaded, start MIRA from anywhere. You will see the user interface consists of two parts:
 
 - Onboarding / Wizard setup guide
 - Model (capable of showing Live2D & VRM models)

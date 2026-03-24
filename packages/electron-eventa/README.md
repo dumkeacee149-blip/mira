@@ -1,8 +1,8 @@
-# @proj-airi/electron-eventa
+# @proj-mira/electron-eventa
 
-Shared Eventa contract definitions for Electron IPC across AIRI apps.
+Shared Eventa contract definitions for Electron IPC across MIRA apps.
 
 ## Exports
 
-- `@proj-airi/electron-eventa`: core Electron contracts (`electron`, `bounds`, `cursorScreenPoint`, etc.)
-- `@proj-airi/electron-eventa/electron-updater`: auto-updater contracts and state types
+- `@proj-mira/electron-eventa`: core Electron contracts (`electron`, `bounds`, `cursorScreenPoint`, etc.)
+- `@proj-mira/electron-eventa/electron-updater`: auto-updater contracts and state types

@@ -10,13 +10,13 @@ app.use(bodyParser.json({ limit: '1mb' }))
  * Environment toggles:
  * - OPENCLAW_UPSTREAM_URL: optional real openclaw service url
  *   e.g. http://127.0.0.1:8080
- * - OPENCLAW_UPSTREAM_PATH: endpoint path, default /v1/airi/invoke
+ * - OPENCLAW_UPSTREAM_PATH: endpoint path, default /v1/mira/invoke
  * - OPENCLAW_UPSTREAM_API_KEY: optional Bearer token
  * - OPENCLAW_CONTEXT_TOP_K: used for quick summaries in fallback mode
  */
 
 const UPSTREAM_URL = process.env.OPENCLAW_UPSTREAM_URL
-const UPSTREAM_PATH = process.env.OPENCLAW_UPSTREAM_PATH || '/v1/airi/invoke'
+const UPSTREAM_PATH = process.env.OPENCLAW_UPSTREAM_PATH || '/v1/mira/invoke'
 const UPSTREAM_API_KEY = process.env.OPENCLAW_UPSTREAM_API_KEY
 const FALLBACK_TOP_K = Number(process.env.OPENCLAW_CONTEXT_TOP_K || 8)
 
@@ -196,7 +196,7 @@ async function callUpstreamOpenClaw(body) {
   return normalizeResponse(raw)
 }
 
-app.post('/v1/airi/invoke', async (req, res) => {
+app.post('/v1/mira/invoke', async (req, res) => {
   const payload = req.body || {}
 
   try {
@@ -239,7 +239,7 @@ app.post('/v1/airi/invoke', async (req, res) => {
 app.get('/health', (_req, res) => {
   res.json({
     ok: true,
-    service: 'openclaw-airi-template-node',
+    service: 'openclaw-mira-template-node',
     upstream: Boolean(UPSTREAM_URL),
     upstreamUrl: UPSTREAM_URL || null,
   })
@@ -247,7 +247,7 @@ app.get('/health', (_req, res) => {
 
 app.listen(PORT, () => {
   console.log(`[openclaw-template-node] listening on :${PORT}`)
-  console.log(`[openclaw-template-node] endpoint: POST /v1/airi/invoke`)
+  console.log(`[openclaw-template-node] endpoint: POST /v1/mira/invoke`)
   if (UPSTREAM_URL)
     console.log(`[openclaw-template-node] upstream -> ${new URL(UPSTREAM_PATH, UPSTREAM_URL).toString()}`)
   else

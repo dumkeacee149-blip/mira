@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useAiriCardStore } from '../../stores/modules/airi-card'
+import { useMiraCardStore } from '../../stores/modules/mira-card'
 
 interface Props {
   // 'down': opens below the trigger (for elements near the top, e.g. header)
@@ -20,7 +20,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
-const cardStore = useAiriCardStore()
+const cardStore = useMiraCardStore()
 const { cards, activeCardId, activeCard } = storeToRefs(cardStore)
 
 const open = ref(false)

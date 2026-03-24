@@ -4,11 +4,11 @@ import { argv, env } from 'node:process'
 
 const serverURL = env.CAPACITOR_DEV_SERVER_URL
 
-const appId = argv.includes('android') ? 'ai.moeru.airi_pocket' : 'ai.moeru.airi-pocket'
+const appId = argv.includes('android') ? 'io.mira.pocket' : 'io.mira.pocket'
 
 const config: CapacitorConfig = {
   appId,
-  appName: 'AIRI',
+  appName: 'MIRA',
   webDir: 'dist',
   server: serverURL
     ? {

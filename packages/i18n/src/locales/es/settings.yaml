@@ -9,7 +9,7 @@ animations:
     title: Usar Transiciones Específicas de Página
 dialogs:
   onboarding:
-    title: '¡Bienvenido a AIRI!'
+    title: '¡Bienvenido a MIRA!'
     description: Configuremos tu primer proveedor de IA para comenzar.
     selectProvider: Elige un Proveedor de IA
     configureProvider: Configurar {provider}
@@ -50,7 +50,7 @@ dialogs:
 language:
   title: Idioma
   description: >
-    Cambia el idioma de la interfaz de AIRI. Esto no afectará el idioma de las respuestas del personaje.
+    Cambia el idioma de la interfaz de MIRA. Esto no afectará el idioma de las respuestas del personaje.
 controls-island:
   icon-size:
     title: Tamaño de icono de la isla de controles
@@ -114,7 +114,7 @@ pages:
     delete: Eliminar
     delete_card: Eliminar Tarjeta
     delete_confirmation: '¿Estás seguro de que quieres eliminar esta tarjeta?'
-    description: Usar presets de tarjeta de personaje AIRI
+    description: Usar presets de tarjeta de personaje MIRA
     description_label: Descripción
     drop_here: Suelta para subir
     create_card: Crear una nueva Tarjeta
@@ -182,7 +182,7 @@ pages:
       model: Habla / Modelo
       voice: Habla / Voz
     systemprompt: Prompt del Sistema
-    title: Tarjeta AIRI
+    title: Tarjeta MIRA
     try_different_search: Prueba un término de búsqueda diferente
     upload: Subir
     upload_desc: Haz clic o arrastra el archivo para subir
@@ -191,7 +191,7 @@ pages:
     title: Memoria
   data:
     title: Datos
-    description: Administrar, exportar y restablecer los datos de AIRI
+    description: Administrar, exportar y restablecer los datos de MIRA
     sections:
       chats:
         title: Conversaciones
@@ -220,7 +220,7 @@ pages:
         delete: Eliminar todos los datos
       desktop:
         title: Restablecer ajustes de escritorio y estados
-        description: Limpiar ajustes de escritorio y estado de ejecución de AIRI.
+        description: Limpiar ajustes de escritorio y estado de ejecución de MIRA.
         reset: Restablecer datos de escritorio
     confirmations:
       tooltip: '¿Estás seguro?'
@@ -330,7 +330,7 @@ pages:
       description: '¡Jugando Factorio!'
       title: Factorio
       enable: Habilitar integración con Factorio
-      enable-description: Permitir que AIRI interactúe con el juego Factorio
+      enable-description: Permitir que MIRA interactúe con el juego Factorio
       server-address: Dirección del servidor
       server-address-description: La dirección IP o nombre de host del servidor de Factorio
       server-address-placeholder: Ingrese la dirección del servidor (por ejemplo, localhost o 192.168.1.100)
@@ -344,7 +344,7 @@ pages:
       description: '¡Jugando Minecraft!'
       title: Minecraft
       enable: Habilitar integración con Minecraft
-      enable-description: Permitir que AIRI interactúe con el juego Minecraft
+      enable-description: Permitir que MIRA interactúe con el juego Minecraft
       server-address: Dirección del servidor
       server-address-description: La dirección IP o nombre de host del servidor de Minecraft
       server-address-placeholder: Ingrese la dirección del servidor (por ejemplo, localhost o play.ejemplo.com)
@@ -371,7 +371,7 @@ pages:
       description: Chat y chat de voz por Discord
       title: Discord
       enable: Habilitar integración con Discord
-      enable-description: Permitir que AIRI interactúe a través de Discord
+      enable-description: Permitir que MIRA interactúe a través de Discord
       token: Token del bot
       token-description: Su token de bot de Discord
       token-placeholder: Ingrese su token de bot de Discord
@@ -404,7 +404,7 @@ pages:
             search_voices_results: Encontradas {count} de {total} voces
             unsupported_voice_warning_title: No supported voices
             unsupported_voice_warning_content: >-
-              Try a different model or provider. We are working on supporting all the voice for this model as quickly as possible. If you need it urgently, please let us know on GitHub at https://github.com/moeru-ai/airi/issues.
+              Try a different model or provider. We are working on supporting all the voice for this model as quickly as possible. If you need it urgently, please let us know on GitHub at https://github.com/dumkeacee149-blip/mira/issues.
             show_less: Mostrar menos
             show_more: Mostrar más
             title: Proveedor
@@ -423,7 +423,7 @@ pages:
       description: Navegación y uso de X / Twitter
       title: X / Twitter
       enable: Habilitar integración con X / Twitter
-      enable-description: Permitir que AIRI interactúe con X / Twitter
+      enable-description: Permitir que MIRA interactúe con X / Twitter
       api-key: Clave API
       api-key-description: Su clave API de X / Twitter
       api-key-placeholder: Ingrese su clave API de X / Twitter
@@ -458,7 +458,7 @@ pages:
     helpinfo:
       title: '¿Primera vez aquí?'
       description: >
-        AIRI requiere que al menos un proveedor de {chat} esté configurado para pensar y comportarse correctamente. Podrías pensarlo como el cerebro de los personajes que viven en el sistema AIRI.
+        MIRA requiere que al menos un proveedor de {chat} esté configurado para pensar y comportarse correctamente. Podrías pensarlo como el cerebro de los personajes que viven en el sistema MIRA.
     catalog:
       edit:
         config-id-not-found: Provider configuration not found.
@@ -529,7 +529,7 @@ pages:
                   openai-compatible-check-connectivity:
                     label: Configuración extra necesaria para Ollama
                     content: >-
-                      Lamentamos escuchar que la conexion con Ollama falló. No te preocupes, para las instancias de Ollama, es necesaria una configuración extra para que pase por Ollama. Debe establecer <code>OLLAMA_HOST</code> explícitamente al iniciar la aplicación Ollama o el servidor CLI de Ollama, para obtener información detallada, consulte la guía <a href="https://airi.moeru.ai/docs/en/docs/manual/integrations/providers/chat/ollama">de integración Ollama</a>.
+                      Lamentamos escuchar que la conexion con Ollama falló. No te preocupes, para las instancias de Ollama, es necesaria una configuración extra para que pase por Ollama. Debe establecer <code>OLLAMA_HOST</code> explícitamente al iniciar la aplicación Ollama o el servidor CLI de Ollama, para obtener información detallada, consulte la guía <a href="https://mira.local/docs/en/docs/manual/integrations/providers/chat/ollama">de integración Ollama</a>.
     common:
       continueAnyway: Continuar de todos modos
       goToModelSelection: 'Select Model →'
@@ -885,8 +885,8 @@ pages:
           presets:
             default:
               colors:
-                color-1: AIRI Green
-              description: The default greenish theme color, brought by AIRI to you!
+                color-1: MIRA Green
+              description: The default greenish theme color, brought by MIRA to you!
               title: Default Color
             morandi:
               colors:
@@ -963,7 +963,7 @@ sections:
 theme:
   title: Tema
   description: |
-    Cambiar el tema base de AIRI, modo Claro o modo Oscuro.
+    Cambiar el tema base de MIRA, modo Claro o modo Oscuro.
 title: Configuración
 voices: Voz
 vrm:

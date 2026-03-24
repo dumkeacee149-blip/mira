@@ -1,5 +1,5 @@
-import { migrate } from '@proj-airi/drizzle-orm-browser-migrator/pg'
-import { migrations } from '@proj-airi/server-schema'
+import { migrate } from '@proj-mira/drizzle-orm-browser-migrator/pg'
+import { migrations } from '@proj-mira/server-schema'
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { Pool } from 'pg'
 

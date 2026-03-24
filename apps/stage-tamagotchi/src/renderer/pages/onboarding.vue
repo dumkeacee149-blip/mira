@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 
-import { useElectronEventaInvoke } from '@proj-airi/electron-vueuse'
-import { OnboardingScreen } from '@proj-airi/stage-ui/components'
-import { useOnboardingStore } from '@proj-airi/stage-ui/stores/onboarding'
-import { useTheme } from '@proj-airi/ui'
+import { useElectronEventaInvoke } from '@proj-mira/electron-vueuse'
+import { OnboardingScreen } from '@proj-mira/stage-ui/components'
+import { useOnboardingStore } from '@proj-mira/stage-ui/stores/onboarding'
+import { useTheme } from '@proj-mira/ui'
 import { computed } from 'vue'
 
 import OnboardingOpenClawRuntimeStep from '../components/onboarding-openclaw-runtime.vue'

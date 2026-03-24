@@ -4,7 +4,7 @@ import { createServer } from 'node:http'
 
 const PORT = Number(process.env.PORT || 8123)
 const UPSTREAM_URL = process.env.OPENCLAW_UPSTREAM_URL
-const UPSTREAM_PATH = process.env.OPENCLAW_UPSTREAM_PATH || '/v1/airi/invoke'
+const UPSTREAM_PATH = process.env.OPENCLAW_UPSTREAM_PATH || '/v1/mira/invoke'
 const UPSTREAM_API_KEY = process.env.OPENCLAW_UPSTREAM_API_KEY
 const FALLBACK_TOP_K = Number(process.env.OPENCLAW_CONTEXT_TOP_K || 8)
 
@@ -70,7 +70,7 @@ function normalizeResponse(raw = {}) {
       episodic: memory.episodic || [],
     },
     meta: {
-      source: 'airi-bundled-openclaw-runtime',
+      source: 'mira-bundled-openclaw-runtime',
       upstreamUsed: Boolean(UPSTREAM_URL),
     },
   }
@@ -178,13 +178,13 @@ const server = createServer(async (req, res) => {
     res.writeHead(200, { 'content-type': 'application/json; charset=utf-8' })
     return res.end(JSON.stringify({
       ok: true,
-      service: 'airi-bundled-openclaw-runtime',
+      service: 'mira-bundled-openclaw-runtime',
       upstream: Boolean(UPSTREAM_URL),
       upstreamUrl: UPSTREAM_URL || null,
     }))
   }
 
-  if (req.method === 'POST' && req.url === '/v1/airi/invoke') {
+  if (req.method === 'POST' && req.url === '/v1/mira/invoke') {
     try {
       const payload = await readBody(req)
       return handleInvoke(payload, res)
@@ -204,5 +204,5 @@ const server = createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.info(`[openclaw-runtime] listening on :${PORT}`)
-  console.info('[openclaw-runtime] endpoint: POST /v1/airi/invoke')
+  console.info('[openclaw-runtime] endpoint: POST /v1/mira/invoke')
 })

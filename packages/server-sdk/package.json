@@ -1,17 +1,17 @@
 {
-  "name": "@proj-airi/server-sdk",
+  "name": "@proj-mira/server-sdk",
   "type": "module",
   "version": "0.9.0-alpha.18",
-  "description": "Client-side SDK implementation for connecting to AIRI server components and runtimes",
+  "description": "Client-side SDK implementation for connecting to MIRA server components and runtimes",
   "author": {
-    "name": "Moeru AI Project AIRI Team",
-    "email": "airi@moeru.ai",
-    "url": "https://github.com/moeru-ai"
+    "name": "Project Mira Team",
+    "email": "contact@mira.local",
+    "url": "https://github.com/dumkeacee149-blip"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git",
+    "url": "https://github.com/dumkeacee149-blip/mira.git",
     "directory": "packages/server-sdk"
   },
   "exports": {
@@ -37,7 +37,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@proj-airi/server-shared": "workspace:^",
+    "@proj-mira/server-shared": "workspace:^",
     "crossws": "^0.4.4",
     "superjson": "catalog:"
   },

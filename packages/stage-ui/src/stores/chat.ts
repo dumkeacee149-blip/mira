@@ -1,11 +1,11 @@
-import type { WebSocketEventInputs } from '@proj-airi/server-sdk'
+import type { WebSocketEventInputs } from '@proj-mira/server-sdk'
 import type { ChatProvider } from '@xsai-ext/providers/utils'
 import type { CommonContentPart, Message, ToolMessage } from '@xsai/shared-chat'
 
 import type { ChatAssistantMessage, ChatSlices, ChatStreamEventContext, StreamingAssistantMessage } from '../types/chat'
 import type { StreamEvent, StreamOptions } from './llm'
 
-import { createQueue } from '@proj-airi/stream-kit'
+import { createQueue } from '@proj-mira/stream-kit'
 import { nanoid } from 'nanoid'
 import { defineStore, storeToRefs } from 'pinia'
 import { ref, toRaw } from 'vue'

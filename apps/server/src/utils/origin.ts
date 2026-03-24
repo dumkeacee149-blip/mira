@@ -5,7 +5,7 @@ export function getTrustedOrigin(origin: string): string {
   }
 
   // 2. Allow Production (Exact Match)
-  if (origin === 'https://airi.moeru.ai') {
+  if (origin === 'https://mira.local') {
     return origin
   }
 
