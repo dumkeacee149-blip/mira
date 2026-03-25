@@ -1,6 +1,6 @@
 export const BRAND = {
-  name: 'MiRa',
-  shortName: 'MiRa',
+  name: 'Mira',
+  shortName: 'Mira',
   namespace: 'com.mira.assistant',
   appId: 'com.mira.assistant.desktop',
   homepage: 'https://mira-assistant.app',
@@ -9,10 +9,11 @@ export const BRAND = {
 }
 
 export const BRAND_UI = {
-  welcomeTitle: 'Welcome to MiRa',
-  mainWindowTitle: 'MiRa',
-  dashboardWindowTitle: 'MiRa Dashboard',
-  aboutWindowTitle: 'About MiRa',
+  name: BRAND.name,
+  welcomeTitle: 'Welcome to Mira',
+  mainWindowTitle: 'Mira',
+  dashboardWindowTitle: 'Mira Dashboard',
+  aboutWindowTitle: 'About Mira',
   homeLabel: 'Home',
   documentsLabel: 'Documentation',
   repoLabel: 'GitHub',
