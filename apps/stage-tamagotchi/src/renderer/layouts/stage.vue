@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useSettings } from '@proj-mira/stage-ui/stores/settings'
-import { useTheme } from '@proj-mira/ui'
+import { useSettings } from '@proj-airi/stage-ui/stores/settings'
+import { useTheme } from '@proj-airi/ui'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
