@@ -224,6 +224,9 @@ export const useOpenClawStore = defineStore('openclaw', () => {
     runtimeHealthUrl.reset()
     responseTimeoutMs.reset()
     lastError.value = ''
+    lastRoutedAt.value = undefined
+    lastRemoteMessageAt.value = undefined
+    lastRemoteCompleteAt.value = undefined
     runtimeHealth.value = null
 
     for (const sessionId of Object.keys(pendingRequests.value))

@@ -6,6 +6,7 @@ export interface ChatImageAttachmentPreview {
   name: string
   mimeType: string
   size: number
+  lastModified: number
   data: string
   previewUrl: string
 }
@@ -32,8 +33,8 @@ function extractBase64Content(dataUrl: string) {
   return base64
 }
 
-function normalizeAttachmentKey(file: File) {
-  return `${file.name}:${file.size}:${file.lastModified}`
+function normalizeAttachmentKey(input: Pick<ChatImageAttachmentPreview, 'name' | 'size' | 'lastModified'>) {
+  return `${input.name}:${input.size}:${input.lastModified}`
 }
 
 export function useChatAttachments() {
@@ -59,7 +60,7 @@ export function useChatAttachments() {
     error.value = ''
 
     try {
-      const existingKeys = new Set(attachments.value.map(attachment => `${attachment.name}:${attachment.size}:${attachment.mimeType}`))
+      const existingKeys = new Set(attachments.value.map(attachment => normalizeAttachmentKey(attachment)))
 
       for (const file of imageFiles) {
         const normalizedKey = normalizeAttachmentKey(file)
@@ -72,6 +73,7 @@ export function useChatAttachments() {
           name: file.name,
           mimeType: file.type || 'image/png',
           size: file.size,
+          lastModified: file.lastModified,
           data: extractBase64Content(dataUrl),
           previewUrl: dataUrl,
         })

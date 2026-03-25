@@ -4,6 +4,7 @@ import { isStageTamagotchi } from '@proj-mira/stage-shared'
 import { useLive2d } from '@proj-mira/stage-ui-live2d'
 
 import { useChatOrchestratorStore } from '../stores/chat'
+import { useChatContextStore } from '../stores/chat/context-store'
 import { useChatSessionStore } from '../stores/chat/session-store'
 import { useDisplayModelsStore } from '../stores/display-models'
 import { useMcpStore } from '../stores/mcp'
@@ -25,6 +26,7 @@ import { useSettings, useSettingsAudioDevice } from '../stores/settings'
 export function useDataMaintenance() {
   const chatStore = useChatSessionStore()
   const chatOrchestrator = useChatOrchestratorStore()
+  const chatContextStore = useChatContextStore()
   const displayModelsStore = useDisplayModelsStore()
   const providersStore = useProvidersStore()
   const settingsStore = useSettings()
@@ -55,6 +57,7 @@ export function useDataMaintenance() {
   }
 
   function resetModulesSettings() {
+    chatContextStore.resetContexts()
     hearingStore.resetState()
     speechStore.resetState()
     consciousnessStore.resetState()
