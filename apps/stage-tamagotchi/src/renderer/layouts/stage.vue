@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useSettings } from '@proj-airi/stage-ui/stores/settings'
-import { useTheme } from '@proj-airi/ui'
+import { useSettings } from '@proj-mira/stage-ui/stores/settings'
+import { useTheme } from '@proj-mira/ui'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
@@ -59,6 +59,10 @@ function go(path: string) {
   if (route.path !== path)
     void router.push(path)
 }
+
+function reloadApp() {
+  window.location.reload()
+}
 </script>
 
 <template>
@@ -98,10 +102,10 @@ function go(path: string) {
         <div class="mt-4 rounded-xl bg-neutral-800/80 p-3 text-xs text-neutral-300">
           <p class="mb-1.5 flex items-center gap-2">
             <span class="size-2 rounded-full" :class="alwaysOnTop ? 'bg-emerald-400' : 'bg-neutral-500'" />
-            常驻窗口
+            甯搁┗绐楀彛
           </p>
           <p class="text-[11px] text-neutral-500">
-            {{ alwaysOnTop ? '已开启置顶' : '已关闭置顶' }}
+            {{ alwaysOnTop ? '宸插紑鍚疆椤? : '宸插叧闂疆椤? }}
           </p>
         </div>
       </aside>
@@ -115,14 +119,14 @@ function go(path: string) {
           </div>
           <div class="flex items-center gap-2">
             <div class="rounded-full bg-emerald-500/20 px-2 py-1 text-emerald-300">
-              在线
+              鍦ㄧ嚎
             </div>
             <button class="border border-neutral-700 rounded-lg px-2 py-1 transition-colors hover:bg-neutral-800" @click="toggleDark()">
               <span :class="isDark ? 'i-solar:moon-outline' : 'i-solar:sun-2-outline'" class="text-sm" />
             </button>
             <button
               class="border border-neutral-700 rounded-lg px-2 py-1 transition-colors hover:bg-neutral-800"
-              @click="() => window.location.reload()"
+              @click="reloadApp"
             >
               <span class="i-solar:refresh-linear text-sm" />
             </button>
@@ -140,31 +144,30 @@ function go(path: string) {
       <!-- Right context panel -->
       <aside class="w-72 flex-shrink-0 border border-neutral-800 rounded-2xl bg-neutral-900/85 p-2 shadow-2xl shadow-black/20 backdrop-blur-xl hidden xl:flex xl:flex-col">
         <p class="px-2 text-xs text-neutral-400 font-semibold tracking-[0.12em] uppercase">
-          状态栏
+          鐘舵€佹爮
         </p>
         <div class="mt-2 space-y-2">
           <div class="border border-neutral-700 rounded-xl bg-neutral-900/70 p-2">
             <p class="text-xs text-neutral-400">
-              当前版本
+              褰撳墠鐗堟湰
             </p>
             <p class="text-sm text-neutral-100">
-              MiRa Desktop
+              Mira Desktop
             </p>
           </div>
           <div class="border border-neutral-700 rounded-xl bg-neutral-900/70 p-2">
             <p class="text-xs text-neutral-400">
-              快捷操作
+              蹇嵎鎿嶄綔
             </p>
             <div class="mt-2 flex flex-col gap-2">
               <RouterLink to="/chat" class="border border-neutral-700 rounded-lg px-2 py-1 text-sm text-neutral-200 transition-colors hover:bg-neutral-800">
-                进入对话
+                杩涘叆瀵硅瘽
               </RouterLink>
               <RouterLink to="/widgets" class="border border-neutral-700 rounded-lg px-2 py-1 text-sm text-neutral-200 transition-colors hover:bg-neutral-800">
-                打开 Widgets
+                鎵撳紑 Widgets
               </RouterLink>
               <RouterLink to="/settings" class="border border-neutral-700 rounded-lg px-2 py-1 text-sm text-neutral-200 transition-colors hover:bg-neutral-800">
-                设置页
-              </RouterLink>
+                璁剧疆椤?              </RouterLink>
             </div>
           </div>
         </div>
