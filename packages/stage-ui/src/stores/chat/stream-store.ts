@@ -1,4 +1,4 @@
-import type { StreamingAssistantMessage } from '../../types/chat'
+import type { ChatAssistantMessage, StreamingAssistantMessage } from '../../types/chat'
 
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
@@ -28,6 +28,14 @@ export const useChatStreamStore = defineStore('chat-stream', () => {
     })
   }
 
+  function hydrateStreamMessage(message: ChatAssistantMessage & { createdAt?: number, id?: string }) {
+    streamingMessage.value = {
+      ...message,
+      slices: [...(message.slices ?? [])],
+      tool_results: [...(message.tool_results ?? [])],
+    }
+  }
+
   function finalizeStream(fullText?: string) {
     const sessionId = chatSession.activeSessionId
     const sessionMessagesForSend = chatSession.getSessionMessages(sessionId)
@@ -47,6 +55,7 @@ export const useChatStreamStore = defineStore('chat-stream', () => {
     streamingMessage,
     beginStream,
     appendStreamLiteral,
+    hydrateStreamMessage,
     finalizeStream,
     resetStream,
   }

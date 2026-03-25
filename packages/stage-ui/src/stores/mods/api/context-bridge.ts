@@ -1,7 +1,7 @@
 import type { ChatProvider } from '@xsai-ext/providers/utils'
 import type { UserMessage } from '@xsai/shared-chat'
 
-import type { ChatStreamEvent, ContextMessage } from '../../../types/chat'
+import type { ChatAssistantMessage, ChatStreamEvent, ContextMessage } from '../../../types/chat'
 
 import { isStageTamagotchi, isStageWeb } from '@proj-mira/stage-shared'
 import { useBroadcastChannel } from '@vueuse/core'
@@ -16,6 +16,8 @@ import { useChatContextStore } from '../../chat/context-store'
 import { useChatSessionStore } from '../../chat/session-store'
 import { useChatStreamStore } from '../../chat/stream-store'
 import { useConsciousnessStore } from '../../modules/consciousness'
+import { useMemoryStore } from '../../modules/memory'
+import { useOpenClawStore } from '../../modules/openclaw'
 import { useProvidersStore } from '../../providers'
 import { useModsServerChannelStore } from './channel-server'
 
@@ -26,8 +28,10 @@ export const useContextBridgeStore = defineStore('mods:api:context-bridge', () =
   const chatSession = useChatSessionStore()
   const chatStream = useChatStreamStore()
   const chatContext = useChatContextStore()
+  const memoryStore = useMemoryStore()
   const serverChannelStore = useModsServerChannelStore()
   const consciousnessStore = useConsciousnessStore()
+  const openClawStore = useOpenClawStore()
   const providersStore = useProvidersStore()
   const { activeProvider, activeModel } = storeToRefs(consciousnessStore)
 
@@ -37,6 +41,70 @@ export const useContextBridgeStore = defineStore('mods:api:context-bridge', () =
   const disposeHookFns = ref<Array<() => void>>([])
   let remoteStreamGuard: { sessionId: string, generation: number } | null = null
 
+  function normalizeContentText(content: unknown) {
+    if (typeof content === 'string')
+      return content
+
+    if (!Array.isArray(content))
+      return ''
+
+    return content.map((part) => {
+      if (typeof part === 'string')
+        return part
+      if (part && typeof part === 'object' && 'text' in part)
+        return String(part.text ?? '')
+      return ''
+    }).join('')
+  }
+
+  function resolveTargetSessionId(payload: Record<string, any>) {
+    return payload['gen-ai:chat']?.input?.data?.overrides?.sessionId
+      ?? payload.overrides?.sessionId
+      ?? chatSession.activeSessionId
+  }
+
+  function normalizeAssistantMessage(message: Record<string, any> | undefined): ChatAssistantMessage & { id: string, createdAt: number } {
+    const content = normalizeContentText(message?.content)
+
+    return {
+      ...message,
+      role: 'assistant',
+      content,
+      id: typeof message?.id === 'string' ? message.id : nanoid(),
+      createdAt: typeof message?.createdAt === 'number' ? message.createdAt : Date.now(),
+      slices: Array.isArray(message?.slices)
+        ? message.slices
+        : content
+          ? [{ type: 'text', text: content }]
+          : [],
+      tool_results: Array.isArray(message?.tool_results) ? message.tool_results : [],
+    }
+  }
+
+  function syncRemoteUserMessage(payload: Record<string, any>) {
+    const targetSessionId = resolveTargetSessionId(payload)
+    if (!targetSessionId)
+      return
+
+    const messagePrefix = typeof payload.overrides?.messagePrefix === 'string'
+      ? payload.overrides.messagePrefix
+      : ''
+    const content = `${messagePrefix}${payload.text ?? ''}`
+    const messageId = typeof payload.overrides?.sessionMessageId === 'string'
+      ? payload.overrides.sessionMessageId
+      : nanoid()
+    const createdAt = typeof payload.overrides?.sessionMessageCreatedAt === 'number'
+      ? payload.overrides.sessionMessageCreatedAt
+      : Date.now()
+
+    chatSession.upsertMessage(targetSessionId, {
+      id: messageId,
+      role: 'user',
+      content,
+      createdAt,
+    })
+  }
+
   async function initialize() {
     await mutex.acquire()
 
@@ -44,8 +112,10 @@ export const useContextBridgeStore = defineStore('mods:api:context-bridge', () =
       let isProcessingRemoteStream = false
 
       const { stop } = watch(incomingContext, (event) => {
-        if (event)
+        if (event) {
           chatContext.ingestContextMessage(event)
+          memoryStore.ingestContextMessage(event)
+        }
       })
       disposeHookFns.value.push(stop)
 
@@ -56,6 +126,7 @@ export const useContextBridgeStore = defineStore('mods:api:context-bridge', () =
           createdAt: Date.now(),
         }
         chatContext.ingestContextMessage(contextMessage)
+        memoryStore.ingestContextMessage(contextMessage)
         broadcastContext(toRaw(contextMessage))
       }))
 
@@ -80,12 +151,22 @@ export const useContextBridgeStore = defineStore('mods:api:context-bridge', () =
         if (normalizedContextUpdates?.length) {
           const createdAt = Date.now()
           for (const update of normalizedContextUpdates) {
-            chatContext.ingestContextMessage({
+            const contextEnvelope = {
               ...update,
               metadata: event.metadata,
               createdAt,
-            })
+            }
+            chatContext.ingestContextMessage(contextEnvelope)
+            memoryStore.ingestContextMessage(contextEnvelope)
           }
+        }
+
+        if (openClawStore.canRouteViaOpenClaw || event.data.overrides?.openclawRouted === true) {
+          syncRemoteUserMessage({
+            ...event.data,
+            contextUpdates: normalizedContextUpdates,
+          })
+          return
         }
 
         if (activeProvider.value && activeModel.value) {
@@ -149,6 +230,77 @@ export const useContextBridgeStore = defineStore('mods:api:context-bridge', () =
             }
           })
         }
+      }))
+
+      disposeHookFns.value.push(serverChannelStore.onEvent('output:gen-ai:chat:message', async (event) => {
+        const payload = event.data as Record<string, any>
+        const isOpenClawReply = payload.metadata?.openclaw === true
+        const isOpenClawRouted = payload['gen-ai:chat']?.input?.data?.overrides?.openclawRouted === true
+        if (!openClawStore.configured && !isOpenClawRouted && !isOpenClawReply)
+          return
+
+        const targetSessionId = resolveTargetSessionId(payload)
+        if (!targetSessionId)
+          return
+
+        const message = normalizeAssistantMessage(payload.message as Record<string, any> | undefined)
+        openClawStore.markRemoteMessage(targetSessionId)
+
+        if (targetSessionId !== chatSession.activeSessionId)
+          return
+
+        remoteStreamGuard = {
+          sessionId: targetSessionId,
+          generation: chatSession.getSessionGenerationValue(targetSessionId),
+        }
+        chatOrchestrator.sending = true
+        chatStream.beginStream()
+        chatStream.hydrateStreamMessage(message)
+      }))
+
+      disposeHookFns.value.push(serverChannelStore.onEvent('output:gen-ai:chat:complete', async (event) => {
+        const payload = event.data as Record<string, any>
+        const isOpenClawReply = payload.metadata?.openclaw === true
+        const isOpenClawRouted = payload['gen-ai:chat']?.input?.data?.overrides?.openclawRouted === true
+        if (!openClawStore.configured && !isOpenClawRouted && !isOpenClawReply)
+          return
+
+        const targetSessionId = resolveTargetSessionId(payload)
+        if (!targetSessionId)
+          return
+
+        const message = normalizeAssistantMessage(payload.message as Record<string, any> | undefined)
+        const guardedSessionMatched = remoteStreamGuard?.sessionId === targetSessionId
+
+        openClawStore.markRemoteComplete(targetSessionId)
+
+        if (targetSessionId === chatSession.activeSessionId) {
+          const guardGeneration = remoteStreamGuard?.sessionId === targetSessionId
+            ? remoteStreamGuard?.generation
+            : undefined
+          const expectedGeneration = guardGeneration ?? chatSession.getSessionGenerationValue(targetSessionId)
+
+          if (chatSession.getSessionGenerationValue(targetSessionId) === expectedGeneration && !chatSession.hasMessage(targetSessionId, message.id)) {
+            chatStream.hydrateStreamMessage(message)
+            chatStream.finalizeStream()
+          }
+          else {
+            chatStream.resetStream()
+          }
+
+          chatOrchestrator.sending = false
+        }
+        else if (!chatSession.hasMessage(targetSessionId, message.id)) {
+          chatSession.upsertMessage(targetSessionId, message)
+        }
+
+        if (guardedSessionMatched) {
+          chatOrchestrator.sending = false
+          if (targetSessionId !== chatSession.activeSessionId)
+            chatStream.resetStream()
+        }
+
+        remoteStreamGuard = null
       }))
 
       disposeHookFns.value.push(

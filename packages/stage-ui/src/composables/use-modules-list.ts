@@ -11,8 +11,11 @@ import { useDiscordStore } from '../stores/modules/discord'
 import { useFactorioStore } from '../stores/modules/gaming-factorio'
 import { useMinecraftStore } from '../stores/modules/gaming-minecraft'
 import { useHearingStore } from '../stores/modules/hearing'
+import { useMemoryStore } from '../stores/modules/memory'
+import { useOpenClawStore } from '../stores/modules/openclaw'
 import { useSpeechStore } from '../stores/modules/speech'
 import { useTwitterStore } from '../stores/modules/twitter'
+import { useVisionStore } from '../stores/modules/vision'
 
 export interface Module {
   id: string
@@ -33,6 +36,9 @@ export function useModulesList() {
   const consciousnessStore = useConsciousnessStore()
   const speechStore = useSpeechStore()
   const hearingStore = useHearingStore()
+  const memoryStore = useMemoryStore()
+  const openClawStore = useOpenClawStore()
+  const visionStore = useVisionStore()
   const discordStore = useDiscordStore()
   const twitterStore = useTwitterStore()
   const minecraftStore = useMinecraftStore()
@@ -68,12 +74,21 @@ export function useModulesList() {
       category: 'essential',
     },
     {
+      id: 'openclaw',
+      name: t('settings.pages.modules.openclaw.title'),
+      description: t('settings.pages.modules.openclaw.description'),
+      icon: 'i-solar:cpu-bolt-bold-duotone',
+      to: '/settings/modules/openclaw',
+      configured: openClawStore.configured,
+      category: 'essential',
+    },
+    {
       id: 'vision',
       name: t('settings.pages.modules.vision.title'),
       description: t('settings.pages.modules.vision.description'),
       icon: 'i-solar:eye-closed-bold-duotone',
       to: '/settings/modules/vision',
-      configured: false,
+      configured: visionStore.configured,
       category: 'essential',
     },
     {
@@ -82,7 +97,7 @@ export function useModulesList() {
       description: t('settings.pages.modules.memory-short-term.description'),
       icon: 'i-solar:bookmark-bold-duotone',
       to: '/settings/modules/memory-short-term',
-      configured: false,
+      configured: memoryStore.hasShortTermEntries,
       category: 'essential',
     },
     {
@@ -91,7 +106,7 @@ export function useModulesList() {
       description: t('settings.pages.modules.memory-long-term.description'),
       icon: 'i-solar:book-bookmark-bold-duotone',
       to: '/settings/modules/memory-long-term',
-      configured: false,
+      configured: memoryStore.hasLongTermEntries || memoryStore.hasEpisodicEntries,
       category: 'essential',
     },
     {

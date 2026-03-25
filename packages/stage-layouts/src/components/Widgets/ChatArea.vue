@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import type { ChatProvider } from '@xsai-ext/providers/utils'
 
+import { errorMessageFrom } from '@moeru/std'
 import { isStageTamagotchi } from '@proj-mira/stage-shared'
-import { useAudioAnalyzer } from '@proj-mira/stage-ui/composables'
+import { ChatAttachmentStrip } from '@proj-mira/stage-ui/components'
+import { useAudioAnalyzer, useChatAttachments, useChatInputRouting } from '@proj-mira/stage-ui/composables'
 import { useAudioContext } from '@proj-mira/stage-ui/stores/audio'
 import { useChatOrchestratorStore } from '@proj-mira/stage-ui/stores/chat'
 import { useChatSessionStore } from '@proj-mira/stage-ui/stores/chat/session-store'
 import { useConsciousnessStore } from '@proj-mira/stage-ui/stores/modules/consciousness'
 import { useHearingSpeechInputPipeline, useHearingStore } from '@proj-mira/stage-ui/stores/modules/hearing'
+import { useVisionStore } from '@proj-mira/stage-ui/stores/modules/vision'
 import { useProvidersStore } from '@proj-mira/stage-ui/stores/providers'
 import { useSettings, useSettingsAudioDevice } from '@proj-mira/stage-ui/stores/settings'
-import { BasicTextarea, FieldSelect } from '@proj-mira/ui'
+import { BasicInputFile, BasicTextarea, FieldSelect } from '@proj-mira/ui'
 import { until } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { PopoverContent, PopoverRoot, PopoverTrigger } from 'reka-ui'
@@ -24,18 +27,31 @@ const hearingPopoverOpen = ref(false)
 const isComposing = ref(false)
 const isListening = ref(false) // Transcription listening state (separate from microphone enabled)
 
+const visionStore = useVisionStore()
 const providersStore = useProvidersStore()
 const { activeProvider, activeModel } = storeToRefs(useConsciousnessStore())
 const { themeColorsHueDynamic } = storeToRefs(useSettings())
+const { chatImageInputEnabled } = storeToRefs(visionStore)
 
 const { askPermission, startStream } = useSettingsAudioDevice()
 const { enabled, selectedAudioInput, stream, audioInputs } = storeToRefs(useSettingsAudioDevice())
 const chatOrchestrator = useChatOrchestratorStore()
 const chatSession = useChatSessionStore()
-const { ingest, onAfterMessageComposed, discoverToolsCompatibility } = chatOrchestrator
+const { sendTextInput } = useChatInputRouting()
+const { onAfterMessageComposed, discoverToolsCompatibility } = chatOrchestrator
 const { messages } = storeToRefs(chatSession)
 const { audioContext } = useAudioContext()
+const {
+  attachments,
+  hasAttachments,
+  error: attachmentError,
+  sendPayload,
+  addFiles,
+  removeAttachment,
+  clearAttachments,
+} = useChatAttachments()
 const { t } = useI18n()
+const canSend = computed(() => !!messageInput.value.trim() || hasAttachments.value)
 
 // Transcription pipeline
 const hearingStore = useHearingStore()
@@ -83,12 +99,7 @@ async function debouncedAutoSend(text: string) {
     const textToSend = pendingAutoSendText.value.trim()
     if (textToSend && autoSendEnabled.value) {
       try {
-        const providerConfig = providersStore.getProviderConfig(activeProvider.value)
-        await ingest(textToSend, {
-          chatProvider: await providersStore.getProviderInstance(activeProvider.value) as ChatProvider,
-          model: activeModel.value,
-          providerConfig,
-        })
+        await sendTextInput(textToSend)
         // Clear the message input after sending
         messageInput.value = ''
         pendingAutoSendText.value = ''
@@ -102,30 +113,39 @@ async function debouncedAutoSend(text: string) {
 }
 
 async function handleSend() {
-  if (!messageInput.value.trim() || isComposing.value) {
+  if (!canSend.value || isComposing.value) {
     return
   }
 
-  const textToSend = messageInput.value
+  const textToSend = messageInput.value.trim() ? messageInput.value : ''
+  const attachmentsToSend = [...sendPayload.value]
   messageInput.value = ''
 
   try {
-    const providerConfig = providersStore.getProviderConfig(activeProvider.value)
-
-    await ingest(textToSend, {
-      chatProvider: await providersStore.getProviderInstance(activeProvider.value) as ChatProvider,
-      model: activeModel.value,
-      providerConfig,
-    })
+    await sendTextInput(textToSend, attachmentsToSend.length ? { attachments: attachmentsToSend } : undefined)
+    clearAttachments()
   }
   catch (error) {
     messageInput.value = textToSend
-    messages.value.pop()
-    messages.value.push({
-      role: 'error',
-      content: (error as Error).message,
-    })
+    rollbackLastUserMessage()
+    messages.value = [
+      ...messages.value,
+      {
+        role: 'error',
+        content: errorMessageFrom(error) ?? 'Failed to send message.',
+      },
+    ]
   }
+}
+
+async function handleAttachmentSelection(files: File[]) {
+  await addFiles(files)
+}
+
+function rollbackLastUserMessage() {
+  const lastMessage = messages.value.at(-1)
+  if (lastMessage?.role === 'user')
+    messages.value = messages.value.slice(0, -1)
 }
 
 watch(hearingPopoverOpen, async (value) => {
@@ -340,12 +360,7 @@ async function stopListening() {
       const textToSend = pendingAutoSendText.value.trim()
       pendingAutoSendText.value = ''
       try {
-        const providerConfig = providersStore.getProviderConfig(activeProvider.value)
-        await ingest(textToSend, {
-          chatProvider: await providersStore.getProviderInstance(activeProvider.value) as ChatProvider,
-          model: activeModel.value,
-          providerConfig,
-        })
+        await sendTextInput(textToSend)
         messageInput.value = ''
       }
       catch (err) {
@@ -406,6 +421,19 @@ watch(autoSendEnabled, (enabled) => {
         'bg-primary-200/20 dark:bg-primary-400/20',
       ]"
     >
+      <ChatAttachmentStrip
+        variant="desktop"
+        :attachments="attachments"
+        @remove="removeAttachment"
+      />
+
+      <div
+        v-if="attachmentError"
+        class="mx-4 mb-2 border border-amber-200 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
+      >
+        {{ attachmentError }}
+      </div>
+
       <BasicTextarea
         v-model="messageInput"
         :placeholder="t('stage.message')"
@@ -426,13 +454,41 @@ watch(autoSendEnabled, (enabled) => {
       <div
         absolute bottom-2 left-2 z-10 flex items-center gap-2
       >
+        <BasicInputFile
+          v-if="chatImageInputEnabled"
+          accept="image/*"
+          :multiple="true"
+          @update:model-value="files => void handleAttachmentSelection(files)"
+        >
+          <template #default="{ isDragging }">
+            <div
+              :class="[
+                'h-8 w-8 flex items-center justify-center rounded-md outline-none transition-all duration-200',
+                isDragging ? 'bg-primary-500/15 text-primary-600 dark:bg-primary-500/20 dark:text-primary-300' : 'text-neutral-500 dark:text-neutral-400',
+              ]"
+              title="Attach images"
+            >
+              <div :class="isDragging ? 'i-solar:cloud-upload-bold-duotone' : 'i-solar:gallery-add-bold-duotone'" class="h-5 w-5" />
+            </div>
+          </template>
+        </BasicInputFile>
+        <button
+          v-else
+          type="button"
+          class="h-8 w-8 flex items-center justify-center rounded-md text-neutral-300 dark:text-neutral-700"
+          disabled
+          title="Image input disabled"
+        >
+          <div class="i-solar:gallery-remove-bold-duotone h-5 w-5" />
+        </button>
+
         <!-- Microphone icon button -->
         <PopoverRoot v-model:open="hearingPopoverOpen">
           <PopoverTrigger as-child>
             <button
               class="h-8 w-8 flex items-center justify-center rounded-md outline-none transition-all duration-200 active:scale-95"
               text="lg neutral-500 dark:neutral-400"
-              :title="t('settings.hearing.title')"
+              title="Hearing"
             >
               <Transition name="fade" mode="out-in">
                 <IndicatorMicVolume v-if="enabled" class="h-5 w-5" />

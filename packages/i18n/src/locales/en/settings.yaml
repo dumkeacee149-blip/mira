@@ -40,7 +40,7 @@ dialogs:
     selectSpeechProvider: Set up voice (speech) provider
     speechProviderHint: You can use text mode first, and enable voice in one click.
     skipSpeech: Continue without voice for now
-    configureSpeechProvider: "Configure speech provider: {provider}"
+    configureSpeechProvider: 'Configure speech provider: {provider}'
     no-models: No available models
     no-models-help: >-
       Please return to the previous step and check your API key, or check the
@@ -217,6 +217,18 @@ pages:
   memory:
     description: Where memories got stored, and organized
     title: Memory
+    intro: Review the memory lanes that OpenClaw and shared modules feed back into chat prompts.
+    sections:
+      overview:
+        total: Total memory entries
+      prompting:
+        title: Prompt reinjection
+        description: Short-term, long-term, and episodic lanes are merged back into chat context snapshots so the latest remembered details can influence the next reply.
+      routes:
+        title: Memory lanes
+        description: Jump into each lane to inspect, prune, or clear the stored context updates.
+        open-short: Open short-term memory
+        open-long: Open long-term and episodic memory
   data:
     title: Data
     description: Manage stored MIRA data, exports, and resets
@@ -396,9 +408,34 @@ pages:
     memory-long-term:
       description: Long-term memory specific settings and management
       title: Long-Term Memory
+      intro: Keep durable preferences and episodic summaries available across future turns.
+      actions:
+        clear: Clear lane
+        remove: Remove entry
+      sections:
+        long-term:
+          title: Long-term lane
+          description: Durable preferences, facts, and relationship notes worth keeping around longer.
+          count: '{count} long-term entries'
+          empty-title: No long-term memory yet
+          empty-description: When OpenClaw promotes something as durable memory, it will show up here for review.
+        episodic:
+          title: Episodic lane
+          description: Recent summaries of completed moments, events, and outcomes.
+          count: '{count} episodic entries'
+          empty-title: No episodic memory yet
+          empty-description: Episodic summaries from OpenClaw will appear here once the runtime starts emitting them.
     memory-short-term:
       description: Short-term memory specific settings and management
       title: Short-Term Memory
+      intro: Short-term memory keeps the freshest context updates close to the next response.
+      summary: '{count} short-term entries ready for prompt reinjection'
+      actions:
+        clear: Clear lane
+        remove: Remove entry
+      empty:
+        title: No short-term memory yet
+        description: Ask Mira a few questions or trigger OpenClaw context updates, then the latest memory fragments will appear here.
     messaging-discord:
       description: Chat & voice chat over Discord
       title: Discord
@@ -454,6 +491,36 @@ pages:
     vision:
       description: Vision
       title: Vision
+      intro: Vision MVP lets you attach images directly inside chat on desktop, web, and mobile.
+      status:
+        enabled: Enabled
+        disabled: Disabled
+        not-yet: No image sent yet
+        direct-provider: Direct provider multimodal path
+      sections:
+        chat-input:
+          title: Chat image input
+          description: Control whether image attachments are available in the shared chat composer.
+        scope:
+          title: Current MVP scope
+          description: This first pass focuses on image-in-chat understanding, not a full camera or streaming vision stack.
+      fields:
+        chat-image-input:
+          label: Enable image attachments in chat
+          description: Allow users to upload images from the shared chat composer across desktop, web, and mobile.
+        last-image:
+          label: Last image activity
+          summary: '{count} image(s) in the most recent send'
+        routing:
+          label: Current routing mode
+          description: Multimodal messages go through the configured chat provider so image analysis works even before OpenClaw learns native attachment routing.
+        accepted-types:
+          recent: 'Recent upload mime types: {types}'
+      notes:
+        item-upload: Upload one or more images from the chat composer and keep talking in the same conversation.
+        item-multimodal: Attached images are stored in the local session history so the provider receives a real multimodal message payload.
+        item-openclaw: OpenClaw text routing stays available for normal chat, while image sends use the provider path for this MVP.
+        item-camera: Live camera, video, OCR pipelines, and persistent visual grounding remain out of scope for today.
     x:
       description: X / Twitter browsing and usage
       title: X / Twitter
@@ -475,6 +542,67 @@ pages:
     mcp-server:
       description: Connect and manage MCP server and tools
       title: MCP Server
+    openclaw:
+      description: Route chat, memory, and agent orchestration through OpenClaw across desktop, web, and mobile
+      title: OpenClaw
+      intro: >-
+        OpenClaw becomes the shared chat orchestration path when routing is enabled. Desktop can still auto-manage the local runtime, while web and mobile use the same event channel and health model.
+      actions:
+        refresh-health: Refresh runtime health
+        clear-error: Clear error state
+      status:
+        channel: Server channel
+        routing: Chat routing
+        runtime: Runtime health
+        queue: Request queue
+      values:
+        connected: Connected
+        disconnected: Disconnected
+        openclaw: OpenClaw
+        local: Local LLM fallback
+        ready: Ready
+        waiting: Waiting for runtime
+        pending: Pending reply
+        idle: Idle
+        not-available: Not available yet
+        upstream-attached: Upstream OpenClaw attached
+        upstream-not-attached: Local or fallback runtime
+      sections:
+        routing:
+          title: Routing
+          description: Control whether Stage chat input is routed through OpenClaw first.
+        activity:
+          title: Activity and health
+          description: Review the latest OpenClaw activity and runtime health checks.
+      fields:
+        enabled:
+          label: Enable OpenClaw integration
+          description: Turn on OpenClaw as a first-class runtime capability for this profile.
+        route-chat-input:
+          label: Route stage chat through OpenClaw
+          description: When enabled, shared chat input is published onto the server channel for OpenClaw to handle before assistant output is mirrored back into the session.
+        runtime-health-url:
+          label: Runtime health URL
+          description: Optional health endpoint for the runtime process that powers OpenClaw.
+          placeholder: http://localhost:8123/health
+        response-timeout-ms:
+          label: Reply timeout (ms)
+          description: How long MIRA waits before marking a routed OpenClaw request as timed out.
+        last-activity:
+          label: Last activity
+        last-health-check:
+          label: Last health check
+        last-message:
+          label: Last remote message
+        last-complete:
+          label: Last remote completion
+        runtime-health:
+          label: Runtime identity
+      notes:
+        title: MVP routing notes
+        item-runtime: Desktop can still keep a managed local OpenClaw runtime alive through the shell runtime page.
+        item-attachments: Image attachments currently take the direct provider path so multimodal chat works across every platform today.
+        item-fallback: If the shared server channel is unavailable, MIRA falls back to the direct provider path instead of blocking the chat UI.
     runtime-health:
       description: Check local OpenClaw bridge/runtime status and restart quickly
       title: Runtime Status

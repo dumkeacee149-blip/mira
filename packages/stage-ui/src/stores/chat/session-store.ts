@@ -249,6 +249,28 @@ export const useChatSessionStore = defineStore('chat-session', () => {
     void persistSession(sessionId)
   }
 
+  function hasMessage(sessionId: string, messageId?: string) {
+    if (!messageId)
+      return false
+
+    return getSessionMessages(sessionId).some(message => message.id === messageId)
+  }
+
+  function upsertMessage(sessionId: string, message: ChatHistoryItem) {
+    const messagesForSession = getSessionMessages(sessionId)
+    if (message.id) {
+      const existingIndex = messagesForSession.findIndex(existing => existing.id === message.id)
+      if (existingIndex >= 0) {
+        messagesForSession.splice(existingIndex, 1, message)
+        persistSessionMessages(sessionId)
+        return
+      }
+    }
+
+    messagesForSession.push(message)
+    persistSessionMessages(sessionId)
+  }
+
   async function loadSession(sessionId: string) {
     if (loadedSessions.has(sessionId))
       return
@@ -551,6 +573,8 @@ export const useChatSessionStore = defineStore('chat-session', () => {
 
     ensureSession,
     setSessionMessages,
+    hasMessage,
+    upsertMessage,
     persistSessionMessages,
     getSessionMessages,
     sessionMessages,

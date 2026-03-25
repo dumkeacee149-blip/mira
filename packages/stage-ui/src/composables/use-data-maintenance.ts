@@ -7,14 +7,17 @@ import { useChatOrchestratorStore } from '../stores/chat'
 import { useChatSessionStore } from '../stores/chat/session-store'
 import { useDisplayModelsStore } from '../stores/display-models'
 import { useMcpStore } from '../stores/mcp'
-import { useMiraCardStore } from '../stores/modules/mira-card'
 import { useConsciousnessStore } from '../stores/modules/consciousness'
 import { useDiscordStore } from '../stores/modules/discord'
 import { useFactorioStore } from '../stores/modules/gaming-factorio'
 import { useMinecraftStore } from '../stores/modules/gaming-minecraft'
 import { useHearingStore } from '../stores/modules/hearing'
+import { useMemoryStore } from '../stores/modules/memory'
+import { useMiraCardStore } from '../stores/modules/mira-card'
+import { useOpenClawStore } from '../stores/modules/openclaw'
 import { useSpeechStore } from '../stores/modules/speech'
 import { useTwitterStore } from '../stores/modules/twitter'
+import { useVisionStore } from '../stores/modules/vision'
 import { useOnboardingStore } from '../stores/onboarding'
 import { useProvidersStore } from '../stores/providers'
 import { useSettings, useSettingsAudioDevice } from '../stores/settings'
@@ -30,6 +33,9 @@ export function useDataMaintenance() {
   const hearingStore = useHearingStore()
   const speechStore = useSpeechStore()
   const consciousnessStore = useConsciousnessStore()
+  const memoryStore = useMemoryStore()
+  const openClawStore = useOpenClawStore()
+  const visionStore = useVisionStore()
   const twitterStore = useTwitterStore()
   const discordStore = useDiscordStore()
   const factorioStore = useFactorioStore()
@@ -52,6 +58,9 @@ export function useDataMaintenance() {
     hearingStore.resetState()
     speechStore.resetState()
     consciousnessStore.resetState()
+    memoryStore.resetState()
+    openClawStore.resetState()
+    visionStore.resetState()
     twitterStore.resetState()
     discordStore.resetState()
     factorioStore.resetState()

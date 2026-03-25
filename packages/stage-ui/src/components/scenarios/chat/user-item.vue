@@ -13,13 +13,24 @@ const props = withDefaults(defineProps<{
   variant: 'desktop',
 })
 
+function isTextContentPart(part: unknown): part is { type: 'text', text?: string } {
+  return !!part && typeof part === 'object' && (part as { type?: string }).type === 'text'
+}
+
+function isImageContentPart(part: unknown): part is { type: 'image_url', image_url: { url: string } } {
+  return !!part
+    && typeof part === 'object'
+    && (part as { type?: string }).type === 'image_url'
+    && typeof (part as { image_url?: { url?: unknown } }).image_url?.url === 'string'
+}
+
 const content = computed(() => {
   const raw = props.message.content
   if (typeof raw === 'string')
     return raw
 
   if (Array.isArray(raw)) {
-    const textPart = raw.find(part => 'type' in part && part.type === 'text') as { text?: string } | undefined
+    const textPart = raw.find(part => isTextContentPart(part))
     if (textPart?.text)
       return textPart.text
 
@@ -27,6 +38,18 @@ const content = computed(() => {
   }
 
   return ''
+})
+
+const imageParts = computed(() => {
+  const raw = props.message.content
+  if (!Array.isArray(raw))
+    return []
+
+  return raw
+    .filter(part => isImageContentPart(part))
+    .map(part => ({
+      url: String(part.image_url.url),
+    }))
 })
 
 const containerClasses = computed(() => [
@@ -49,7 +72,17 @@ const boxClasses = computed(() => [
       <div>
         <span text-sm text="black/60 dark:white/65" font-normal class="inline <sm:hidden">{{ label }}</span>
       </div>
+      <div v-if="imageParts.length" class="grid mb-3 gap-2">
+        <img
+          v-for="(imagePart, imageIndex) in imageParts"
+          :key="`${imagePart.url}-${imageIndex}`"
+          :src="imagePart.url"
+          :alt="`${label} attachment ${imageIndex + 1}`"
+          class="max-h-52 w-full rounded-lg object-cover"
+        >
+      </div>
       <MarkdownRenderer
+        v-if="content"
         :content="content as string"
         class="break-words"
       />

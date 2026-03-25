@@ -2,17 +2,19 @@
 import type { ChatHistoryItem } from '@proj-mira/stage-ui/types/chat'
 import type { ChatProvider } from '@xsai-ext/providers/utils'
 
-import { ChatHistory, HearingConfigDialog } from '@proj-mira/stage-ui/components'
-import { useAudioAnalyzer } from '@proj-mira/stage-ui/composables'
+import { errorMessageFrom } from '@moeru/std'
+import { ChatAttachmentStrip, ChatHistory, HearingConfigDialog } from '@proj-mira/stage-ui/components'
+import { useAudioAnalyzer, useChatAttachments, useChatInputRouting } from '@proj-mira/stage-ui/composables'
 import { useAudioContext } from '@proj-mira/stage-ui/stores/audio'
 import { useChatOrchestratorStore } from '@proj-mira/stage-ui/stores/chat'
 import { useChatMaintenanceStore } from '@proj-mira/stage-ui/stores/chat/maintenance'
 import { useChatSessionStore } from '@proj-mira/stage-ui/stores/chat/session-store'
 import { useChatStreamStore } from '@proj-mira/stage-ui/stores/chat/stream-store'
 import { useConsciousnessStore } from '@proj-mira/stage-ui/stores/modules/consciousness'
+import { useVisionStore } from '@proj-mira/stage-ui/stores/modules/vision'
 import { useProvidersStore } from '@proj-mira/stage-ui/stores/providers'
 import { useSettings, useSettingsAudioDevice } from '@proj-mira/stage-ui/stores/settings'
-import { BasicTextarea, useTheme } from '@proj-mira/ui'
+import { BasicInputFile, BasicTextarea, useTheme } from '@proj-mira/ui'
 import { useResizeObserver, useScreenSafeArea } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
@@ -31,6 +33,7 @@ const hearingDialogOpen = ref(false)
 const chatOrchestrator = useChatOrchestratorStore()
 const chatSession = useChatSessionStore()
 const chatStream = useChatStreamStore()
+const { sendTextInput } = useChatInputRouting()
 const { cleanupMessages } = useChatMaintenanceStore()
 const { messages } = storeToRefs(chatSession)
 const { streamingMessage } = storeToRefs(chatStream)
@@ -45,18 +48,30 @@ const isComposing = ref(false)
 const backgroundDialogOpen = ref(false)
 
 const screenSafeArea = useScreenSafeArea()
+const visionStore = useVisionStore()
 const providersStore = useProvidersStore()
 const { activeProvider, activeModel } = storeToRefs(useConsciousnessStore())
+const { chatImageInputEnabled } = storeToRefs(visionStore)
 
 useResizeObserver(document.documentElement, () => screenSafeArea.update())
 const { themeColorsHueDynamic, stageViewControlsEnabled } = storeToRefs(useSettings())
 const settingsAudioDevice = useSettingsAudioDevice()
 const { enabled, selectedAudioInput, stream, audioInputs } = storeToRefs(settingsAudioDevice)
-const { ingest, onAfterMessageComposed, discoverToolsCompatibility } = chatOrchestrator
+const { onAfterMessageComposed, discoverToolsCompatibility } = chatOrchestrator
 const { t } = useI18n()
 const { audioContext } = useAudioContext()
+const {
+  attachments,
+  hasAttachments,
+  error: attachmentError,
+  sendPayload,
+  addFiles,
+  removeAttachment,
+  clearAttachments,
+} = useChatAttachments()
 const { startAnalyzer, stopAnalyzer, volumeLevel } = useAudioAnalyzer()
 let analyzerSource: MediaStreamAudioSourceNode | undefined
+const canSend = computed(() => !!messageInput.value.trim() || hasAttachments.value)
 
 function isMobileDevice() {
   return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
@@ -69,30 +84,39 @@ async function handleSubmit() {
 }
 
 async function handleSend() {
-  if (!messageInput.value.trim() || isComposing.value) {
+  if (!canSend.value || isComposing.value) {
     return
   }
 
-  const textToSend = messageInput.value
+  const textToSend = messageInput.value.trim() ? messageInput.value : ''
+  const attachmentsToSend = [...sendPayload.value]
   messageInput.value = ''
 
   try {
-    const providerConfig = providersStore.getProviderConfig(activeProvider.value)
-
-    await ingest(textToSend, {
-      chatProvider: await providersStore.getProviderInstance(activeProvider.value) as ChatProvider,
-      model: activeModel.value,
-      providerConfig,
-    })
+    await sendTextInput(textToSend, attachmentsToSend.length ? { attachments: attachmentsToSend } : undefined)
+    clearAttachments()
   }
   catch (error) {
     messageInput.value = textToSend
-    messages.value.pop()
-    messages.value.push({
-      role: 'error',
-      content: (error as Error).message,
-    })
+    rollbackLastUserMessage()
+    messages.value = [
+      ...messages.value,
+      {
+        role: 'error',
+        content: errorMessageFrom(error) ?? 'Failed to send message.',
+      },
+    ]
   }
+}
+
+async function handleAttachmentSelection(files: File[]) {
+  await addFiles(files)
+}
+
+function rollbackLastUserMessage() {
+  const lastMessage = messages.value.at(-1)
+  if (lastMessage?.role === 'user')
+    messages.value = messages.value.slice(0, -1)
 }
 
 function teardownAnalyzer() {
@@ -222,6 +246,17 @@ onMounted(() => {
           </button>
         </div>
       </div>
+      <ChatAttachmentStrip
+        variant="mobile"
+        :attachments="attachments"
+        @remove="removeAttachment"
+      />
+      <div
+        v-if="attachmentError"
+        class="mx-3 mb-2 border border-amber-200 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
+      >
+        {{ attachmentError }}
+      </div>
       <div bg="white dark:neutral-800" max-h-100dvh max-w-100dvw w-full flex gap-1 overflow-auto px-3 pt-2 :style="{ paddingBottom: `${Math.max(Number.parseFloat(screenSafeArea.bottom.value.replace('px', '')), 12)}px` }">
         <BasicTextarea
           v-model="messageInput"
@@ -238,8 +273,28 @@ onMounted(() => {
           @compositionstart="isComposing = true"
           @compositionend="isComposing = false"
         />
+        <BasicInputFile
+          v-if="chatImageInputEnabled"
+          :accept="visionStore.accept"
+          :multiple="true"
+          @update:model-value="files => void handleAttachmentSelection(files)"
+        >
+          <template #default="{ isDragging }">
+            <div
+              :class="[
+                'w-[calc(1lh+4px+4px)] h-[calc(1lh+4px+4px)] aspect-square flex items-center self-end justify-center rounded-full outline-none backdrop-blur-md transition-all duration-250 ease-in-out',
+                isDragging
+                  ? 'bg-primary-100/90 text-primary-600 dark:bg-primary-500/20 dark:text-primary-300'
+                  : 'bg-neutral-100/80 text-neutral-500 dark:bg-neutral-900/80 dark:text-neutral-300',
+              ]"
+              title="Attach images"
+            >
+              <div :class="isDragging ? 'i-solar:cloud-upload-bold-duotone' : 'i-solar:gallery-add-bold-duotone'" />
+            </div>
+          </template>
+        </BasicInputFile>
         <button
-          v-if="messageInput.trim() || isComposing"
+          v-if="canSend || isComposing"
           w="[calc(1lh+4px+4px)]" h="[calc(1lh+4px+4px)]" aspect-square flex items-center self-end justify-center rounded-full outline-none backdrop-blur-md
           text="neutral-500 hover:neutral-600 dark:neutral-900 dark:hover:neutral-800"
           bg="primary-50/80 dark:neutral-100/80 hover:neutral-50"

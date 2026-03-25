@@ -209,6 +209,18 @@ pages:
   memory:
     description: 存放记忆的地方，以及策略
     title: 记忆体
+    intro: 查看 OpenClaw 与共享模块写回的记忆分层，并确认这些上下文如何重新参与下一轮聊天。
+    sections:
+      overview:
+        total: 记忆总条数
+      prompting:
+        title: 提示词回注
+        description: 短期、长期和情节记忆会重新合并进聊天上下文快照，让最近记住的信息继续影响下一次回复。
+      routes:
+        title: 记忆分层入口
+        description: 进入各个分层查看、删除或清空已保存的上下文更新。
+        open-short: 打开短期记忆
+        open-long: 打开长期与情节记忆
   data:
     title: Data
     description: 管理存储 MIRA 数据、导出和重置
@@ -384,9 +396,34 @@ pages:
     memory-long-term:
       description: 长期记忆
       title: 长期记忆
+      intro: 将更耐久的偏好、事实与阶段性总结保留下来，供后续回合继续使用。
+      actions:
+        clear: 清空分层
+        remove: 删除条目
+      sections:
+        long-term:
+          title: 长期记忆层
+          description: 适合长期保留的偏好、事实与关系备注。
+          count: '{count} 条长期记忆'
+          empty-title: 还没有长期记忆
+          empty-description: 当 OpenClaw 把内容提升为长期记忆后，这里就会出现对应条目。
+        episodic:
+          title: 情节记忆层
+          description: 记录已经完成的事件、结果与阶段性摘要。
+          count: '{count} 条情节记忆'
+          empty-title: 还没有情节记忆
+          empty-description: OpenClaw 开始输出情节摘要后，这里会显示对应的回放记录。
     memory-short-term:
       description: 短期记忆
       title: 短期记忆
+      intro: 短期记忆会把最近的上下文更新紧贴在下一轮回复前面。
+      summary: '{count} 条短期记忆已准备参与下一轮提示词'
+      actions:
+        clear: 清空分层
+        remove: 删除条目
+      empty:
+        title: 还没有短期记忆
+        description: 先和 Mira 聊几句，或触发一次 OpenClaw 上下文更新，新的短期记忆片段就会出现在这里。
     messaging-discord:
       description: Discord 发消息和语音聊天
       title: Discord
@@ -439,6 +476,36 @@ pages:
     vision:
       description: 视觉
       title: 视觉
+      intro: Vision MVP 允许你在桌面端、网页端和移动端直接从聊天框上传图片。
+      status:
+        enabled: 已启用
+        disabled: 已关闭
+        not-yet: 暂无图片发送记录
+        direct-provider: 直接走多模态 provider
+      sections:
+        chat-input:
+          title: 聊天图片输入
+          description: 控制共享聊天输入框里是否允许上传图片附件。
+        scope:
+          title: 当前 MVP 范围
+          description: 这一版先解决“图片进聊天并得到理解”，暂不覆盖完整摄像头与流式视觉链路。
+      fields:
+        chat-image-input:
+          label: 启用聊天图片附件
+          description: 让桌面端、网页端和移动端的共享聊天输入框都支持上传图片。
+        last-image:
+          label: 最近图片活动
+          summary: '最近一次发送包含 {count} 张图片'
+        routing:
+          label: 当前路由模式
+          description: 多模态消息先走已配置的聊天 provider，这样即使 OpenClaw 还没原生吃附件，也能先稳定完成图片理解。
+        accepted-types:
+          recent: '最近上传的 Mime 类型：{types}'
+      notes:
+        item-upload: 可在聊天框一次上传一张或多张图片，并继续保持同一会话。
+        item-multimodal: 图片附件会和文字一起写入本地会话历史，provider 会收到真正的多模态消息。
+        item-openclaw: 普通文本聊天仍可继续走 OpenClaw，而带图片的发送在这版 MVP 中会走 provider 路径。
+        item-camera: 实时摄像头、视频流、OCR 流程和持续视觉 grounding 仍不在今天的范围内。
     x:
       description: X / Twitter 的浏览和使用
       title: X / Twitter
@@ -469,6 +536,67 @@ pages:
         opened: 配置文件已于{path}打开
         restarted: >-
           MCP 服务已重新启动，启动了{started}，未启动{failed}，跳过{skipped}
+    openclaw:
+      description: 在桌面端、网页端和移动端统一通过 OpenClaw 接管聊天、记忆与代理编排
+      title: OpenClaw
+      intro: >-
+        启用路由后，OpenClaw 会成为共享聊天编排主链路。桌面端仍可继续托管本地运行时，而网页端和移动端会复用同一套事件通道与健康检查模型。
+      actions:
+        refresh-health: 刷新运行时健康状态
+        clear-error: 清空错误状态
+      status:
+        channel: 服务通道
+        routing: 聊天路由
+        runtime: 运行时健康状态
+        queue: 请求队列
+      values:
+        connected: 已连接
+        disconnected: 未连接
+        openclaw: OpenClaw
+        local: 本地 LLM 回退
+        ready: 已就绪
+        waiting: 等待运行时
+        pending: 等待回复
+        idle: 空闲
+        not-available: 暂无数据
+        upstream-attached: 已连接上游 OpenClaw
+        upstream-not-attached: 使用本地或回退运行时
+      sections:
+        routing:
+          title: 路由配置
+          description: 控制 Stage 聊天输入是否优先通过 OpenClaw 编排。
+        activity:
+          title: 活动与健康状态
+          description: 查看最近的 OpenClaw 活动记录和运行时健康检查结果。
+      fields:
+        enabled:
+          label: 启用 OpenClaw 集成
+          description: 为当前配置文件打开 OpenClaw 原生运行时能力。
+        route-chat-input:
+          label: 让 Stage 聊天经过 OpenClaw
+          description: 启用后，共享聊天输入会先发布到服务通道，再由 OpenClaw 处理并把助手输出回写到当前会话。
+        runtime-health-url:
+          label: 运行时健康检查 URL
+          description: 可选的 OpenClaw 运行时健康检查地址。
+          placeholder: http://localhost:8123/health
+        response-timeout-ms:
+          label: 回复超时（毫秒）
+          description: MIRA 等待 OpenClaw 返回结果的最长时间，超时后会把本次请求标记为失败。
+        last-activity:
+          label: 最近活动
+        last-health-check:
+          label: 最近健康检查
+        last-message:
+          label: 最近远端消息
+        last-complete:
+          label: 最近完成时间
+        runtime-health:
+          label: 运行时标识
+      notes:
+        title: MVP 路由说明
+        item-runtime: 桌面端仍可通过运行时页面继续托管本地 OpenClaw runtime。
+        item-attachments: 当前图片附件会直接走多模态 provider 路径，先保证三端都能稳定使用视觉聊天。
+        item-fallback: 如果共享服务通道暂时不可用，MIRA 会自动回退到直接 provider 路径，而不是阻塞聊天输入。
     runtime-health:
       description: 检查本地 OpenClaw Bridge/Runtime 的运行状态并一键重启
       title: 本地运行时状态

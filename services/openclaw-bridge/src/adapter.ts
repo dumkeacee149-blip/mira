@@ -1,4 +1,4 @@
-import type { AssistantMessage, CommonContentPart, Message } from '@xsai/shared-chat'
+import type { Client } from '@proj-mira/server-sdk'
 import type {
   ContextUpdate,
   ContextUpdateDestinationAll,
@@ -8,7 +8,7 @@ import type {
   WebSocketEventOf,
   WebSocketEvents,
 } from '@proj-mira/server-shared/types'
-import type { Client } from '@proj-mira/server-sdk'
+import type { AssistantMessage, CommonContentPart, Message } from '@xsai/shared-chat'
 
 import { ContextUpdateStrategy as SharedContextUpdateStrategy } from '@proj-mira/server-shared/types'
 
@@ -43,7 +43,7 @@ interface OpenClawRequestPayload {
 
 type OpenClawContextUpdate = ContextUpdate<Record<string, unknown>, string | CommonContentPart[]>
 
-type OpenClawOutputCommand = {
+interface OpenClawOutputCommand {
   destinations: string[]
   interrupt?: 'force' | 'soft' | false
   priority?: 'critical' | 'high' | 'normal' | 'low'
@@ -157,7 +157,7 @@ function normalizeContextUpdate(update: OpenClawContextUpdate): OpenClawContextU
     strategy: normalizeContextUpdateStrategy(update.strategy),
     destinations: normalizeDestinationFilter(update.destinations),
     metadata: {
-      ...(update.metadata ?? {}),
+      ...update.metadata,
       source: 'openclaw',
       boundByOpenClaw: true,
     },
@@ -199,10 +199,13 @@ export function createOpenClawAdapter({ client, config }: OpenClawAdapterDeps) {
     composed: Message[]
     metadata?: Record<string, unknown>
   }) {
-    const assistantMessage: AssistantMessage = {
+    const createdAt = Date.now()
+    const assistantMessage = {
       role: 'assistant',
       content: input.replyText,
-    }
+      id: randomId('msg'),
+      createdAt,
+    } as AssistantMessage & { id: string, createdAt: number }
 
     const chatInput = {
       type: 'input:text',
@@ -214,20 +217,40 @@ export function createOpenClawAdapter({ client, config }: OpenClawAdapterDeps) {
       },
     }
 
+    const outputData = {
+      'message': assistantMessage,
+      'gen-ai:chat': {
+        message: {
+          role: 'user',
+          content: input.sourceText,
+        },
+        composedMessage: input.composed,
+        contexts: {},
+        input: chatInput,
+      },
+      'metadata': {
+        ...input.metadata,
+        openclaw: true,
+        source: 'openclaw-bridge',
+      },
+    }
+
     client.send({
       type: 'output:gen-ai:chat:message',
+      data: outputData,
+    } as never)
+
+    client.send({
+      type: 'output:gen-ai:chat:complete',
       data: {
-        message: assistantMessage,
-        'gen-ai:chat': {
-          message: {
-            role: 'user',
-            content: input.sourceText,
-          },
-          composedMessage: input.composed,
-          contexts: {},
-          input: chatInput,
+        ...outputData,
+        toolCalls: [],
+        usage: {
+          promptTokens: 0,
+          completionTokens: 0,
+          totalTokens: 0,
+          source: 'estimate-based',
         },
-        ...(input.metadata ? { metadata: input.metadata } : {}),
       },
     } as never)
   }
@@ -274,7 +297,7 @@ export function createOpenClawAdapter({ client, config }: OpenClawAdapterDeps) {
         content: update.content,
         destinations: normalizeDestinationFilter(update.destinations),
         metadata: {
-          ...(update.metadata ?? {}),
+          ...update.metadata,
           source: 'openclaw-bridge',
         },
       }))
@@ -334,7 +357,7 @@ export function createOpenClawAdapter({ client, config }: OpenClawAdapterDeps) {
     }
 
     const reply = pickBestMessage(result)
-    if (reply)
+    if (reply) {
       sendChatReply({
         sourceText: event.data.text,
         sourceSessionId: event.data.overrides?.sessionId,
@@ -342,6 +365,7 @@ export function createOpenClawAdapter({ client, config }: OpenClawAdapterDeps) {
         composed: [{ role: 'assistant', content: reply }],
         metadata: event.metadata as Record<string, unknown> | undefined,
       })
+    }
 
     sendSparkCommands(event.metadata?.event?.id ?? randomId('evt'), result.commands ?? [])
     sendContextUpdates(parseContextUpdates(result))
@@ -357,7 +381,7 @@ export function createOpenClawAdapter({ client, config }: OpenClawAdapterDeps) {
       source: 'spark:notify',
       eventId: event.data.id,
       correlationId: event.metadata?.event?.id,
-      sessionId: event.data.payload?.['sessionId'] as string | undefined,
+      sessionId: event.data.payload?.sessionId as string | undefined,
       prompt,
       rawText: JSON.stringify(event.data, null, 2),
       context: {
@@ -381,24 +405,25 @@ export function createOpenClawAdapter({ client, config }: OpenClawAdapterDeps) {
     }
 
     const reply = pickBestMessage(result)
-    if (reply)
+    if (reply) {
       sendChatReply({
         sourceText: prompt,
         replyText: reply,
         composed: [{ role: 'assistant', content: reply }],
         metadata: event.metadata as Record<string, unknown> | undefined,
       })
+    }
 
     sendSparkCommands(event.data.id, result.commands ?? [])
     sendContextUpdates(parseContextUpdates(result))
   }
 
   function initialize() {
-    client.onEvent('input:text', event => {
+    client.onEvent('input:text', (event) => {
       void handleInputText(event)
     })
 
-    client.onEvent('spark:notify', event => {
+    client.onEvent('spark:notify', (event) => {
       void handleSparkNotify(event)
     })
   }

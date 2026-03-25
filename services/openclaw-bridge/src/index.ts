@@ -64,6 +64,7 @@ const miraClient = new Client({
     'spark:emit',
     'context:update',
     'output:gen-ai:chat:message',
+    'output:gen-ai:chat:complete',
     'module:authenticate',
   ],
   onError: (error) => {
