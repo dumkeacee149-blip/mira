@@ -1,0 +1,29 @@
+{
+  "project_name": "Mira Live2D Avatar",
+  "working_root": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace",
+  "character_summary": {
+    "theme": "soft vintage photographer",
+    "hair": "silver twin tails with ornaments",
+    "eyes": "amber",
+    "primary_outfit": "cream dress with black ribbon accents",
+    "hero_prop": "camera with leather straps"
+  },
+  "files": {
+    "layer_plan": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\docs\\mira-live2d-layer-plan.md",
+    "template_psd": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working\\Mira_Live2D_Template.psd",
+    "target_cubism_project": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working\\Mira_Live2D_Template.cmo3"
+  },
+  "required_source_assets": [
+    "front-facing full-body original image file on disk",
+    "close-up face or expression sheet file on disk",
+    "permission to repaint hidden areas for rigging"
+  ],
+  "current_blockers": [
+    "reference images are not yet available as local files to import automatically",
+    "the concept art is not already split into Live2D-ready paint layers"
+  ],
+  "recommended_extra_software": [
+    "optional: Clip Studio Paint or Krita for heavy repainting and cut repair",
+    "optional: VTube Studio for post-rig avatar testing"
+  ]
+}

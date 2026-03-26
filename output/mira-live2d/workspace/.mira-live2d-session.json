@@ -1,0 +1,72 @@
+{
+  "undo": [
+    {
+      "type": "bootstrap",
+      "project_name": "Mira Live2D Avatar",
+      "template_name": "Mira_Live2D_Template",
+      "created_paths": [
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\references",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\exports",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\docs",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\mira-live2d-project.json",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\docs\\mira-live2d-layer-plan.md"
+      ]
+    },
+    {
+      "type": "create_psd_template",
+      "output_psd": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working\\Mira_Live2D_Template.psd",
+      "reference_image": "",
+      "document_name": "Mira_Live2D_Template",
+      "width": 4096,
+      "height": 8192,
+      "resolution": 300
+    },
+    {
+      "type": "create_psd_template",
+      "output_psd": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working\\Mira_Live2D_Template_Linted.psd",
+      "reference_image": "",
+      "document_name": "Mira_Live2D_Template_Linted",
+      "width": 4096,
+      "height": 8192,
+      "resolution": 300
+    },
+    {
+      "type": "create_psd_template",
+      "output_psd": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working\\Mira_Live2D_Template.psd",
+      "reference_images": [
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\references\\3d1b0d6f-f283-4758-a6f0-7bf48d09f5ff_1765533640926.png",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\references\\Gemini_Generated_Image_7ajzgs7ajzgs7ajz.png"
+      ],
+      "document_name": "Mira_Live2D_Template",
+      "width": 4096,
+      "height": 8192,
+      "resolution": 300
+    },
+    {
+      "type": "create_psd_template",
+      "output_psd": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working\\Mira_Live2D_Workboard.psd",
+      "reference_images": [
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\references\\3d1b0d6f-f283-4758-a6f0-7bf48d09f5ff_1765533640926.png",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\references\\Gemini_Generated_Image_7ajzgs7ajzgs7ajz.png"
+      ],
+      "document_name": "Mira_Live2D_Workboard",
+      "width": 6144,
+      "height": 8192,
+      "resolution": 300
+    },
+    {
+      "type": "create_psd_template",
+      "output_psd": "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\working\\Mira_Live2D_RoughSplit.psd",
+      "reference_images": [
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\references\\3d1b0d6f-f283-4758-a6f0-7bf48d09f5ff_1765533640926.png",
+        "G:\\JOE AGENT\\mira\\output\\mira-live2d\\workspace\\references\\Gemini_Generated_Image_7ajzgs7ajzgs7ajz.png"
+      ],
+      "document_name": "Mira_Live2D_RoughSplit",
+      "width": 6144,
+      "height": 8192,
+      "resolution": 300
+    }
+  ],
+  "redo": []
+}

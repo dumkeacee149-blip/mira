@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Mira_Live2D_Exportable.moc3",
+		"Textures": [
+			"Mira_Live2D_Exportable.1024/texture_00.png"
+		],
+		"DisplayInfo": "Mira_Live2D_Exportable.cdi3.json"
+	}
+}
