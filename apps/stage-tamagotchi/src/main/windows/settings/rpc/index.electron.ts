@@ -1,9 +1,9 @@
 import type { BrowserWindow } from 'electron'
 
 import type { I18n } from '../../../libs/i18n'
+import type { AutoUpdater } from '../../../services/electron/auto-updater'
 import type { ServerChannel } from '../../../services/mira/channel-server'
 import type { McpStdioManager } from '../../../services/mira/mcp-servers'
-import type { AutoUpdater } from '../../../services/electron/auto-updater'
 import type { DevtoolsWindowManager } from '../../devtools'
 import type { WidgetsWindowManager } from '../../widgets'
 
@@ -12,10 +12,10 @@ import { createContext } from '@moeru/eventa/adapters/electron/main'
 import { ipcMain } from 'electron'
 
 import { electronOpenDevtoolsWindow, electronOpenSettingsDevtools } from '../../../../shared/eventa'
-import { createMcpServersService } from '../../../services/mira/mcp-servers'
-import { createWidgetsService } from '../../../services/mira/widgets'
 import { createAutoUpdaterService } from '../../../services/electron'
 import { createLocalRuntimeService } from '../../../services/local-runtime'
+import { createMcpServersService } from '../../../services/mira/mcp-servers'
+import { createWidgetsService } from '../../../services/mira/widgets'
 import { setupBaseWindowElectronInvokes } from '../../shared/window'
 
 export async function setupSettingsWindowInvokes(params: {

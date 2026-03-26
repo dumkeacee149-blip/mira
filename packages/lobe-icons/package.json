@@ -33,6 +33,17 @@
     "dist",
     "package.json"
   ],
+  "scripts": {
+    "dev": "tsdown",
+    "stub": "tsdown",
+    "build": "echo \"Prebuilt package; no build step required\"",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix .",
+    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
+    "sizecheck": "npx vite-bundle-visualizer",
+    "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe",
+    "changelogithub": "changelogithub"
+  },
   "dependencies": {
     "@iconify/types": "^2.0.0"
   },
@@ -57,16 +68,5 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
-  },
-  "scripts": {
-    "dev": "tsdown",
-    "stub": "tsdown",
-    "build": "echo \"Prebuilt package; no build step required\"",
-    "lint": "eslint --cache .",
-    "lint:fix": "eslint --cache --fix .",
-    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
-    "sizecheck": "npx vite-bundle-visualizer",
-    "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe",
-    "changelogithub": "changelogithub"
   }
 }

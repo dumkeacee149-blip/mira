@@ -64,11 +64,28 @@ describe('characterRoutes', () => {
     expect(await res.json()).toEqual([])
   })
 
+  it('get /featured/baiteng should return fallback profile without auth', async () => {
+    const res = await app.request('/featured/baiteng?language=zh-Hans')
+    expect(res.status).toBe(200)
+
+    const data = await res.json()
+    expect(data.source).toBe('fallback')
+    expect(data.profile.name).toBe('白藤')
+    expect(data.displayModelId).toBe('preset-live2d-1')
+  })
+
   it('post / should create character with cover', async () => {
     const payload = {
-      character: { version: '1', coverUrl: 'url', characterId: 'cid' },
-      i18n: [{ language: 'en', name: 'Aster', description: 'desc', tags: [] }],
+      character: { version: '1', coverUrl: 'url', characterId: 'baiteng' },
+      i18n: [
+        { language: 'en', name: 'Baiteng', description: 'desc', tags: [] },
+        { language: 'zh-Hans', name: '白藤', tagline: '云端白色陪伴者', description: '后端白藤档案', tags: ['轻声', '陪伴'] },
+      ],
       cover: { foregroundUrl: 'fg', backgroundUrl: 'bg' },
+      prompts: [
+        { language: 'zh-Hans', type: 'system', content: '你是白藤。' },
+        { language: 'zh-Hans', type: 'greetings', content: '我是白藤。' },
+      ],
     }
 
     const res = await app.fetch(new Request('http://localhost/', {
@@ -90,7 +107,18 @@ describe('characterRoutes', () => {
     expect(res.status).toBe(200)
     const data = await res.json()
     expect(data.length).toBe(1)
-    expect(data[0].i18n[0].name).toBe('Aster')
+    expect(data[0].characterId).toBe('baiteng')
+  })
+
+  it('get /featured/baiteng should return database profile after creation', async () => {
+    const res = await app.request('/featured/baiteng?language=zh-Hans')
+    expect(res.status).toBe(200)
+
+    const data = await res.json()
+    expect(data.source).toBe('database')
+    expect(data.profile.name).toBe('白藤')
+    expect(data.prompt.system).toBe('你是白藤。')
+    expect(data.media.coverUrl).toBe('url')
   })
 
   it('post /:id/like should toggle like', async () => {

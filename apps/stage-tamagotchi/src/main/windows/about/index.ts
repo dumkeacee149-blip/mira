@@ -1,6 +1,6 @@
 import type { I18n } from '../../libs/i18n'
-import type { ServerChannel } from '../../services/mira/channel-server'
 import type { AutoUpdater } from '../../services/electron/auto-updater'
+import type { ServerChannel } from '../../services/mira/channel-server'
 
 import { join, resolve } from 'node:path'
 

@@ -47,6 +47,13 @@
     "dist",
     "package.json"
   ],
+  "scripts": {
+    "dev": "tsdown",
+    "stub": "tsdown",
+    "build": "echo \"Prebuilt package; no build step required\"",
+    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
+    "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
+  },
   "peerDependencies": {
     "drizzle-orm": ">=0.40.0",
     "web-worker": "^1.5.0"
@@ -67,12 +74,5 @@
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.5"
-  },
-  "scripts": {
-    "dev": "tsdown",
-    "stub": "tsdown",
-    "build": "echo \"Prebuilt package; no build step required\"",
-    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
-    "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   }
 }

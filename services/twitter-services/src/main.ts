@@ -1,7 +1,7 @@
 import type { Context } from 'node:vm'
 
-import type { MiraAdapter } from './adapters/mira-adapter'
 import type { MCPAdapter } from './adapters/mcp-adapter'
+import type { MiraAdapter } from './adapters/mira-adapter'
 
 import process from 'node:process'
 

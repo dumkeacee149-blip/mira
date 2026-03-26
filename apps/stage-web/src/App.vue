@@ -14,17 +14,20 @@ import { StageTransitionGroup } from '@proj-mira/ui-transitions'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import { toast, Toaster } from 'vue-sonner'
 
 import PerformanceOverlay from './components/Devtools/PerformanceOverlay.vue'
 
+import { syncFeaturedCharacterCard } from './composables/sync-featured-character-card'
+import { useFeaturedCharacterProfile } from './composables/use-featured-character-profile'
 import { usePWAStore } from './stores/pwa'
 
 usePWAStore()
 
 const contextBridgeStore = useContextBridgeStore()
 const i18n = useI18n()
+const route = useRoute()
 const displayModelsStore = useDisplayModelsStore()
 const settingsStore = useSettings()
 const settings = storeToRefs(settingsStore)
@@ -36,6 +39,7 @@ const { showingSetup } = storeToRefs(onboardingStore)
 const { isDark } = useTheme()
 const cardStore = useMiraCardStore()
 const analyticsStore = useSharedAnalyticsStore()
+const { load: loadFeaturedCharacterProfile, profile: featuredCharacterProfile } = useFeaturedCharacterProfile()
 
 const primaryColor = computed(() => {
   return isDark.value
@@ -59,9 +63,32 @@ const colors = computed(() => {
   return [primaryColor.value, secondaryColor.value, tertiaryColor.value, isDark.value ? '#121212' : '#FFFFFF']
 })
 
+const shouldHideOnboardingDialog = computed(() =>
+  route.path === '/'
+  || route.path === '/stage'
+  || route.path.startsWith('/auth'),
+)
+
+const showOnboardingDialog = computed({
+  get() {
+    return !shouldHideOnboardingDialog.value && showingSetup.value
+  },
+  set(value: boolean) {
+    showingSetup.value = value
+  },
+})
+
 watch(settings.language, () => {
   i18n.locale.value = settings.language.value
 })
+
+watch(() => i18n.locale.value, (language) => {
+  void loadFeaturedCharacterProfile(language)
+}, { immediate: true })
+
+watch(featuredCharacterProfile, (profile) => {
+  syncFeaturedCharacterCard(profile)
+}, { immediate: true })
 
 watch(settings.themeColorsHue, () => {
   document.documentElement.style.setProperty('--chromatic-hue', settings.themeColorsHue.value.toString())
@@ -75,6 +102,7 @@ watch(settings.themeColorsHueDynamic, () => {
 onMounted(async () => {
   analyticsStore.initialize()
   cardStore.initialize()
+  syncFeaturedCharacterCard(featuredCharacterProfile.value)
 
   if (onboardingStore.needsOnboarding) {
     onboardingStore.showingSetup = true
@@ -124,7 +152,7 @@ function handleSetupSkipped() {
 
   <!-- First Time Setup Dialog -->
   <OnboardingDialog
-    v-model="showingSetup"
+    v-model="showOnboardingDialog"
     @configured="handleSetupConfigured"
     @skipped="handleSetupSkipped"
   />

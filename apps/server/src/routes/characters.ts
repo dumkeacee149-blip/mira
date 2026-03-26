@@ -6,10 +6,22 @@ import { safeParse } from 'valibot'
 
 import { CreateCharacterSchema, UpdateCharacterSchema } from '../api/characters.schema'
 import { authGuard } from '../middlewares/auth'
+import { getFeaturedCharacterProfile } from '../services/featured-character-profile'
 import { createBadRequestError, createForbiddenError, createNotFoundError } from '../utils/error'
 
 export function createCharacterRoutes(characterService: CharacterService) {
   return new Hono<HonoEnv>()
+    .get('/featured/:characterId', async (c) => {
+      const characterId = c.req.param('characterId')
+      const language = c.req.query('language')
+      const profile = await getFeaturedCharacterProfile(characterService, characterId, language)
+
+      if (!profile)
+        throw createNotFoundError()
+
+      return c.json(profile)
+    })
+
     .use('*', authGuard)
 
     .get('/', async (c) => {

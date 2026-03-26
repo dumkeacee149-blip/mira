@@ -3,5 +3,6 @@
 
 interface ImportMetaEnv {
   readonly VITE_APP_TARGET_HUGGINGFACE_SPACE: string
-  // more env variables...
+  readonly VITE_APP_DESKTOP_MACOS_DOWNLOAD_URL?: string
+  readonly VITE_APP_DESKTOP_WINDOWS_DOWNLOAD_URL?: string
 }

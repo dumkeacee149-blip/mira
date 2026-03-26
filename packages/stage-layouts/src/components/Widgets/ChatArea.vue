@@ -418,7 +418,7 @@ watch(autoSendEnabled, (enabled) => {
       :class="[
         'relative',
         'w-full',
-        'bg-primary-200/20 dark:bg-primary-400/20',
+        'bg-[#f2f7ff]',
       ]"
     >
       <ChatAttachmentStrip
@@ -437,7 +437,7 @@ watch(autoSendEnabled, (enabled) => {
       <BasicTextarea
         v-model="messageInput"
         :placeholder="t('stage.message')"
-        text="primary-600 dark:primary-100  placeholder:primary-500 dark:placeholder:primary-200"
+        text="slate-700 placeholder:slate-400"
         bg="transparent"
         min-h="[100px]" max-h="[300px]" w-full
         rounded-t-xl p-4 font-medium pb="[60px]"
@@ -464,7 +464,7 @@ watch(autoSendEnabled, (enabled) => {
             <div
               :class="[
                 'h-8 w-8 flex items-center justify-center rounded-md outline-none transition-all duration-200',
-                isDragging ? 'bg-primary-500/15 text-primary-600 dark:bg-primary-500/20 dark:text-primary-300' : 'text-neutral-500 dark:text-neutral-400',
+                isDragging ? 'bg-[#e4efff] text-slate-700' : 'text-[#8298b5]',
               ]"
               title="Attach images"
             >
@@ -475,7 +475,7 @@ watch(autoSendEnabled, (enabled) => {
         <button
           v-else
           type="button"
-          class="h-8 w-8 flex items-center justify-center rounded-md text-neutral-300 dark:text-neutral-700"
+          class="h-8 w-8 flex items-center justify-center rounded-md text-[#b6c8de]"
           disabled
           title="Image input disabled"
         >
@@ -487,7 +487,7 @@ watch(autoSendEnabled, (enabled) => {
           <PopoverTrigger as-child>
             <button
               class="h-8 w-8 flex items-center justify-center rounded-md outline-none transition-all duration-200 active:scale-95"
-              text="lg neutral-500 dark:neutral-400"
+              text="lg [#7e96b4]"
               title="Hearing"
             >
               <Transition name="fade" mode="out-in">

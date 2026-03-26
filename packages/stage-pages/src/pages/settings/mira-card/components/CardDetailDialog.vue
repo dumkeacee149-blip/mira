@@ -3,8 +3,8 @@ import type { MiraCard } from '@proj-mira/stage-ui/stores/modules/mira-card'
 
 import DOMPurify from 'dompurify'
 
-import { useMiraCardStore } from '@proj-mira/stage-ui/stores/modules/mira-card'
 import { useConsciousnessStore } from '@proj-mira/stage-ui/stores/modules/consciousness'
+import { useMiraCardStore } from '@proj-mira/stage-ui/stores/modules/mira-card'
 import { useSpeechStore } from '@proj-mira/stage-ui/stores/modules/speech'
 import { Button } from '@proj-mira/ui'
 import { storeToRefs } from 'pinia'

@@ -44,12 +44,6 @@
     "dist",
     "package.json"
   ],
-  "peerDependencies": {
-    "drizzle-orm": ">=0.44.0"
-  },
-  "dependencies": {
-    "@guiiai/logg": "^1.1.0"
-  },
   "scripts": {
     "dev": "tsdown",
     "stub": "tsdown",
@@ -58,5 +52,11 @@
     "test": "vitest",
     "test:run": "vitest run",
     "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
+  },
+  "peerDependencies": {
+    "drizzle-orm": ">=0.44.0"
+  },
+  "dependencies": {
+    "@guiiai/logg": "^1.1.0"
   }
 }

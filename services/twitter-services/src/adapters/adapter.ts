@@ -1,7 +1,7 @@
 import type { Config } from '../config/types'
 import type { Context } from '../core/browser/context'
-import type { MiraAdapter } from './mira-adapter'
 import type { MCPAdapter } from './mcp-adapter'
+import type { MiraAdapter } from './mira-adapter'
 
 import { logger } from '../utils/logger'
 

@@ -32,6 +32,13 @@
     "dist",
     "package.json"
   ],
+  "scripts": {
+    "build": "echo \"Prebuilt package; no build step required\"",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix .",
+    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
+    "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe"
+  },
   "peerDependencies": {
     "vite": ">= 7"
   },
@@ -53,12 +60,5 @@
     "typescript": "^5.9.3",
     "unbuild": "^3.6.1",
     "unplugin-unused": "^0.5.6"
-  },
-  "scripts": {
-    "build": "echo \"Prebuilt package; no build step required\"",
-    "lint": "eslint --cache .",
-    "lint:fix": "eslint --cache --fix .",
-    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
-    "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe"
   }
 }

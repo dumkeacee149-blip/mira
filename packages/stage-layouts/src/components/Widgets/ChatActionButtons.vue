@@ -9,46 +9,42 @@ const { cleanupMessages } = useChatMaintenanceStore()
 const { isDark, toggleDark } = useTheme()
 
 const backgroundDialogOpen = ref(false)
+const actionButtonClass = [
+  'inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e5f4]',
+  'bg-white/86 text-[#6e88aa] shadow-[0_18px_38px_rgba(119,150,191,0.12)] backdrop-blur-[22px]',
+  'transition duration-300 hover:-translate-y-0.5 hover:border-[#bfd3ea] hover:bg-white hover:text-slate-900',
+]
 </script>
 
 <template>
   <BackgroundDialogPicker v-model="backgroundDialogOpen" />
-  <div absolute bottom--8 right-0 flex gap-2>
+  <div :class="['flex items-center gap-2']">
     <button
-      class="max-h-[10lh] min-h-[1lh]"
-      bg="neutral-100 dark:neutral-800"
-      text="lg neutral-500 dark:neutral-400"
-      hover:text="red-500 dark:red-400"
-      flex items-center justify-center rounded-md p-2 outline-none
-      transition-colors transition-transform active:scale-95
+      type="button"
+      :class="actionButtonClass"
       @click="cleanupMessages()"
     >
-      <div class="i-solar:trash-bin-2-bold-duotone" />
+      <div class="i-solar:trash-bin-2-bold-duotone text-lg" />
     </button>
 
     <button
-      class="max-h-[10lh] min-h-[1lh]"
-      bg="neutral-100 dark:neutral-800"
-      text="lg neutral-500 dark:neutral-400"
-      flex items-center justify-center rounded-md p-2 outline-none
-      transition-colors transition-transform active:scale-95
+      type="button"
+      :class="actionButtonClass"
       @click="() => toggleDark()"
     >
       <Transition name="fade" mode="out-in">
-        <div v-if="isDark" i-solar:moon-bold />
-        <div v-else i-solar:sun-2-bold />
+        <div v-if="isDark" class="i-solar:moon-bold text-lg" />
+        <div v-else class="i-solar:sun-2-bold text-lg" />
       </Transition>
     </button>
+
     <button
-      class="max-h-[10lh] min-h-[1lh]"
-      bg="neutral-100 dark:neutral-800"
-      text="lg neutral-500 dark:neutral-400"
-      flex items-center justify-center rounded-md p-2 outline-none
-      transition-colors transition-transform active:scale-95
+      type="button"
       title="Background"
+      :class="actionButtonClass"
       @click="backgroundDialogOpen = true"
     >
-      <div i-solar:gallery-wide-bold-duotone />
+      <div class="i-solar:gallery-wide-bold-duotone text-lg" />
     </button>
   </div>
 </template>

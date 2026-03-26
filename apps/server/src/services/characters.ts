@@ -25,6 +25,24 @@ export function createCharacterService(db: Database) {
       })
     },
 
+    async findByCharacterId(characterId: string) {
+      return await db.query.character.findFirst({
+        where: and(
+          eq(schema.character.characterId, characterId),
+          isNull(schema.character.deletedAt),
+        ),
+        with: {
+          capabilities: true,
+          avatarModels: true,
+          i18n: true,
+          prompts: true,
+          likes: true,
+          bookmarks: true,
+          cover: true,
+        },
+      })
+    },
+
     async findByOwnerId(ownerId: string) {
       return await db.query.character.findMany({
         where: and(

@@ -1,30 +1,44 @@
 <script setup lang="ts">
 import { useTheme } from '@proj-mira/ui'
-import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 
 import LogoDark from '../../assets/logo-dark.svg'
 import Logo from '../../assets/logo.svg'
 
-import { BackgroundKind, useBackgroundStore } from '../../stores/background'
-
 const { isDark: dark } = useTheme()
-const { selectedOption } = storeToRefs(useBackgroundStore())
+const { t } = useI18n()
 </script>
 
 <template>
   <RouterLink
-    to="/" flex="~" items-center
-    gap-2 px-2 text-nowrap text-2xl outline-none
+    to="/"
+    :class="[
+      'group flex min-w-0 items-center gap-3 rounded-full px-1 py-1 pr-3 outline-none transition duration-300',
+      'hover:bg-white/10',
+    ]"
   >
-    <template v-if="selectedOption?.kind === BackgroundKind.Wave">
+    <span
+      :class="[
+        'grid h-10 w-10 place-items-center rounded-full border border-white/18 bg-white/12 shadow-[0_10px_20px_rgba(15,23,42,0.16)] backdrop-blur-xl',
+      ]"
+    >
       <template v-if="dark">
-        <img :src="LogoDark" h-8 w-8 class="theme-colored">
+        <img :src="LogoDark" class="theme-colored h-6 w-6">
       </template>
       <template v-else>
-        <img :src="Logo" h-8 w-8 class="theme-colored">
+        <img :src="Logo" class="theme-colored h-6 w-6">
       </template>
-    </template>
+    </span>
+
+    <span :class="['min-w-0 flex flex-col leading-none']">
+      <span :class="['text-[0.58rem] font-medium uppercase tracking-[0.34em] text-white/58']">
+        MIRA
+      </span>
+      <span :class="['mt-1 truncate text-xs font-semibold tracking-[0.14em] text-white']">
+        {{ t('stage.landing.nav.edition') }}
+      </span>
+    </span>
   </RouterLink>
 </template>
 

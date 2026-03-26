@@ -5,8 +5,8 @@ import type { MiraExtension } from '@proj-mira/stage-ui/stores/modules/mira-card
 import kebabcase from '@stdlib/string-base-kebabcase'
 
 import { useDisplayModelsStore } from '@proj-mira/stage-ui/stores/display-models'
-import { useMiraCardStore } from '@proj-mira/stage-ui/stores/modules/mira-card'
 import { useConsciousnessStore } from '@proj-mira/stage-ui/stores/modules/consciousness'
+import { useMiraCardStore } from '@proj-mira/stage-ui/stores/modules/mira-card'
 import { useSpeechStore } from '@proj-mira/stage-ui/stores/modules/speech'
 import { useProvidersStore } from '@proj-mira/stage-ui/stores/providers'
 import { useSettingsStageModel } from '@proj-mira/stage-ui/stores/settings/stage-model'

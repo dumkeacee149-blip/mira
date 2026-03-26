@@ -52,6 +52,11 @@ describe('characterService', () => {
     expect(result[0].i18n).toBeDefined()
   })
 
+  it('findByCharacterId should return the matching character', async () => {
+    const result = await service.findByCharacterId('cid')
+    expect(result?.id).toBe('char-1')
+  })
+
   it('like should toggle like status and update counter', async () => {
     const charId = 'char-1'
 

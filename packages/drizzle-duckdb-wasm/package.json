@@ -50,6 +50,19 @@
     "dist",
     "package.json"
   ],
+  "scripts": {
+    "dev": "tsdown",
+    "stub": "tsdown",
+    "build": "echo \"Prebuilt package; no build step required\"",
+    "dev:play": "vite",
+    "build:play": "vite build",
+    "preview:play": "vite preview",
+    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
+    "db:generate": "drizzle-kit generate",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
+  },
   "peerDependencies": {
     "drizzle-orm": ">=0.40.0",
     "web-worker": "^1.5.0"
@@ -63,10 +76,10 @@
     "@date-fns/tz": "^1.4.1",
     "@duckdb/duckdb-wasm": "1.29.1-dev68.0",
     "@moeru/std": "0.1.0-beta.1",
+    "@proj-mira/duckdb-wasm": "workspace:^",
     "apache-arrow": "^21.1.0",
     "date-fns": "^4.1.0",
-    "es-toolkit": "^1.40.0",
-    "@proj-mira/duckdb-wasm": "workspace:^"
+    "es-toolkit": "^1.40.0"
   },
   "devDependencies": {
     "@iconify-json/simple-icons": "^1.2.54",
@@ -88,18 +101,5 @@
     "vue": "^3.5.22",
     "vue-router": "^4.5.1",
     "vue-tsc": "^3.1.1"
-  },
-  "scripts": {
-    "dev": "tsdown",
-    "stub": "tsdown",
-    "build": "echo \"Prebuilt package; no build step required\"",
-    "dev:play": "vite",
-    "build:play": "vite build",
-    "preview:play": "vite preview",
-    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
-    "db:generate": "drizzle-kit generate",
-    "test": "vitest",
-    "test:run": "vitest run",
-    "attw": "attw --pack . --profile esm-only --ignore-rules cjs-resolves-to-esm"
   }
 }

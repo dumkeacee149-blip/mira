@@ -18,14 +18,14 @@ viewers:
   debug-menu:
     emotions: Emotions
     emotions-btn:
-      angry: 😠 Angry
-      awkward: 😳 Awkward
-      happy: 😄 Happy
-      neutral: 🙂 Neutral
-      question: 🤔 Question
-      sad: 😫 Sad
-      surprised: 🤯 Surprised
-      think: 🤨 Think
+      angry: Angry
+      awkward: Awkward
+      happy: Happy
+      neutral: Neutral
+      question: Question
+      sad: Sad
+      surprised: Surprised
+      think: Think
     vrm:
       camera: Camera
       model:
@@ -36,3 +36,78 @@ profile-switcher:
   save-as-new: Save as New Profile
   manage: Manage Profiles
 waiting: Waiting
+landing:
+  nav:
+    edition: Signature Studio
+    mode: Live Session
+    sync: Memory Linked
+  panel:
+    eyebrow: Companion Console
+    title: Keep dialogue, capture, and tuning inside one quiet console.
+    description: History, voice capture, and stage controls stay aligned so the new Live2D lead never feels detached from the tools around her.
+    status:
+      live: Live Console
+      synced: Stage linked
+    stats:
+      input:
+        label: Input
+        value: Voice + Text
+      focus:
+        label: Focus
+        value: Lead ready
+      mood:
+        label: Tone
+        value: Pearl blush
+  mobile:
+    eyebrow: One-Thumb Controls
+    description: Keep MIRA centered while the most important tools stay within easy reach.
+auth:
+  eyebrow: Return to MIRA
+  brandLabel: Live companion access
+  title: Sign in to reopen MIRA's studio.
+  description: Restore memory, provider setup, and scene tuning so MIRA returns with the same voice, context, and stage state.
+  posterLabel: White Vine lead
+  posterCaption: White Vine is now the primary visual lead for MIRA, replacing the previous placeholder portrait with a cleaner Live2D identity.
+  sheetLabel: Reference board
+  sheetCaption: Live2D preset, styling direction, and stage setup stay aligned around the same lead character.
+  details:
+    presence:
+      title: Companion continuity
+      body: The same lead character and session state come back instead of a blank start.
+    memory:
+      title: Memory and setup
+      body: Providers, voice setup, and scene tuning stay attached to the companion you shaped.
+    tone:
+      title: Softer brand tone
+      body: Every return should feel like reopening an ongoing presence, not relaunching a tool.
+  panel:
+    eyebrow: Account access
+    title: Continue with your provider
+    description: Choose a provider to enter the live studio and keep MIRA's archive, voice, and stage state in sync.
+    noticeLabel: Memory notice
+    legal: Continue only if this is the account you want attached to MIRA's long-term memory.
+    providers:
+      google: Continue with Google
+      github: Continue with GitHub
+workspace:
+  eyebrow: Live companion workspace
+  title: Keep MIRA in frame while voice, memory, and tuning stay close.
+  description: This is the working surface, not the campaign page. Watch the character, focus the composer, and adjust the studio without losing the live scene.
+  actions:
+    focus: Focus composer
+    settings: Open studio settings
+  badges:
+    scene: Lead frame
+    voice: Voice armed
+    memory: Memory linked
+  note: Motion, chat, and scene controls remain in one composition so the active Live2D lead stays connected to the surrounding tools.
+  stats:
+    frame:
+      label: Frame
+      value: Lead character stays centered with live motion and focus tracking.
+    voice:
+      label: Voice
+      value: Hands-free pipeline stays ready for speech capture and transcription.
+    archive:
+      label: Archive
+      value: Session memory, settings, and tone stay anchored to the same companion.

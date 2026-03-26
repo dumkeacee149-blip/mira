@@ -24,15 +24,15 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "echo \"Vendored package; no typecheck step required\""
+  },
   "dependencies": {
     "culori": "^4.0.2"
   },
   "devDependencies": {
     "@types/culori": "^4.0.1",
     "@unocss/core": "^66.5.3"
-  },
-  "scripts": {
-    "build": "tsdown",
-    "typecheck": "echo \"Vendored package; no typecheck step required\""
   }
 }

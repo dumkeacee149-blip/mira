@@ -68,7 +68,6 @@ function reloadApp() {
 <template>
   <div class="h-full w-full bg-neutral-950 text-neutral-100">
     <div class="mx-auto h-full w-full flex gap-3 p-3">
-      <!-- Left navigation -->
       <aside class="w-52 flex-shrink-0 border border-neutral-800 rounded-2xl bg-neutral-900/85 p-2 shadow-2xl shadow-black/20 backdrop-blur-xl hidden lg:flex lg:flex-col lg:justify-between">
         <div>
           <div class="mb-2 flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold">
@@ -102,15 +101,14 @@ function reloadApp() {
         <div class="mt-4 rounded-xl bg-neutral-800/80 p-3 text-xs text-neutral-300">
           <p class="mb-1.5 flex items-center gap-2">
             <span class="size-2 rounded-full" :class="alwaysOnTop ? 'bg-emerald-400' : 'bg-neutral-500'" />
-            常驻窗口
+            Always On Top
           </p>
           <p class="text-[11px] text-neutral-500">
-            {{ alwaysOnTop ? '已开启置顶' : '已关闭置顶' }}
+            {{ alwaysOnTop ? 'Pinned above other windows' : 'Normal window stacking' }}
           </p>
         </div>
       </aside>
 
-      <!-- Main stage content -->
       <div class="min-h-0 min-w-0 flex flex-1 flex-col border border-neutral-800 rounded-2xl bg-neutral-900/70 p-3 shadow-2xl shadow-black/20 backdrop-blur-xl">
         <header class="mb-3 flex flex-wrap items-center justify-between gap-2 border border-neutral-800 rounded-xl bg-neutral-950/70 px-3 py-2 text-xs text-neutral-300 font-medium">
           <div class="flex items-center gap-2">
@@ -119,7 +117,7 @@ function reloadApp() {
           </div>
           <div class="flex items-center gap-2">
             <div class="rounded-full bg-emerald-500/20 px-2 py-1 text-emerald-300">
-              在线
+              Online
             </div>
             <button class="border border-neutral-700 rounded-lg px-2 py-1 transition-colors hover:bg-neutral-800" @click="toggleDark()">
               <span :class="isDark ? 'i-solar:moon-outline' : 'i-solar:sun-2-outline'" class="text-sm" />
@@ -141,15 +139,14 @@ function reloadApp() {
         </main>
       </div>
 
-      <!-- Right context panel -->
       <aside class="w-72 flex-shrink-0 border border-neutral-800 rounded-2xl bg-neutral-900/85 p-2 shadow-2xl shadow-black/20 backdrop-blur-xl hidden xl:flex xl:flex-col">
         <p class="px-2 text-xs text-neutral-400 font-semibold tracking-[0.12em] uppercase">
-          状态栏
+          Status
         </p>
         <div class="mt-2 space-y-2">
           <div class="border border-neutral-700 rounded-xl bg-neutral-900/70 p-2">
             <p class="text-xs text-neutral-400">
-              当前版本
+              Current Build
             </p>
             <p class="text-sm text-neutral-100">
               Mira Desktop
@@ -157,17 +154,17 @@ function reloadApp() {
           </div>
           <div class="border border-neutral-700 rounded-xl bg-neutral-900/70 p-2">
             <p class="text-xs text-neutral-400">
-              快捷操作
+              Quick Actions
             </p>
             <div class="mt-2 flex flex-col gap-2">
               <RouterLink to="/chat" class="border border-neutral-700 rounded-lg px-2 py-1 text-sm text-neutral-200 transition-colors hover:bg-neutral-800">
-                进入对话
+                Open Chat
               </RouterLink>
               <RouterLink to="/widgets" class="border border-neutral-700 rounded-lg px-2 py-1 text-sm text-neutral-200 transition-colors hover:bg-neutral-800">
-                打开 Widgets
+                Open Widgets
               </RouterLink>
               <RouterLink to="/settings" class="border border-neutral-700 rounded-lg px-2 py-1 text-sm text-neutral-200 transition-colors hover:bg-neutral-800">
-                设置页
+                Open Settings
               </RouterLink>
             </div>
           </div>

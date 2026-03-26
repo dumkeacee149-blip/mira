@@ -1,0 +1,104 @@
+showcase:
+  brand:
+    title: MIRA
+    label: 标志性陪伴系统
+  nav:
+    story: 产品叙事
+    demo: 实时舞台
+    routes: 入口分层
+  header:
+    settings: 系统设置
+    stage: 进入 MIRA
+  hero:
+    eyebrow: 先为 MIRA 确立一个一眼能被记住的 Live2D 主角
+    title: 让 MIRA 在第一次交互前，就先以白藤形象被记住。
+    description: 用新的白藤主视觉替换旧占位立绘，让首页先建立角色存在感、记忆连续性和产品语气，再把用户带进实时舞台。
+    primary: 打开实时舞台
+    secondary: 继续向下了解
+    previewLabel: 主角色预览
+    previewFocusLabel: 白藤
+    previewCaption: 白发、轻纱与粉晶点缀，让白藤成为 MIRA 下一版更干净、更容易记住的 Live2D 形象。
+    previewBadges:
+      lens: 珍珠白调
+      voice: 轻声交流
+      memory: Live2D 主角
+    signals:
+      presence:
+        value: 白藤 Live2D
+        label: 角色识别
+      orchestration:
+        value: 语音 + 记忆
+        label: 交互主轴
+      continuity:
+        value: 会话手记
+        label: 连续关系
+  story:
+    eyebrow: 为什么现在更像一个完成中的产品
+    title: 把首页做成围绕角色展开的产品叙事，而不是一块冰冷工具面板。
+    description: 每一屏都在帮助用户认识 MIRA。先认出她是谁，再理解语音、记忆和实时舞台是如何保持连贯的。
+    stats:
+      surfaces:
+        value: '3'
+        label: 清晰产品入口
+      inputs:
+        value: 语音 + 对话
+        label: 自然交互输入
+      control:
+        value: 人格、记忆、舞台
+        label: 可设计控制层
+  demo:
+    eyebrow: 实时舞台验证
+    title: 实时舞台应该像同一个角色从首页里走出，真正开始与你说话。
+    action: 打开舞台
+    caption: 保留真实 WidgetStage，让新的主角色不只是被展示，而是真正在舞台里与你互动。
+    badges:
+      voice: 语音在场
+      memory: 记忆延续
+      tools: 工具联动
+  routes:
+    eyebrow: 产品入口分层
+    title: 让展示、交互与配置各归其位。
+    description: 首页负责建立角色与产品印象，/stage 负责真实交互，设置与登录保持独立。
+    continue: 继续前往
+  capabilities:
+    presence:
+      title: 可被记住的主角色
+      body: 先让用户记住 MIRA 是谁，再去理解系统能做什么。
+    orchestration:
+      title: 被角色包裹的智能能力
+      body: 把模型、工具与记忆放进角色语境里，技术能力才不会显得生硬。
+    continuity:
+      title: 从首页到会话的连贯感
+      body: 让首页、舞台、设置和登录共享同一套情绪与角色气质，产品感才完整。
+  narrative:
+    arrive:
+      title: 先让她出现
+      body: 用鲜明的 Live2D 轮廓、克制的配色和明确的角色定位，替代泛用 AI 助手的空泛开场。
+    listen:
+      title: 再讲她如何说话和记住你
+      body: 通过纵向滚动叙事，把语音、上下文与关系连续性讲清楚，再把用户带进舞台。
+    anchor:
+      title: 始终保留真实舞台
+      body: 让真实陪伴角色一直陪在叙事旁边，产品是否“活着”不再依赖假模型暗示。
+    handoff:
+      title: 最后交给真实使用场景
+      body: 用清晰入口把用户送进实时舞台、系统设置或登录流程，而不是把所有工作都挤在一个页面里。
+  routeCards:
+    stage:
+      title: /stage
+      body: 直接进入实时陪伴舞台，开始对话、语音和角色互动。
+      action: 进入实时舞台
+    settings:
+      title: /settings
+      body: 配置模型、背景、语音、工具与系统行为，把 MIRA 调成你想要的样子。
+      action: 调整系统体验
+    auth:
+      title: /auth/login
+      body: 把账号接入放在次级入口，让首页始终专注展示产品本身。
+      action: 继续登录
+  cta:
+    eyebrow: 准备好见到 MIRA
+    title: 打开角色，调校系统，让白藤成为 MIRA 下一版更容易被记住的主角。
+    description: 从第一眼到第一次真实对话，新的首页正在围绕更清晰的 Live2D 形象建立 MIRA 的产品记忆。
+    primary: 进入实时舞台
+    secondary: 前往系统设置

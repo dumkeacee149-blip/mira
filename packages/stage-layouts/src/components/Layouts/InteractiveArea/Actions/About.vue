@@ -24,8 +24,17 @@ const edition = isStageTamagotchi()
 </script>
 
 <template>
-  <button border="2 solid neutral-100/60 dark:neutral-800/30" bg="neutral-50/70 dark:neutral-800/70" w-fit flex items-center self-end justify-center rounded-xl p-2 backdrop-blur-md title="About" @click="show = !show">
-    <div i-solar:info-circle-outline size-5 text="neutral-500 dark:neutral-400" />
+  <button
+    type="button"
+    :class="[
+      'inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e5f4]',
+      'bg-white/86 text-[#6e88aa] shadow-[0_18px_38px_rgba(119,150,191,0.12)] backdrop-blur-[22px]',
+      'transition duration-300 hover:-translate-y-0.5 hover:border-[#bfd3ea] hover:bg-white hover:text-slate-900',
+    ]"
+    title="About"
+    @click="show = !show"
+  >
+    <div class="i-solar:info-circle-outline text-lg" />
   </button>
   <AboutDialog v-model="show">
     <AboutContent :subtitle="edition" :build-info="buildInfo" :links="aboutLinks" />

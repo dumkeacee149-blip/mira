@@ -19,7 +19,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { sparkCommandSchema, useCharacterOrchestratorStore } from '.'
 import { useCharacterStore } from '..'
 import { useLLM } from '../../llm'
-import { useMiraCardStore, useConsciousnessStore } from '../../modules'
+import { useConsciousnessStore, useMiraCardStore } from '../../modules'
 import { useProvidersStore } from '../../providers'
 
 vi.mock('vue-i18n', () => ({

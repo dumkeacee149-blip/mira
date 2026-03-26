@@ -8,9 +8,9 @@ import type { ServerChannel } from '../../services/mira/channel-server'
 import { isRendererUnavailable } from '@proj-mira/electron-vueuse/main'
 import { isMacOS } from 'std-env'
 
+import { createAppService, createScreenService, createWindowService } from '../../services/electron'
 import { createServerChannelService } from '../../services/mira/channel-server'
 import { createI18nService } from '../../services/mira/i18n'
-import { createAppService, createScreenService, createWindowService } from '../../services/electron'
 
 export function toggleWindowShow(window?: BrowserWindow | null): void {
   if (!window) {

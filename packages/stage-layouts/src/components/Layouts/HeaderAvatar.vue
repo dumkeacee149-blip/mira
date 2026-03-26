@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { errorMessageFrom } from '@moeru/std'
 import { listSessions, signOut } from '@proj-mira/stage-ui/libs/auth'
 import { useAuthStore } from '@proj-mira/stage-ui/stores/auth'
 import { onClickOutside, useMediaQuery } from '@vueuse/core'
@@ -10,12 +11,26 @@ import { toast } from 'vue-sonner'
 const authStore = useAuthStore()
 const { isAuthenticated, user } = storeToRefs(authStore)
 
-const isMobile = useMediaQuery('(max-width: 768px)')
+const isCompactHeader = useMediaQuery('(max-width: 640px)')
 
 const userName = computed(() => user.value?.name)
 const userAvatar = computed(() => user.value?.image)
 const showDropdown = ref(false)
 const dropdownRef = ref(null)
+const iconButtonClass = [
+  'inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e5f4]',
+  'bg-white/86 text-[#6d86a8] shadow-[0_18px_38px_rgba(119,150,191,0.12)] backdrop-blur-[22px]',
+  'transition duration-300 hover:-translate-y-0.5 hover:border-[#bfd3ea] hover:bg-white hover:text-slate-900',
+]
+const triggerButtonClass = [
+  'flex items-center gap-2 rounded-full border border-[#d9e5f4] bg-white/86 px-1 py-1 pl-1 pr-3',
+  'text-slate-700 shadow-[0_18px_38px_rgba(119,150,191,0.12)] backdrop-blur-[22px]',
+  'transition duration-300 hover:-translate-y-0.5 hover:border-[#bfd3ea] hover:bg-white hover:text-slate-900',
+]
+const dropdownPanelClass = [
+  'absolute right-0 top-full z-50 mt-3 w-64 origin-top-right rounded-[1.4rem] border border-[#d9e5f4]',
+  'bg-white/96 p-2 text-slate-900 shadow-[0_24px_80px_rgba(119,150,191,0.18)] backdrop-blur-[24px]',
+]
 
 onClickOutside(dropdownRef, () => {
   showDropdown.value = false
@@ -33,47 +48,41 @@ async function handleListSessions() {
     }
   }
   catch (error) {
-    toast.error(error instanceof Error ? error.message : 'An unknown error occurred')
+    toast.error(errorMessageFrom(error) ?? 'An unknown error occurred')
   }
 }
 </script>
 
 <template>
-  <div flex items-center gap-2>
+  <div :class="['flex items-center gap-2']">
     <!-- Non-authenticated: Settings & Login -->
     <!-- NOTICE: The avatar is stored in the localstorage, it will be shown at the first time of the page load, so we do not need the skeleton loading here -->
     <template v-if="!isAuthenticated">
       <RouterLink
-        border="2 solid neutral-100/60 dark:neutral-800/30"
-        bg="neutral-50/70 dark:neutral-800/70"
-        w-fit flex items-center justify-center rounded-xl p-2 backdrop-blur-md
         title="Settings"
         to="/settings"
+        :class="iconButtonClass"
       >
-        <div i-solar:settings-minimalistic-bold-duotone size-5 text="neutral-500 dark:neutral-400" />
+        <div class="i-solar:settings-minimalistic-bold-duotone text-lg" />
       </RouterLink>
 
-      <template v-if="isMobile">
+      <template v-if="isCompactHeader">
         <button
-          border="2 solid neutral-100/60 dark:neutral-800/30"
-          bg="neutral-50/70 dark:neutral-800/70"
-          w-fit flex items-center justify-center rounded-xl p-2 backdrop-blur-md
           title="Login"
           type="button"
+          :class="iconButtonClass"
           @click="authStore.isLoginDrawerOpen = true"
         >
-          <div i-solar:user-bold-duotone />
+          <div class="i-solar:user-bold-duotone text-lg" />
         </button>
       </template>
       <template v-else>
         <RouterLink
-          border="2 solid neutral-100/60 dark:neutral-800/30"
-          bg="neutral-50/70 dark:neutral-800/70"
-          w-fit flex items-center justify-center rounded-xl p-2 backdrop-blur-md
           :title="isAuthenticated ? `Logged in as ${userName}` : 'Login'"
           to="/auth/login"
+          :class="iconButtonClass"
         >
-          <div i-solar:user-bold-duotone />
+          <div class="i-solar:user-bold-duotone text-lg" />
         </RouterLink>
       </template>
     </template>
@@ -82,8 +91,10 @@ async function handleListSessions() {
     <div v-else ref="dropdownRef" class="relative">
       <button
         type="button"
-        class="flex items-center gap-2 border-2 border-neutral-100/60 rounded-full bg-neutral-50/70 p-1 pl-1 pr-3 backdrop-blur-md transition dark:border-neutral-800/30 dark:bg-neutral-800/70 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-        :class="{ 'ring-2 ring-primary-500/20': showDropdown }"
+        :class="[
+          ...triggerButtonClass,
+          showDropdown ? 'ring-1 ring-white/28' : '',
+        ]"
         aria-haspopup="true"
         :aria-expanded="showDropdown ? 'true' : 'false'"
         @click="showDropdown = !showDropdown"
@@ -91,20 +102,22 @@ async function handleListSessions() {
         <img
           v-if="userAvatar"
           :src="userAvatar"
-          class="h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-neutral-900"
+          class="h-8 w-8 rounded-full object-cover ring-2 ring-white/40"
         >
         <div
           v-else
-          class="h-8 w-8 flex items-center justify-center rounded-full bg-neutral-200 text-neutral-500 ring-2 ring-white dark:bg-neutral-700 dark:text-neutral-400 dark:ring-neutral-900"
+          :class="[
+            'flex h-8 w-8 items-center justify-center rounded-full bg-[#eff5ff] text-[#6d86a8] ring-2 ring-[#dbe7f5]',
+          ]"
         >
-          <div class="i-solar:user-bold-duotone text-lg" />
+          <div class="i-solar:user-bold-duotone text-base" />
         </div>
 
-        <span v-if="userName" class="max-w-[100px] truncate text-sm text-neutral-700 font-medium hidden sm:block dark:text-neutral-200">
+        <span v-if="userName" class="max-w-[100px] truncate text-sm text-slate-700 font-medium hidden sm:block">
           {{ userName }}
         </span>
         <div
-          class="i-solar:alt-arrow-down-linear text-neutral-400 transition-transform duration-200"
+          class="i-solar:alt-arrow-down-linear text-[#8aa0bb] transition-transform duration-200"
           :class="{ 'rotate-180': showDropdown }"
         />
       </button>
@@ -119,42 +132,42 @@ async function handleListSessions() {
       >
         <div
           v-if="showDropdown"
-          class="absolute right-0 top-full z-50 mt-2 w-60 origin-top-right border border-neutral-200/60 rounded-xl bg-white/90 p-1 shadow-xl backdrop-blur-xl divide-y divide-neutral-100 dark:border-neutral-800/60 dark:bg-neutral-900/90 dark:divide-neutral-800"
+          :class="dropdownPanelClass"
         >
-          <div class="px-3 py-2">
-            <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          <div class="border-b border-[#e6edf7] px-3 py-3">
+            <p class="text-xs text-[#88a0bc]">
               Signed in as
             </p>
-            <p class="truncate text-sm text-neutral-900 font-medium dark:text-white">
+            <p class="truncate text-sm text-slate-900 font-medium">
               {{ userName }}
             </p>
           </div>
 
-          <div class="py-1">
+          <div class="border-b border-[#e6edf7] py-2">
             <button
-              class="group w-full flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
+              class="group w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-700 transition hover:bg-[#f4f9ff] hover:text-slate-900"
               @click="handleListSessions"
             >
-              <div class="i-solar:devices-bold-duotone text-lg text-neutral-400 transition group-hover:text-primary-500" />
+              <div class="i-solar:devices-bold-duotone text-lg text-[#89a0bc] transition group-hover:text-slate-900" />
               Active Sessions
             </button>
 
             <RouterLink
               to="/settings"
-              class="group w-full flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
+              class="group w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-700 transition hover:bg-[#f4f9ff] hover:text-slate-900"
               @click="showDropdown = false"
             >
-              <div class="i-solar:settings-minimalistic-bold-duotone text-lg text-neutral-400 transition group-hover:text-primary-500" />
+              <div class="i-solar:settings-minimalistic-bold-duotone text-lg text-[#89a0bc] transition group-hover:text-slate-900" />
               Settings
             </RouterLink>
           </div>
 
-          <div class="py-1">
+          <div class="py-2">
             <button
-              class="group w-full flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-600 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+              class="group w-full flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-red-300 transition hover:bg-red-400/10 hover:text-red-200"
               @click="handleLogout"
             >
-              <div class="i-solar:logout-3-bold-duotone text-lg transition group-hover:text-red-600 dark:group-hover:text-red-400" />
+              <div class="i-solar:logout-3-bold-duotone text-lg transition group-hover:text-red-100" />
               Logout
             </button>
           </div>

@@ -1,7 +1,7 @@
 import type { I18n } from '../../libs/i18n'
+import type { AutoUpdater } from '../../services/electron/auto-updater'
 import type { ServerChannel } from '../../services/mira/channel-server'
 import type { McpStdioManager } from '../../services/mira/mcp-servers'
-import type { AutoUpdater } from '../../services/electron/auto-updater'
 import type { DevtoolsWindowManager } from '../devtools'
 import type { WidgetsWindowManager } from '../widgets'
 

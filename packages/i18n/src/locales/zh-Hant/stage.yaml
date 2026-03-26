@@ -9,30 +9,105 @@ message: 說點什麼...
 operations:
   load-models: 載入模型
   load-models-status:
-    loading: 模型載入中
+    loading: 載入中
     ready: 已就緒
-select-a-audio-input: 選擇一個音訊輸入裝置
-select-a-model: 選擇一個模型
-select-a-voice: 選擇一個聲線
+select-a-audio-input: 選擇音訊輸入
+select-a-model: 選擇模型
+select-a-voice: 選擇語音
 viewers:
   debug-menu:
-    emotions: 表情
+    emotions: 情緒
     emotions-btn:
-      angry: '😠 生氣'
-      awkward: '😳 尷尬'
-      happy: '😄 開心'
-      neutral: '🙂 日常'
-      question: '🤔 疑問'
-      sad: '😫 難過'
-      surprised: '🤯 驚喜'
-      think: '🤨 思考'
+      angry: 生氣
+      awkward: 尷尬
+      happy: 開心
+      neutral: 平靜
+      question: 疑問
+      sad: 難過
+      surprised: 驚訝
+      think: 思考
     vrm:
-      camera: 攝影機
+      camera: 相機
       model:
         title: 模型
 profile-switcher:
-  no-profile: No Profile
-  no-profiles: No profiles yet
-  save-as-new: Save as New Profile
-  manage: Manage Profiles
+  no-profile: 無設定檔
+  no-profiles: 還沒有設定檔
+  save-as-new: 另存為新設定
+  manage: 管理設定檔
 waiting: 等待中
+landing:
+  nav:
+    edition: 角色工作台
+    mode: 即時會話
+    sync: 記憶聯動
+  panel:
+    eyebrow: 陪伴控制台
+    title: 把對話、採集與調校收進一個安靜的控制台。
+    description: 歷史訊息、語音採集與舞台控制保持聯動，讓新的 Live2D 主角色不會和周圍工具脫節。
+    status:
+      live: 即時控制台
+      synced: 舞台已聯動
+    stats:
+      input:
+        label: 輸入
+        value: 語音 + 文字
+      focus:
+        label: 焦點
+        value: 主角色就緒
+      mood:
+        label: 氣質
+        value: 珍珠粉白
+  mobile:
+    eyebrow: 單手控制
+    description: 讓 MIRA 保持在畫面中央，同時把最重要的工具留在拇指最容易觸達的位置。
+auth:
+  eyebrow: 返回 MIRA
+  brandLabel: Live2D 陪伴入口
+  title: 登入以重新進入 MIRA 工作台。
+  description: 恢復記憶、Provider 配置與舞台調校，讓 MIRA 以一致的語氣、上下文與狀態回來。
+  posterLabel: 白藤主視覺
+  posterCaption: 白藤現在作為 MIRA 的新主角色出現，用更乾淨的 Live2D 形象取代舊的占位立繪。
+  sheetLabel: 參考板
+  sheetCaption: Live2D 預設、視覺方向與舞台設定會圍繞同一位主角色保持一致。
+  details:
+    presence:
+      title: 角色連續性
+      body: 登入後回來的不只是帳號，也是同一位陪伴角色與會話狀態。
+    memory:
+      title: 記憶與配置
+      body: Provider、語音設定與舞台調校都會繼續掛在你塑造好的角色上。
+    tone:
+      title: 更柔和的品牌語氣
+      body: 每次回來都應該像延續一段關係，而不是重新打開一個工具。
+  panel:
+    eyebrow: 帳號接入
+    title: 選擇你的登入方式
+    description: 選擇一個 Provider 進入即時工作台，讓 MIRA 的記憶、語音與舞台狀態保持同步。
+    noticeLabel: 記憶提示
+    legal: 僅當這是你希望綁定到 MIRA 長期記憶的帳號時再繼續。
+    providers:
+      google: 使用 Google 繼續
+      github: 使用 GitHub 繼續
+workspace:
+  eyebrow: 即時陪伴工作台
+  title: 讓 MIRA 保持在畫面裡，同時把語音、記憶與調校留在手邊。
+  description: 這裡是操作介面，不是宣傳頁。你可以一邊看著角色即時呈現，一邊聚焦輸入框和整個工作室，而不會失去現場感。
+  actions:
+    focus: 聚焦輸入框
+    settings: 打開工作室設定
+  badges:
+    scene: 主角色畫框
+    voice: 語音就緒
+    memory: 記憶已聯動
+  note: 動作、對話與場景控制被收在同一個構圖裡，讓當前 Live2D 主角色始終和周圍工具保持連貫。
+  stats:
+    frame:
+      label: 畫面
+      value: 主角色始終處在穩定的取景中心，動作與視線追蹤保持在線。
+    voice:
+      label: 語音
+      value: 免手持鏈路隨時可用，方便語音採集與轉寫接入。
+    archive:
+      label: 檔案
+      value: 會話記憶、設定與語氣始終綁定在同一位陪伴角色上。

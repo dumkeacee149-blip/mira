@@ -6,6 +6,7 @@ import { Button, Callout, FieldInput } from '@proj-mira/ui'
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useProvidersStore } from '../../../../stores/providers'
 import { Alert } from '../../../misc'
 
 interface Props {
@@ -14,8 +15,6 @@ interface Props {
   onNext: OnboardingStepNextHandler
   onPrevious: OnboardingStepPrevHandler
 }
-
-import { useProvidersStore } from '../../../../stores/providers'
 
 const props = defineProps<Props>()
 const { t } = useI18n()

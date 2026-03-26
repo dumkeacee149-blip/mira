@@ -94,7 +94,7 @@ function normalizeContextUpdate(update) {
     strategy: normalizeContextUpdateStrategy(update.strategy),
     destinations: normalizeDestinationFilter(update.destinations),
     metadata: {
-      ...(update.metadata ?? {}),
+      ...update.metadata,
       source: 'openclaw',
       boundByOpenClaw: true,
     },
@@ -213,7 +213,7 @@ export function createOpenClawAdapter({ client, config }) {
       .map(update => ({
         ...update,
         metadata: {
-          ...(update.metadata ?? {}),
+          ...update.metadata,
           source: 'openclaw-bridge',
         },
       }))

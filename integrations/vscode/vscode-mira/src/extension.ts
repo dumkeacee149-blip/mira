@@ -6,8 +6,8 @@ import { noop } from 'es-toolkit'
 import { injeca, lifecycle } from 'injeca'
 import { commands, window, workspace } from 'vscode'
 
-import { Client } from './mira'
 import { ContextCollector } from './context-collector'
+import { Client } from './mira'
 
 interface IntervalHandle {
   clearInterval: () => void

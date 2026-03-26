@@ -294,7 +294,7 @@ async function main() {
 ### 9.2 Integrating as MIRA Module
 
 ```typescript
-import { MIRAAdapter, BrowserBaseMCPAdapter, TwitterService } from 'twitter-services'
+import { BrowserBaseMCPAdapter, MIRAAdapter, TwitterService } from 'twitter-services'
 
 async function startMIRAModule() {
   const browser = new BrowserBaseMCPAdapter(process.env.BROWSERBASE_API_KEY)

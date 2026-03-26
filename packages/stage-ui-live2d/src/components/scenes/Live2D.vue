@@ -19,6 +19,8 @@ withDefaults(defineProps<{
   mouthOpenSize?: number
   focusAt?: { x: number, y: number }
   disableFocusAt?: boolean
+  xOffset?: number | string
+  yOffset?: number | string
   scale?: number
   themeColorsHue?: number
   themeColorsHueDynamic?: boolean
@@ -85,8 +87,8 @@ defineExpose({
         :height="height"
         :paused="paused"
         :focus-at="focusAt"
-        :x-offset="position.x"
-        :y-offset="position.y"
+        :x-offset="xOffset ?? position.x"
+        :y-offset="yOffset ?? position.y"
         :scale="scale"
         :disable-focus-at="disableFocusAt"
         :theme-colors-hue="themeColorsHue"

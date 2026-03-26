@@ -1,0 +1,104 @@
+showcase:
+  brand:
+    title: MIRA
+    label: Signature Companion System
+  nav:
+    story: Product
+    demo: Live Stage
+    routes: Paths
+  header:
+    settings: System Settings
+    stage: Enter MIRA
+  hero:
+    eyebrow: A signature Live2D lead, shaped for first-glance recognition
+    title: Give MIRA a heroine people recognize before the first interaction.
+    description: Replace the old placeholder portrait with White Vine and let the homepage establish presence, continuity, and tone before people enter the live stage.
+    primary: Open the live stage
+    secondary: See how it works
+    previewLabel: Lead visual
+    previewFocusLabel: White Vine
+    previewCaption: White hair, lace details, and pink gemstone accents give MIRA a cleaner and more memorable Live2D silhouette.
+    previewBadges:
+      lens: Pearl palette
+      voice: Soft voice
+      memory: Live2D lead
+    signals:
+      presence:
+        value: White Vine Live2D
+        label: persona clarity
+      orchestration:
+        value: Voice + Memory
+        label: interaction axis
+      continuity:
+        value: Session journal
+        label: continuity layer
+  story:
+    eyebrow: Why it feels more intentional now
+    title: Turn the landing page into a character-led product reveal, not a cold tool screen.
+    description: Each section helps users understand MIRA in order. First they recognize the lead character. Then they learn how voice, memory, and the live stage stay connected.
+    stats:
+      surfaces:
+        value: '3'
+        label: clear product surfaces
+      inputs:
+        value: Voice + Chat
+        label: natural inputs
+      control:
+        value: Persona, memory, stage
+        label: designable controls
+  demo:
+    eyebrow: Live stage proof
+    title: The live stage should feel like the same character has stepped out of the landing page and started speaking.
+    action: Open stage
+    caption: Keep the real WidgetStage visible so the new lead is not only displayed, but present as a character you can actually talk to.
+    badges:
+      voice: Voice presence
+      memory: Memory carryover
+      tools: Tool linked
+  routes:
+    eyebrow: Product paths
+    title: Give every product surface its own role.
+    description: Let the landing page establish the character, let /stage host the live interaction, and keep configuration plus sign-in in dedicated spaces.
+    continue: Continue
+  capabilities:
+    presence:
+      title: Signature Presence
+      body: Let people remember who MIRA is before they parse what the system can do.
+    orchestration:
+      title: Framed Intelligence
+      body: Put models, tools, and memory inside a character-led frame so the product feels intentional instead of technical.
+    continuity:
+      title: From Landing to Session
+      body: Keep the same emotional tone across showcase, stage, settings, and sign-in so the experience feels whole.
+  narrative:
+    arrive:
+      title: Let her appear first
+      body: Lead with a distinctive Live2D silhouette, a controlled palette, and a clear role instead of a generic assistant shell.
+    listen:
+      title: Explain how she speaks and remembers
+      body: Use vertical storytelling to make voice, context, and continuity legible before the user even opens the stage.
+    anchor:
+      title: Keep the live stage visible
+      body: Pin the real companion beside the narrative so the product proves it is alive while people scroll.
+    handoff:
+      title: End in real use
+      body: Finish with clear routes into the live stage, system setup, and sign-in instead of pushing every workflow into one page.
+  routeCards:
+    stage:
+      title: /stage
+      body: Enter the real-time companion stage for chat, voice input, and live character interaction.
+      action: Launch the live stage
+    settings:
+      title: /settings
+      body: Tune models, backgrounds, voice, modules, and behavior in a dedicated control environment.
+      action: Shape the system
+    auth:
+      title: /auth/login
+      body: Keep account access as a secondary step so the homepage can stay focused on the product story.
+      action: Continue with sign-in
+  cta:
+    eyebrow: Ready to meet MIRA
+    title: Launch the companion, tune the system, and let White Vine become MIRA's new recognizable lead.
+    description: From the first glance to the first live conversation, the homepage now prepares MIRA around a clearer Live2D identity and stronger continuity.
+    primary: Enter the live stage
+    secondary: Configure the system

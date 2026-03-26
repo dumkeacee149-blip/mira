@@ -34,6 +34,16 @@
     "dist",
     "package.json"
   ],
+  "scripts": {
+    "dev": "pnpm run stub",
+    "stub": "unbuild --stub",
+    "build": "echo \"Prebuilt package; no build step required\"",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix .",
+    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
+    "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe",
+    "changelogithub": "changelogithub"
+  },
   "dependencies": {
     "ofetch": "^1.4.1",
     "vite": "^7.1.5",
@@ -54,15 +64,5 @@
     "taze": "^19.6.0",
     "typescript": "^5.9.2",
     "unbuild": "^3.6.1"
-  },
-  "scripts": {
-    "dev": "pnpm run stub",
-    "stub": "unbuild --stub",
-    "build": "echo \"Prebuilt package; no build step required\"",
-    "lint": "eslint --cache .",
-    "lint:fix": "eslint --cache --fix .",
-    "typecheck": "echo \"Prebuilt package; no typecheck step required\"",
-    "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe",
-    "changelogithub": "changelogithub"
   }
 }

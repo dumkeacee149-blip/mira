@@ -1,9 +1,9 @@
 import type { BrowserWindow } from 'electron'
 
 import type { I18n } from '../../../libs/i18n'
+import type { AutoUpdater } from '../../../services/electron/auto-updater'
 import type { ServerChannel } from '../../../services/mira/channel-server'
 import type { McpStdioManager } from '../../../services/mira/mcp-servers'
-import type { AutoUpdater } from '../../../services/electron/auto-updater'
 import type { NoticeWindowManager } from '../../notice'
 import type { OnboardingWindowManager } from '../../onboarding'
 import type { SettingsWindowManager } from '../../settings'
@@ -14,10 +14,10 @@ import { createContext } from '@moeru/eventa/adapters/electron/main'
 import { ipcMain } from 'electron'
 
 import { electronOpenChat, electronOpenMainDevtools, electronOpenSettings, noticeWindowEventa } from '../../../../shared/eventa'
+import { createAutoUpdaterService } from '../../../services/electron'
 import { createMcpServersService } from '../../../services/mira/mcp-servers'
 import { createOnboardingService } from '../../../services/mira/onboarding'
 import { createWidgetsService } from '../../../services/mira/widgets'
-import { createAutoUpdaterService } from '../../../services/electron'
 import { toggleWindowShow } from '../../shared'
 import { setupBaseWindowElectronInvokes } from '../../shared/window'
 

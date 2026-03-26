@@ -61,20 +61,20 @@ function handleNext() {
     <p class="text-sm text-neutral-600 dark:text-neutral-300">
       {{ t('settings.dialogs.onboarding.language-description') }}
     </p>
-    <div class="flex-1 space-y-3 overflow-y-auto">
+    <div class="flex-1 overflow-y-auto space-y-3">
       <label
         v-for="option in options"
         :key="option.value"
-        class="flex items-center gap-3 rounded-lg border border-neutral-200 px-4 py-3 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 cursor-pointer"
+        class="flex cursor-pointer items-center gap-3 border border-neutral-200 rounded-lg px-4 py-3 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800"
       >
         <input
           v-model="selected"
           type="radio"
           name="onboarding-language"
           :value="option.value"
-        />
+        >
         <div class="flex-1">
-          <div class="font-medium text-neutral-900 dark:text-neutral-100">{{ option.label }}</div>
+          <div class="text-neutral-900 font-medium dark:text-neutral-100">{{ option.label }}</div>
           <div class="text-xs text-neutral-500 dark:text-neutral-400">{{ option.description }}</div>
         </div>
       </label>

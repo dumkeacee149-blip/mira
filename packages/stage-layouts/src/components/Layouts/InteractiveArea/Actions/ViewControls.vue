@@ -22,9 +22,9 @@ function handleViewControlsToggle(targetMode: 'x' | 'y' | 'z' | 'scale') {
 </script>
 
 <template>
-  <div w-full flex flex-1 items-center self-end justify-end gap-2>
+  <div :class="['flex w-full flex-1 items-center justify-end gap-2 self-end']">
     <Transition name="fade">
-      <div v-if="stageViewControlsEnabled" w-full flex justify-between gap-2>
+      <div v-if="stageViewControlsEnabled" :class="['flex w-full justify-between gap-2']">
         <Button variant="secondary-muted" :toggled="mode === 'x'" w-full @click="handleViewControlsToggle('x')">
           X
         </Button>
@@ -40,16 +40,17 @@ function handleViewControlsToggle(targetMode: 'x' | 'y' | 'z' | 'scale') {
       </div>
     </Transition>
     <button
-      w-fit flex items-center self-end justify-center justify-self-end rounded-xl p-2 backdrop-blur-md
-      border="2 solid neutral-100/60 dark:neutral-800/30"
-      bg="neutral-50/70 dark:neutral-800/70"
+      :class="[
+        'inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d9e5f4]',
+        'bg-white/86 text-[#6e88aa] shadow-[0_18px_38px_rgba(119,150,191,0.12)] backdrop-blur-[22px]',
+        'transition duration-300 hover:-translate-y-0.5 hover:border-[#bfd3ea] hover:bg-white hover:text-slate-900',
+      ]"
       title="View"
-      text="neutral-500 dark:neutral-400"
       @click="stageViewControlsEnabled = !stageViewControlsEnabled"
     >
       <Transition name="fade" mode="out-in">
-        <div v-if="!stageViewControlsEnabled" i-solar:tuning-outline size-5 />
-        <div v-else i-solar:alt-arrow-right-outline size-5 />
+        <div v-if="!stageViewControlsEnabled" class="i-solar:tuning-outline text-lg" />
+        <div v-else class="i-solar:alt-arrow-right-outline text-lg" />
       </Transition>
     </button>
   </div>

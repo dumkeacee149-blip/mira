@@ -4,7 +4,23 @@ import { useAuthStore } from '../stores/auth'
 
 export type OAuthProvider = 'google' | 'github'
 
-export const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'https://api.mira.local'
+function resolveServerUrl() {
+  if (import.meta.env.VITE_SERVER_URL)
+    return import.meta.env.VITE_SERVER_URL
+
+  if (typeof window !== 'undefined') {
+    const { hostname, protocol } = window.location
+    if (hostname === 'localhost' || hostname === '127.0.0.1')
+      return 'http://localhost:3000'
+
+    if (hostname.endsWith('.mira.local') && hostname !== 'api.mira.local')
+      return `${protocol}//api.mira.local`
+  }
+
+  return import.meta.env.DEV ? 'http://localhost:3000' : 'https://api.mira.local'
+}
+
+export const SERVER_URL = resolveServerUrl()
 
 export const authClient = createAuthClient({
   baseURL: SERVER_URL,
